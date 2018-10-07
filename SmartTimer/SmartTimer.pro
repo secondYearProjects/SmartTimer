@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-10-07T17:21:40
+# Project created by QtCreator 2018-10-07T20:06:53
 #
 #-------------------------------------------------
 
@@ -26,13 +26,16 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    timerwidget.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    timerwidget.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    timerwidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
