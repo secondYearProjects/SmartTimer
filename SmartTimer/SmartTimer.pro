@@ -1,12 +1,12 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-10-04T23:32:11
+# Project created by QtCreator 2018-10-07T17:21:40
 #
 #-------------------------------------------------
 
-QMAKE_CXXFLAGS += -L/opt/lib
+QT       += core gui
 
-QT       += core gui widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = SmartTimer
 TEMPLATE = app
@@ -26,12 +26,10 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    timer.cpp
+        mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h \
-    timer.h
+        mainwindow.h
 
 FORMS += \
         mainwindow.ui
