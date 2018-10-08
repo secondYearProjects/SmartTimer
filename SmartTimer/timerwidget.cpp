@@ -6,7 +6,7 @@
 
 int TimerWidget::MAXID = 0;
 
-TimerWidget::TimerWidget(QWidget *parent) :
+TimerWidget::TimerWidget( int _interval, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TimerWidget)
 {
@@ -14,7 +14,7 @@ TimerWidget::TimerWidget(QWidget *parent) :
 
     timer = new QTimer(this);
     tickTimer = new QTimer(this);
-    duration = 5000;
+    duration = _interval;
     timeLeft = 0;
 
     ui->intervalTime->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
@@ -61,6 +61,8 @@ void TimerWidget::updateLeftTime()
         timeLeft--;
     }
 }
+
+
 
 void TimerWidget::startTimer()
 {

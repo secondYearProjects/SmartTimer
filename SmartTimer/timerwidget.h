@@ -14,7 +14,7 @@ class TimerWidget : public QWidget
     Q_OBJECT
 
 public:    
-    explicit TimerWidget(QWidget *parent = nullptr);
+    explicit TimerWidget(int _interval, QWidget *parent = nullptr);
     ~TimerWidget();
 
     int getID() { return id; }
@@ -26,6 +26,7 @@ public slots:
     void setDuration();
     void timerExecuted();
     void updateLeftTime();
+
 private:
     static int MAXID;
 

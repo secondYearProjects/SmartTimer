@@ -17,6 +17,7 @@ public:
 
 public slots:
     void addTimer();
+    void onTimeRecieved(int msecs);
 
 private:
     Ui::MainWindow *ui;
