@@ -17,7 +17,7 @@ public:
 
 public slots:
     void addTimer();
-    void onTimeRecieved(int msecs);
+    void onTimeRecieved(int msecs, const QString& _name);
 
 private:
     Ui::MainWindow *ui;

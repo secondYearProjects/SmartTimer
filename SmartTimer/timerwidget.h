@@ -14,12 +14,13 @@ class TimerWidget : public QWidget
     Q_OBJECT
 
 public:    
-    explicit TimerWidget(int _interval, QWidget *parent = nullptr);
+    explicit TimerWidget(int _interval, const QString &_name, QWidget *parent = nullptr);
     ~TimerWidget();
 
     int getID() { return id; }
     std::string getDurationString();
     std::string getTimeLeftString();
+    void setTimerName(const QString &name);
 
 public slots:
     void startTimer();

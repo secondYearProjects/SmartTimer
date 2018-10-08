@@ -18,7 +18,7 @@ public:
 public slots:
     void returnAndClose();
 signals:
-    int sendTime(int msecs);
+    void sendTimerData(int msecs, const QString& _name);
 
 
 private:

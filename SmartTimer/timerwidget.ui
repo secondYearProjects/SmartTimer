@@ -459,10 +459,14 @@ QLabel {
 }
 
 QPushButton {
-	border: 2px solid #DADADA;
+	border: 2px solid #FF8C00;
 	border-radius: 30px;
 	
 	color: rgb(230, 230, 230);
+}
+
+QPushButton:!enabled {
+	border: 2px solid rgb(200, 200, 200);
 }
 
 QPushButton#deleteTimerButton {
@@ -470,8 +474,10 @@ QPushButton#deleteTimerButton {
 	border-radius: 16px;
 }
 
-QPushButton#startButton:hover {
+QPushButton#startButton:hover:enabled {
 	border: 2px solid #FF8C00;
+	
+	background-color: rgb(239, 104, 32);
 }</string>
    </property>
    <layout class="QGridLayout" name="gridLayout">

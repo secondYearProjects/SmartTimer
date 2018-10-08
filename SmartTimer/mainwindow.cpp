@@ -22,15 +22,15 @@ MainWindow::~MainWindow()
 void MainWindow::addTimer()
 {
     auto *addDial = new addTimerDialog();
-    connect(addDial,SIGNAL(sendTime(int)),this, SLOT(onTimeRecieved(int)));
+    connect(addDial,SIGNAL(sendTimerData(int, const QString&)),this, SLOT(onTimeRecieved(int, const QString&)));
     addDial->exec();
 
 
 }
 
-void MainWindow::onTimeRecieved(int msecs)
+void MainWindow::onTimeRecieved(int msecs, const QString& _name)
 {
-    auto *newTimer = new TimerWidget(msecs);
+    auto *newTimer = new TimerWidget(msecs, _name);
 
     ui->verticalLayout->addWidget(newTimer);
     std::cerr << newTimer->getID();

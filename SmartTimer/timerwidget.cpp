@@ -6,7 +6,7 @@
 
 int TimerWidget::MAXID = 0;
 
-TimerWidget::TimerWidget( int _interval, QWidget *parent) :
+TimerWidget::TimerWidget( int _interval, const QString& _name, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TimerWidget)
 {
@@ -18,6 +18,7 @@ TimerWidget::TimerWidget( int _interval, QWidget *parent) :
     timeLeft = 0;
 
     ui->intervalTime->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
+    ui->TimerName->setText(_name);
 
     connect(timer,SIGNAL(timeout()),this, SLOT(timerExecuted()));
     connect(ui->startButton, SIGNAL(clicked()),this, SLOT(startTimer()));
@@ -33,6 +34,11 @@ TimerWidget::TimerWidget( int _interval, QWidget *parent) :
 TimerWidget::~TimerWidget()
 {
     delete ui;
+}
+
+void TimerWidget::setTimerName(const QString &name)
+{
+    ui->TimerName->setText(name);
 }
 
 void TimerWidget::setDuration()

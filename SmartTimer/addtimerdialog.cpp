@@ -10,6 +10,8 @@ addTimerDialog::addTimerDialog(QWidget *parent) :
     connect(ui->cancelButton, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->createButton, SIGNAL(clicked()), this, SLOT(returnAndClose()));
 
+    ui->timerName->setText("Timer");
+
 }
 
 addTimerDialog::~addTimerDialog()
@@ -23,6 +25,9 @@ void addTimerDialog::returnAndClose()
             ui->interval->time().minute()*60*1000+
             ui->interval->time().second()*1000;
 
-    emit this->sendTime(elpasedTime);
+    QString timerName = ui->timerName->text();
+
+    emit this->sendTimerData(elpasedTime, timerName);
+
     this->close();
 }
