@@ -474,7 +474,7 @@ QPushButton#deleteTimerButton {
 	border-radius: 16px;
 }
 
-QPushButton#startButton:hover:enabled {
+QPushButton:hover:enabled {
 	border: 2px solid #FF8C00;
 	
 	background-color: rgb(239, 104, 32);

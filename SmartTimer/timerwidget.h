@@ -24,7 +24,7 @@ public:
 
 public slots:
     void startTimer();
-    void setDuration();
+    void resetTimer();
     void timerExecuted();
     void updateLeftTime();
 

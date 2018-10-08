@@ -21,10 +21,16 @@ TimerWidget::TimerWidget( int _interval, const QString& _name, QWidget *parent) 
     ui->TimerName->setText(_name);
 
     connect(timer,SIGNAL(timeout()),this, SLOT(timerExecuted()));
-    connect(ui->startButton, SIGNAL(clicked()),this, SLOT(startTimer()));
-    connect(ui->restartButton, SIGNAL(clicked()),this, SLOT(setDuration()));
     connect(tickTimer,SIGNAL(timeout()),this,SLOT(updateLeftTime()));
+
+    connect(ui->startButton, SIGNAL(clicked()),this, SLOT(startTimer()));
+    connect(ui->restartButton, SIGNAL(clicked()),this, SLOT(resetTimer()));
     connect(ui->deleteTimerButton,SIGNAL(released()),this, SLOT(close()));
+
+
+    ui->restartButton->setDisabled(true);
+    ui->editButton->setEnabled(true);
+    ui->startButton->setEnabled(true);
 
     id = MAXID+1;
     TimerWidget::MAXID++;
@@ -41,9 +47,16 @@ void TimerWidget::setTimerName(const QString &name)
     ui->TimerName->setText(name);
 }
 
-void TimerWidget::setDuration()
+void TimerWidget::resetTimer()
 {
-    duration = 0;
+    timer->stop();
+    tickTimer->stop();
+    timeLeft = 0;
+    ui->timeLeft->setText("00:00:00");
+
+    ui->restartButton->setDisabled(true);
+    ui->startButton->setEnabled(true);
+    ui->editButton->setEnabled(true);
 }
 
 void TimerWidget::timerExecuted()
@@ -55,6 +68,8 @@ void TimerWidget::timerExecuted()
     ui->timeLeft->setText("00:00:00");
 
     ui->startButton->setEnabled(true);
+    ui->editButton->setEnabled(true);
+    ui->restartButton->setDisabled(true);
 }
 
 void TimerWidget::updateLeftTime()
@@ -76,6 +91,8 @@ void TimerWidget::startTimer()
     tickTimer->start(1000);
     timer->start(duration);
     ui->startButton->setDisabled(true);
+    ui->editButton->setDisabled(true);
+    ui->restartButton->setEnabled(true);
 }
 
 std::string TimerWidget::secondsToTimeString(int val)
