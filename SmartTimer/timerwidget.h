@@ -33,8 +33,11 @@ private:
     QTimer *timer;
     QTimer *tickTimer;
     int duration;
+    int timeLeft;
 
     Ui::TimerWidget *ui;
+
+    std::string secondsToTimeString(int val);
 };
 
 

@@ -19,6 +19,7 @@ MainWindow::~MainWindow()
 void MainWindow::addTimer()
 {
     auto *newTimer = new TimerWidget();
+
     ui->verticalLayout->addWidget(newTimer);
     std::cerr << newTimer->getID();
 }
