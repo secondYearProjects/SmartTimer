@@ -1,6 +1,7 @@
 #ifndef TIMERWIDGET_H
 #define TIMERWIDGET_H
 
+
 #include <QWidget>
 #include <QTimer>
 #include <QTime>
@@ -20,7 +21,12 @@ public:
     int getID() { return id; }
     std::string getDurationString();
     std::string getTimeLeftString();
-    void setTimerName(const QString &name);
+
+    QString getTimerName();
+    int getTimerDuration();
+
+    void setTimerName(const QString &_name);
+    void setTimerDuration(int _duration);
 
 public slots:
     void startTimer();
@@ -28,12 +34,15 @@ public slots:
     void timerExecuted();
     void updateLeftTime();
 
+    void changeTimer();
+
 private:
     static int MAXID;
 
     int id;
     QTimer *timer;
     QTimer *tickTimer;
+    QString name;
     int duration;
     int timeLeft;
 

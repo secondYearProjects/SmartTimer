@@ -1,6 +1,8 @@
 #include "timerwidget.h"
 #include "ui_timerwidget.h"
 
+#include "changetimerdialog.h"
+
 #include <iostream>
 #include <string>
 
@@ -16,8 +18,10 @@ TimerWidget::TimerWidget( int _interval, const QString& _name, QWidget *parent) 
     tickTimer = new QTimer(this);
     duration = _interval;
     timeLeft = 0;
+    name = _name;
 
     ui->intervalTime->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
+    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
     ui->TimerName->setText(_name);
 
     connect(timer,SIGNAL(timeout()),this, SLOT(timerExecuted()));
@@ -26,6 +30,8 @@ TimerWidget::TimerWidget( int _interval, const QString& _name, QWidget *parent) 
     connect(ui->startButton, SIGNAL(clicked()),this, SLOT(startTimer()));
     connect(ui->restartButton, SIGNAL(clicked()),this, SLOT(resetTimer()));
     connect(ui->deleteTimerButton,SIGNAL(released()),this, SLOT(close()));
+
+    connect(ui->editButton, SIGNAL(clicked()), this, SLOT(changeTimer()));
 
 
     ui->restartButton->setDisabled(true);
@@ -42,9 +48,35 @@ TimerWidget::~TimerWidget()
     delete ui;
 }
 
-void TimerWidget::setTimerName(const QString &name)
+QString TimerWidget::getTimerName()
 {
-    ui->TimerName->setText(name);
+    return name;
+}
+
+int TimerWidget::getTimerDuration()
+{
+    return duration;
+}
+
+void TimerWidget::setTimerName(const QString &_name)
+{
+    name = _name;
+    ui->TimerName->setText(_name);
+}
+
+void TimerWidget::setTimerDuration(int _duration)
+{
+    duration = _duration;
+
+    timer->stop();
+    tickTimer->stop();
+
+    ui->startButton->setEnabled(true);
+    ui->editButton->setEnabled(true);
+    ui->restartButton->setDisabled(true);
+
+    ui->intervalTime->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
+    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
 }
 
 void TimerWidget::resetTimer()
@@ -52,7 +84,7 @@ void TimerWidget::resetTimer()
     timer->stop();
     tickTimer->stop();
     timeLeft = 0;
-    ui->timeLeft->setText("00:00:00");
+    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
 
     ui->restartButton->setDisabled(true);
     ui->startButton->setEnabled(true);
@@ -65,7 +97,7 @@ void TimerWidget::timerExecuted()
     timer->stop();
     tickTimer->stop();
 
-    ui->timeLeft->setText("00:00:00");
+    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
 
     ui->startButton->setEnabled(true);
     ui->editButton->setEnabled(true);
@@ -81,6 +113,13 @@ void TimerWidget::updateLeftTime()
 
         timeLeft--;
     }
+}
+
+void TimerWidget::changeTimer()
+{
+    ChangeTimerDialog *changeDial = new ChangeTimerDialog(this);
+
+    changeDial->exec();
 }
 
 

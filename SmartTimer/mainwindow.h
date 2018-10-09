@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSettings>
 
 namespace Ui {
 class MainWindow;
@@ -18,7 +19,6 @@ public:
 public slots:
     void addTimer();
     void onTimeRecieved(int msecs, const QString& _name);
-
 private:
     Ui::MainWindow *ui;
 };

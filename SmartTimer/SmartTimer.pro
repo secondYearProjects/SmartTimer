@@ -28,17 +28,20 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     timerwidget.cpp \
-    addtimerdialog.cpp
+    addtimerdialog.cpp \
+    changetimerdialog.cpp
 
 HEADERS += \
         mainwindow.h \
     timerwidget.h \
-    addtimerdialog.h
+    addtimerdialog.h \
+    changetimerdialog.h
 
 FORMS += \
         mainwindow.ui \
     timerwidget.ui \
-    addtimerdialog.ui
+    addtimerdialog.ui \
+    changetimerdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
