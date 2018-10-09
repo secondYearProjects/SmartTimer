@@ -8,6 +8,7 @@
 #include <QSound>
 #include <QMediaPlayer>
 #include <QUrl>
+#include <QMediaPlaylist>
 
 namespace Ui {
 class TimerWidget;
@@ -39,15 +40,24 @@ public slots:
 
     void changeTimer();
 
+    void blink();
+
+    void closeTimer();
+
 private:
     static int MAXID;
 
     int id;
     QTimer *timer;
     QTimer *tickTimer;
+    QTimer *blinkTimer;
     QString name;
     int duration;
     int timeLeft;
+    bool blinky;
+
+    QMediaPlaylist *playlist;
+    QMediaPlayer *player;
 
     Ui::TimerWidget *ui;
 

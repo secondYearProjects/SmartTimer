@@ -478,6 +478,18 @@ QPushButton:hover:enabled {
 	border: 2px solid #FF8C00;
 	
 	background-color: rgb(239, 104, 32);
+}
+
+QPushButton[blinky=&quot;false&quot;] {
+	border: 2px solid #FF8C00;
+	border-radius: 30px;
+	
+	color: rgb(230, 230, 230);
+}
+
+QPushButton[blinky=&quot;true&quot;] {
+	
+	background-color: rgb(245, 121, 0);
 }</string>
    </property>
    <layout class="QGridLayout" name="gridLayout">

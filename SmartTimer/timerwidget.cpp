@@ -16,9 +16,21 @@ TimerWidget::TimerWidget( int _interval, const QString& _name, QWidget *parent) 
 
     timer = new QTimer(this);
     tickTimer = new QTimer(this);
+    blinkTimer = new QTimer(this);
+
     duration = _interval;
     timeLeft = 0;
     name = _name;
+
+    blinky = false;
+
+    playlist = new QMediaPlaylist();
+    playlist->addMedia(QUrl("qrc:/sounds/sound1.wav"));
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+
+    player = new QMediaPlayer();
+    player->setPlaylist(playlist);
+
 
     ui->intervalTime->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
     ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
@@ -26,12 +38,15 @@ TimerWidget::TimerWidget( int _interval, const QString& _name, QWidget *parent) 
 
     connect(timer,SIGNAL(timeout()),this, SLOT(timerExecuted()));
     connect(tickTimer,SIGNAL(timeout()),this,SLOT(updateLeftTime()));
+    connect(blinkTimer,SIGNAL(timeout()),this, SLOT(blink()));
 
     connect(ui->startButton, SIGNAL(clicked()),this, SLOT(startTimer()));
     connect(ui->restartButton, SIGNAL(clicked()),this, SLOT(resetTimer()));
-    connect(ui->deleteTimerButton,SIGNAL(released()),this, SLOT(close()));
+    connect(ui->deleteTimerButton,SIGNAL(released()),this, SLOT(closeTimer()));
 
     connect(ui->editButton, SIGNAL(clicked()), this, SLOT(changeTimer()));
+
+
 
 
     ui->restartButton->setDisabled(true);
@@ -83,30 +98,38 @@ void TimerWidget::resetTimer()
 {
     timer->stop();
     tickTimer->stop();
+    blinkTimer->stop();
+
+
+    if (player->state())
+        player->stop();
+
     timeLeft = 0;
     ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
 
     ui->restartButton->setDisabled(true);
     ui->startButton->setEnabled(true);
     ui->editButton->setEnabled(true);
+
+    ui->restartButton->setProperty("blinky", "false");
+    ui->restartButton->update();
 }
 
 void TimerWidget::timerExecuted()
 {
     std::cerr << getID() << " " << "timer executed!";
+    player->play();
+    blinkTimer->start(200);
+
     timer->stop();
     tickTimer->stop();
 
-    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
-
-    QMediaPlayer *player = new QMediaPlayer;
-    player->setMedia(QUrl("qrc:/sounds/sound1.wav"));
-    player->play();
+    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(0)));
 
 
-    ui->startButton->setEnabled(true);
-    ui->editButton->setEnabled(true);
-    ui->restartButton->setDisabled(true);
+    //ui->startButton->setEnabled(true);
+    //ui->editButton->setEnabled(true);
+    //ui->restartButton->setDisabled(true);
 }
 
 void TimerWidget::updateLeftTime()
@@ -125,6 +148,34 @@ void TimerWidget::changeTimer()
     ChangeTimerDialog *changeDial = new ChangeTimerDialog(this);
 
     changeDial->exec();
+}
+
+void TimerWidget::blink()
+{
+    if(blinky)
+    {
+        ui->restartButton->setProperty("blinky", "true");
+
+
+        ui->restartButton->update();
+        blinky = false;
+    }
+    else
+    {
+        ui->restartButton->setProperty("blinky", "false");
+        ui->restartButton->update();
+        blinky = true;
+    }
+}
+
+void TimerWidget::closeTimer()
+{
+    player->stop();
+    timer->stop();
+    tickTimer->stop();
+    blinkTimer->stop();
+
+    this->close();
 }
 
 
