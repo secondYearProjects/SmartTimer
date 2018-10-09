@@ -5,6 +5,8 @@
 
 #include <iostream>
 
+#include <QListWidget>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -12,6 +14,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     connect(ui->addTimerButton, SIGNAL(clicked()), this, SLOT(addTimer()));
+
+    scrollWidget = new QWidget;
+    scrollWidget->setLayout(new QVBoxLayout);
+    scrollWidget->setMaximumWidth(400);
+    ui->timerScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+    ui->timerScroll->setWidget(scrollWidget);
 }
 
 MainWindow::~MainWindow()
@@ -32,6 +40,9 @@ void MainWindow::onTimeRecieved(int msecs, const QString& _name)
 {
     auto *newTimer = new TimerWidget(msecs, _name);
 
-    ui->verticalLayout->addWidget(newTimer);
+    scrollWidget->layout()->addWidget(newTimer);
+
+    //ui->timersList->addWidget(newTimer);
+    //ui->verticalLayout->addWidget(newTimer);
     std::cerr << newTimer->getID();
 }

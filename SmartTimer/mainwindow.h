@@ -21,6 +21,8 @@ public slots:
     void onTimeRecieved(int msecs, const QString& _name);
 private:
     Ui::MainWindow *ui;
+
+    QWidget *scrollWidget;
 };
 
 #endif // MAINWINDOW_H
