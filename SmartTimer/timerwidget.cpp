@@ -111,25 +111,19 @@ void TimerWidget::resetTimer()
     ui->startButton->setEnabled(true);
     ui->editButton->setEnabled(true);
 
-    ui->restartButton->setProperty("blinky", "false");
-    ui->restartButton->update();
+    ui->restartButton->setStyleSheet("");
 }
 
 void TimerWidget::timerExecuted()
 {
     std::cerr << getID() << " " << "timer executed!";
     player->play();
-    blinkTimer->start(200);
+    blinkTimer->start(350);
 
     timer->stop();
     tickTimer->stop();
 
     ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(0)));
-
-
-    //ui->startButton->setEnabled(true);
-    //ui->editButton->setEnabled(true);
-    //ui->restartButton->setDisabled(true);
 }
 
 void TimerWidget::updateLeftTime()
@@ -154,19 +148,17 @@ void TimerWidget::blink()
 {
     if(blinky)
     {
-        ui->restartButton->setProperty("blinky", "true");
+        ui->restartButton->setStyleSheet("");
 
-
-        ui->restartButton->update();
         blinky = false;
     }
     else
     {
-        ui->restartButton->setProperty("blinky", "false");
-        ui->restartButton->update();
+        ui->restartButton->setStyleSheet("background-color: rgb(245, 121, 0)");
         blinky = true;
     }
 }
+
 
 void TimerWidget::closeTimer()
 {
