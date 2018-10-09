@@ -38,7 +38,19 @@ QPushButton#addTimerButton {
 	
 	font: 14pt bold;
 	color: rgb(230,230,230);
-}</string>
+}
+
+QPushButton#addTimerButton:hover {
+	
+	background-color: rgba(151, 151, 151, 86);
+	border: 2px solid rgb(200,200,200);
+	border-radius: 8px;
+	
+	font: 14pt bold;
+	color: rgb(230,230,230);
+}
+
+</string>
    </property>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
@@ -49,7 +61,11 @@ QPushButton#addTimerButton {
       <height>591</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout"/>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+    </layout>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
@@ -78,7 +94,7 @@ QPushButton#addTimerButton {
       <widget class="QPushButton" name="addTimerButton">
        <property name="minimumSize">
         <size>
-         <width>200</width>
+         <width>350</width>
          <height>40</height>
         </size>
        </property>
