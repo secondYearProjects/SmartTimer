@@ -5,6 +5,9 @@
 #include <QWidget>
 #include <QTimer>
 #include <QTime>
+#include <QSound>
+#include <QMediaPlayer>
+#include <QUrl>
 
 namespace Ui {
 class TimerWidget;

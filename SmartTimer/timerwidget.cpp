@@ -99,6 +99,11 @@ void TimerWidget::timerExecuted()
 
     ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
 
+    QMediaPlayer *player = new QMediaPlayer;
+    player->setMedia(QUrl("qrc:/sounds/sound1.wav"));
+    player->play();
+
+
     ui->startButton->setEnabled(true);
     ui->editButton->setEnabled(true);
     ui->restartButton->setDisabled(true);
