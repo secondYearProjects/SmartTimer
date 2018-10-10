@@ -116,7 +116,7 @@ void TimerWidget::resetTimer()
 
 void TimerWidget::timerExecuted()
 {
-    std::cerr << getID() << " " << "timer executed!";
+    //std::cerr << getID() << " " << "timer executed!";
     player->play();
     blinkTimer->start(350);
 

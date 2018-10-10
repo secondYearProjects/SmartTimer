@@ -61,6 +61,14 @@ QPushButton#createButton {
 	background-color: rgb(213, 126, 76);
 }
 
+QPushButton#createButton:hover {
+	background-color: rgb(220, 136, 86);
+}
+
+QPushButton#cancelButton:hover {
+	background-color: rgb(123, 123, 123);
+}
+
 QLineEdit {
 	border-radius: 10px;
 	color: rgb(238, 238, 236);

@@ -13,13 +13,19 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    logger = new smartTimerLog(this);
+
     connect(ui->addTimerButton, SIGNAL(clicked()), this, SLOT(addTimer()));
+    // TODO : here
+    connect(logger, SIGNAL(createTimer(int,const QString&)), this, SLOT(onTimeRecieved(int, const QString&)));
 
     scrollWidget = new QWidget;
     scrollWidget->setLayout(new QVBoxLayout);
     scrollWidget->setMaximumWidth(400);
     ui->timerScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
     ui->timerScroll->setWidget(scrollWidget);
+
+    logger->runLogger();
 }
 
 MainWindow::~MainWindow()
@@ -44,5 +50,5 @@ void MainWindow::onTimeRecieved(int msecs, const QString& _name)
 
     //ui->timersList->addWidget(newTimer);
     //ui->verticalLayout->addWidget(newTimer);
-    std::cerr << newTimer->getID();
+    //std::cerr << newTimer->getID();
 }

@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "smarttimerlog.h"
+
 #include <QMainWindow>
 #include <QSettings>
 
@@ -21,6 +23,8 @@ public slots:
     void onTimeRecieved(int msecs, const QString& _name);
 private:
     Ui::MainWindow *ui;
+
+    smartTimerLog* logger;
 
     QWidget *scrollWidget;
 };

@@ -31,13 +31,15 @@ SOURCES += \
         mainwindow.cpp \
     timerwidget.cpp \
     addtimerdialog.cpp \
-    changetimerdialog.cpp
+    changetimerdialog.cpp \
+    smarttimerlog.cpp
 
 HEADERS += \
         mainwindow.h \
     timerwidget.h \
     addtimerdialog.h \
-    changetimerdialog.h
+    changetimerdialog.h \
+    smarttimerlog.h
 
 FORMS += \
         mainwindow.ui \
