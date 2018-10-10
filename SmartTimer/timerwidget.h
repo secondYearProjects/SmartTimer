@@ -43,6 +43,8 @@ public slots:
     void blink();
 
     void closeTimer();
+signals:
+    void del(const TimerWidget* twidget);
 
 private:
     static int MAXID;

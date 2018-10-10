@@ -167,6 +167,8 @@ void TimerWidget::closeTimer()
     tickTimer->stop();
     blinkTimer->stop();
 
+    emit del(this);
+
     this->close();
 }
 

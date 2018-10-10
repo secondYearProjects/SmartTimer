@@ -1,4 +1,5 @@
 #include "smarttimerlog.h"
+#include "timerwidget.h"
 
 #include <iostream>
 #include <fstream>
@@ -9,13 +10,8 @@
 
 smartTimerLog::smartTimerLog(QObject *parent) : QObject(parent)
 {
-    /*
-    QFile logFile("ss.txt");
-    if (!logFile.open(QIODevice::ReadOnly))
-    {
-        std::cerr << "Cannot open file." << std::endl;
-        return;
-    }*/
+    this->par = parent;
+    connect(par, SIGNAL(del(QList<TimerWidget*>)), this, SLOT(saveLog(QList<TimerWidget*>)));
 
 }
 
@@ -48,9 +44,32 @@ void smartTimerLog::runLogger()
     logFile.close();
 }
 
-void smartTimerLog::saveLog()
+void smartTimerLog::saveLog(QList<TimerWidget*> timers)
 {
     // TODO: here
+
+    int tim;
+    std::string tmpstr;
+    QString str;
+
+    QFile logFile(":/saves/save.txt");
+
+    if (!logFile.open(QFile::WriteOnly))
+    {
+        std::cerr << "Cannot open file." << std::endl;
+        return;
+    }
+
+    QTextStream stream( &logFile );
+    for (auto timer : timers)
+    {
+        tim = timer->getTimerDuration();
+        str = timer->getTimerName();
+        stream << tim << " " << str << "\n";
+    }
+
+
+    logFile.close();
 }
 
 bool smartTimerLog::validateLog()
