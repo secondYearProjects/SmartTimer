@@ -1,4 +1,3 @@
-10000 Timer1
-13000 Timer2
-3600000 HourTimer
-0 ZeroTimer
+1000 Timer1
+2323 Timer2
+343434 Timer3

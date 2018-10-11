@@ -21,10 +21,10 @@ void smartTimerLog::runLogger()
     std::string tmpstr;
     QString str;
 
-    QFile logFile(":/saves/save.txt");
+    QFile logFile("save.txt");
     if (!logFile.open(QIODevice::ReadOnly))
     {
-        std::cerr << "Cannot open file." << std::endl;
+        // std::cerr << "Can't open log file." << std::endl;
         return;
     }
     if (!validateLog())
@@ -37,7 +37,8 @@ void smartTimerLog::runLogger()
     while(!stream.atEnd())
     {
         stream >> tim >> str;
-        emit createTimer(tim,str);
+        if (str != "")
+            emit createTimer(tim,str);
     }
 
 
@@ -46,18 +47,16 @@ void smartTimerLog::runLogger()
 
 void smartTimerLog::saveLog(QList<TimerWidget*> timers)
 {
-    // TODO: here
 
     int tim;
     std::string tmpstr;
     QString str;
 
-    QFile logFile(":/saves/save.txt");
+    QFile logFile("save.txt");
 
-    if (!logFile.open(QFile::WriteOnly))
+    if (!logFile.open(QIODevice::WriteOnly))
     {
-        std::cerr << "Cannot open file." << std::endl;
-        return;
+        std::cerr << "Log file can't be created.";
     }
 
     QTextStream stream( &logFile );
@@ -72,6 +71,7 @@ void smartTimerLog::saveLog(QList<TimerWidget*> timers)
     logFile.close();
 }
 
+// TODO: validator
 bool smartTimerLog::validateLog()
 {
     return true;

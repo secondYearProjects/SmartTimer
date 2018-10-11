@@ -24,6 +24,7 @@ public slots:
     void addTimer();
     void onTimeRecieved(int msecs, const QString& _name);
     void remove(const TimerWidget* twidget);
+    void onTimerFinished();
 
 signals:
     void del(QList<TimerWidget*> timers);

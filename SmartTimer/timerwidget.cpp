@@ -124,6 +124,8 @@ void TimerWidget::timerExecuted()
     tickTimer->stop();
 
     ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(0)));
+
+    emit timerFinished();
 }
 
 void TimerWidget::updateLeftTime()

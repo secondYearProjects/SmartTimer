@@ -40,6 +40,7 @@ void MainWindow::addTimer()
 {
     auto *addDial = new addTimerDialog();
     connect(addDial,SIGNAL(sendTimerData(int, const QString&)),this, SLOT(onTimeRecieved(int, const QString&)));
+
     addDial->exec();
 }
 
@@ -50,6 +51,7 @@ void MainWindow::onTimeRecieved(int msecs, const QString& _name)
     scrollWidget->layout()->addWidget(newTimer);
 
     connect(newTimer, SIGNAL(del(const TimerWidget*)), this, SLOT(remove(const TimerWidget*)));
+    connect(newTimer, SIGNAL(timerFinished()), this, SLOT(onTimerFinished()));
 
     timersList.append(newTimer);
 }
@@ -60,4 +62,10 @@ void MainWindow::remove(const TimerWidget *twidget)
     {
         timersList.erase(std::find(timersList.begin(),timersList.end(),twidget));
     }
+}
+
+void MainWindow::onTimerFinished()
+{
+    // TODO: something here or give up
+    system("notify-send 'Timer alert' 'timer finished' '-t' 5000");
 }

@@ -46,6 +46,8 @@ public slots:
 signals:
     void del(const TimerWidget* twidget);
 
+    void timerFinished();
+
 private:
     static int MAXID;
 
