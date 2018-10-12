@@ -1,5 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>sounds/sound1.wav</file>
+        <file>icons/pause-icon.png</file>
+        <file>icons/play-icon.png</file>
+        <file>icons/setting-icon.png</file>
+        <file>icons/stop-icon.png</file>
+        <file>icons/cross-icon.png</file>
     </qresource>
 </RCC>

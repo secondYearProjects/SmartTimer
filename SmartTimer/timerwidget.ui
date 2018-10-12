@@ -471,23 +471,23 @@ QLabel {
 }
 
 QPushButton {
-	border: 2px solid #FF8C00;
+
 	border-radius: 30px;
 	
 	color: rgb(230, 230, 230);
 }
 
 QPushButton:!enabled {
-	border: 2px solid rgb(200, 200, 200);
+
 }
 
 QPushButton#deleteTimerButton {
-	border: 2px solid #CBCBCB;
+
 	border-radius: 16px;
 }
 
 QPushButton:hover:enabled {
-	border: 2px solid #FF8C00;
+
 	
 	background-color: rgb(239, 104, 32);
 }
@@ -539,7 +539,17 @@ QPushButton[blinky=&quot;true&quot;] {
        </size>
       </property>
       <property name="text">
-       <string>X</string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/icons/cross-icon.png</normaloff>:/icons/cross-icon.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>80</width>
+        <height>80</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -560,7 +570,17 @@ QPushButton[blinky=&quot;true&quot;] {
          </size>
         </property>
         <property name="text">
-         <string>O</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/stop-icon.png</normaloff>:/icons/stop-icon.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>200</width>
+          <height>200</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -585,7 +605,17 @@ QPushButton[blinky=&quot;true&quot;] {
          </size>
         </property>
         <property name="text">
-         <string>&gt;</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/play-icon.png</normaloff>:/icons/play-icon.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>200</width>
+          <height>200</height>
+         </size>
         </property>
         <property name="autoDefault">
          <bool>false</bool>
@@ -613,7 +643,17 @@ QPushButton[blinky=&quot;true&quot;] {
          </size>
         </property>
         <property name="text">
-         <string>/</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/setting-icon.png</normaloff>:/icons/setting-icon.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>120</width>
+          <height>120</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -654,6 +694,8 @@ QPushButton[blinky=&quot;true&quot;] {
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
