@@ -37,8 +37,12 @@ void smartTimerLog::runLogger()
     while(!stream.atEnd())
     {
         stream >> tim >> str;
+
         if (str != "")
+        {
+            str = toLoadFormat(str);
             emit createTimer(tim,str);
+        }
     }
 
 
@@ -64,6 +68,7 @@ void smartTimerLog::saveLog(QList<TimerWidget*> timers)
     {
         tim = timer->getTimerDuration();
         str = timer->getTimerName();
+        str = toSaveFormat(str);
         stream << tim << " " << str << "\n";
     }
 
@@ -75,4 +80,22 @@ void smartTimerLog::saveLog(QList<TimerWidget*> timers)
 bool smartTimerLog::validateLog()
 {
     return true;
+}
+
+QString smartTimerLog::toLoadFormat(const QString &str)
+{
+    if (str == "&")
+        return "";
+    QString res = str;
+    res.replace("_"," ");
+    return res;
+}
+
+QString smartTimerLog::toSaveFormat(const QString &str)
+{
+    if (str == "")
+        return "&";
+    QString res = str;
+    res.replace(" ","_");
+    return res;
 }

@@ -25,6 +25,8 @@ private:
     QObject* par;
 
     bool validateLog();
+    QString toLoadFormat(const QString& str);
+    QString toSaveFormat(const QString& str);
 
 };
 

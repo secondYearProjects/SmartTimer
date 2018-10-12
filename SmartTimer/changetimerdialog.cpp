@@ -16,6 +16,12 @@ ChangeTimerDialog::ChangeTimerDialog(TimerWidget *parent) :
 
     connect(ui->changeButton, SIGNAL(clicked()), this, SLOT(changeTimerAndQuit()));
     connect(ui->cancelButton, SIGNAL(clicked()), this, SLOT(close()));
+
+    // Validation for text field.
+    QRegExp rx("[A-Z,a-z,0-9, ]{1,19}");
+    QValidator *validator = new QRegExpValidator(rx, this);
+
+    ui->timerName->setValidator(validator);
 }
 
 ChangeTimerDialog::~ChangeTimerDialog()

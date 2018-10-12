@@ -10,7 +10,13 @@ addTimerDialog::addTimerDialog(QWidget *parent) :
     connect(ui->cancelButton, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->createButton, SIGNAL(clicked()), this, SLOT(returnAndClose()));
 
+    // Validation for text field.
+    QRegExp rx("[A-Z,a-z,0-9, ]{1,19}");
+    QValidator *validator = new QRegExpValidator(rx, this);
+
     ui->timerName->setText("Timer");
+
+    ui->timerName->setValidator(validator);
 
 }
 
