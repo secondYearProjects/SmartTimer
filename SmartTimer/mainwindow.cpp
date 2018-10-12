@@ -6,6 +6,7 @@
 #include <iostream>
 
 #include <QListWidget>
+#include <QtGlobal>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -66,6 +67,10 @@ void MainWindow::remove(const TimerWidget *twidget)
 
 void MainWindow::onTimerFinished()
 {
+
     // TODO: something here or give up
-    system("notify-send 'Timer alert' 'timer finished' '-t' 5000");
+#ifdef Q_OS_LINUX
+    system("notify-send 'Timer alert' '<b>Timer finished</b>' '-t' 5000");
+    //system("notify-send '-i' '/home/sergei/work/SmartTimer/SmartTimer/icons/play-icon.png'");
+#endif
 }
