@@ -35,7 +35,8 @@ private:
 
     QList<TimerWidget*> timersList;
 
-    QWidget *scrollWidget;
+    QWidget *timerScrollWidget;
+    QWidget *alarmScrollWidget;
 };
 
 #endif // MAINWINDOW_H

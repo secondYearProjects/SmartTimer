@@ -50,7 +50,7 @@
 	background-color: rgb(113, 113, 113);	
 }
 
-QPushButton#addTimerButton {
+QPushButton#addTimerButton, QPushButton#addAlarmButton {
 	background-color: rgb(113, 113, 113);	
 	border: 2px solid rgb(200,200,200);
 	border-radius: 8px;
@@ -59,7 +59,7 @@ QPushButton#addTimerButton {
 	color: rgb(230,230,230);
 }
 
-QPushButton#addTimerButton:hover {
+QPushButton#addTimerButton:hover, QPushButton#addAlarmButton:hover {
 	
 	background-color: rgba(151, 151, 151, 86);
 	border: 2px solid rgb(200,200,200);
@@ -113,7 +113,7 @@ QTabBar::tab:!selected {
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Timers">
      <attribute name="title">
@@ -220,55 +220,119 @@ QTabBar::tab:!selected {
      </widget>
     </widget>
     <widget class="QWidget" name="Alarms">
+     <property name="minimumSize">
+      <size>
+       <width>420</width>
+       <height>0</height>
+      </size>
+     </property>
      <attribute name="title">
       <string>Alarms</string>
      </attribute>
-     <widget class="QScrollArea" name="alarmScroll">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>10</y>
-        <width>421</width>
-        <height>681</height>
+        <width>422</width>
+        <height>731</height>
        </rect>
       </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>419</width>
-         <height>679</height>
-        </rect>
-       </property>
-       <widget class="ToggleSwitch" name="widget" native="true">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>60</y>
-          <width>71</width>
-          <height>41</height>
-         </rect>
-        </property>
-       </widget>
-      </widget>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="addAlarmButton">
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Add new Alarm</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <widget class="QScrollArea" name="alarmScroll">
+         <property name="minimumSize">
+          <size>
+           <width>420</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>420</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>420</width>
+            <height>679</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>420</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>420</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>ToggleSwitch</class>
-   <extends>QWidget</extends>
-   <header>toggleswitch.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="resources.qrc"/>
  </resources>

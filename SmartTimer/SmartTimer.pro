@@ -33,7 +33,8 @@ SOURCES += \
     addtimerdialog.cpp \
     changetimerdialog.cpp \
     smarttimerlog.cpp \
-    toggleswitch.cpp
+    toggleswitch.cpp \
+    alertwidget.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,13 +42,15 @@ HEADERS += \
     addtimerdialog.h \
     changetimerdialog.h \
     smarttimerlog.h \
-    toggleswitch.h
+    toggleswitch.h \
+    alertwidget.h
 
 FORMS += \
         mainwindow.ui \
     timerwidget.ui \
     addtimerdialog.ui \
-    changetimerdialog.ui
+    changetimerdialog.ui \
+    alertwidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

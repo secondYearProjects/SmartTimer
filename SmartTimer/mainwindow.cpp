@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "timerwidget.h"
 #include "addtimerdialog.h"
+#include "alertwidget.h"
 
 
 #include <iostream>
@@ -21,13 +22,32 @@ MainWindow::MainWindow(QWidget *parent) :
     // TODO : here
     connect(logger, SIGNAL(createTimer(int,QString)), this, SLOT(onTimeRecieved(int,QString)));
 
-    scrollWidget = new QWidget;
-    scrollWidget->setLayout(new QVBoxLayout);
-    scrollWidget->setMaximumWidth(400);
+    timerScrollWidget = new QWidget;
+    timerScrollWidget->setLayout(new QVBoxLayout);
+    timerScrollWidget->setMaximumWidth(400);
     ui->timerScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
-    ui->timerScroll->setWidget(scrollWidget);
+    ui->timerScroll->setWidget(timerScrollWidget);
 
-    //ui->alarmScroll->layout()->addWidget(new ToggleSwitch(this));
+    alarmScrollWidget = new QWidget;
+    alarmScrollWidget->setLayout(new QVBoxLayout);
+    alarmScrollWidget->setMaximumWidth(400);
+    ui->alarmScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+    ui->alarmScroll->setWidget(alarmScrollWidget);
+
+
+    QString s = "ss";
+    auto* al = new alertwidget(QTime(0,28,0).elapsed(),s);
+    alarmScrollWidget->layout()->addWidget(al);
+    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
+    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
+    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
+    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
+    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
+    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
+    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
+    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
+    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
+
 
     logger->runLogger();
 }
@@ -52,7 +72,7 @@ void MainWindow::onTimeRecieved(int msecs, const QString& _name)
 {
     auto *newTimer = new TimerWidget(msecs, _name);
 
-    scrollWidget->layout()->addWidget(newTimer);
+    timerScrollWidget->layout()->addWidget(newTimer);
 
     connect(newTimer, SIGNAL(del(const TimerWidget*)), this, SLOT(remove(const TimerWidget*)));
     connect(newTimer, SIGNAL(timerFinished()), this, SLOT(onTimerFinished()));
