@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>420</width>
-    <height>200</height>
+    <height>220</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>420</width>
-    <height>200</height>
+    <height>220</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>420</width>
-    <height>200</height>
+    <height>220</height>
    </size>
   </property>
   <property name="palette">
@@ -37,9 +37,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>186</red>
-        <green>189</green>
-        <blue>182</blue>
+        <red>113</red>
+        <green>113</green>
+        <blue>113</blue>
        </color>
       </brush>
      </colorrole>
@@ -109,18 +109,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>113</red>
+        <green>113</green>
+        <blue>113</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>186</red>
-        <green>189</green>
-        <blue>182</blue>
+        <red>113</red>
+        <green>113</green>
+        <blue>113</blue>
        </color>
       </brush>
      </colorrole>
@@ -174,9 +174,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>186</red>
-        <green>189</green>
-        <blue>182</blue>
+        <red>113</red>
+        <green>113</green>
+        <blue>113</blue>
        </color>
       </brush>
      </colorrole>
@@ -246,18 +246,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>113</red>
+        <green>113</green>
+        <blue>113</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>186</red>
-        <green>189</green>
-        <blue>182</blue>
+        <red>113</red>
+        <green>113</green>
+        <blue>113</blue>
        </color>
       </brush>
      </colorrole>
@@ -311,9 +311,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>186</red>
-        <green>189</green>
-        <blue>182</blue>
+        <red>113</red>
+        <green>113</green>
+        <blue>113</blue>
        </color>
       </brush>
      </colorrole>
@@ -383,18 +383,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>186</red>
-        <green>189</green>
-        <blue>182</blue>
+        <red>113</red>
+        <green>113</green>
+        <blue>113</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>186</red>
-        <green>189</green>
-        <blue>182</blue>
+        <red>113</red>
+        <green>113</green>
+        <blue>113</blue>
        </color>
       </brush>
      </colorrole>
@@ -440,13 +440,18 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#TimerWidget  {	
+	background-color: rgb(113, 113, 113);	
+}</string>
+  </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>0</y>
+     <y>30</y>
      <width>420</width>
-     <height>201</height>
+     <height>181</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -476,6 +481,17 @@ QPushButton {
 	
 	color: rgb(230, 230, 230);
 }
+
+QPushButton#editButton {
+
+	border-radius: 25px;
+}
+
+QPushButton#restartButton {
+
+	border-radius: 25px;
+}
+
 
 QPushButton:!enabled {
 
@@ -515,66 +531,19 @@ QPushButton[blinky=&quot;true&quot;] {
      <number>2</number>
     </property>
     <item row="2" column="0">
-     <widget class="QLabel" name="TimerName">
-      <property name="font">
-       <font>
-        <pointsize>15</pointsize>
-        <weight>75</weight>
-        <italic>false</italic>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Timer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="deleteTimerButton">
-      <property name="minimumSize">
-       <size>
-        <width>32</width>
-        <height>32</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>32</width>
-        <height>32</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset resource="resources.qrc">
-        <normaloff>:/icons/cross-icon.png</normaloff>:/icons/cross-icon.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>32</width>
-        <height>32</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QPushButton" name="restartButton">
         <property name="minimumSize">
          <size>
-          <width>60</width>
-          <height>60</height>
+          <width>50</width>
+          <height>50</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>60</width>
-          <height>60</height>
+          <width>50</width>
+          <height>50</height>
          </size>
         </property>
         <property name="text">
@@ -587,8 +556,8 @@ QPushButton[blinky=&quot;true&quot;] {
         </property>
         <property name="iconSize">
          <size>
-          <width>60</width>
-          <height>60</height>
+          <width>50</width>
+          <height>50</height>
          </size>
         </property>
        </widget>
@@ -645,14 +614,14 @@ QPushButton[blinky=&quot;true&quot;] {
        <widget class="QPushButton" name="editButton">
         <property name="minimumSize">
          <size>
-          <width>60</width>
-          <height>60</height>
+          <width>50</width>
+          <height>50</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>60</width>
-          <height>60</height>
+          <width>50</width>
+          <height>50</height>
          </size>
         </property>
         <property name="text">
@@ -665,15 +634,59 @@ QPushButton[blinky=&quot;true&quot;] {
         </property>
         <property name="iconSize">
          <size>
-          <width>50</width>
-          <height>50</height>
+          <width>40</width>
+          <height>40</height>
          </size>
         </property>
        </widget>
       </item>
      </layout>
     </item>
-    <item row="0" column="0">
+    <item row="5" column="0">
+     <widget class="QLabel" name="intervalTime">
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>00:00:00</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="deleteTimerButton">
+      <property name="minimumSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/icons/cross-icon.png</normaloff>:/icons/cross-icon.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
      <widget class="QLabel" name="timeLeft">
       <property name="font">
        <font>
@@ -690,18 +703,24 @@ QPushButton[blinky=&quot;true&quot;] {
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="intervalTime">
+    <item row="4" column="0">
+     <widget class="QLabel" name="TimerName">
       <property name="font">
        <font>
-        <pointsize>17</pointsize>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
-       <string>00:00:00</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Timer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>0</number>
       </property>
      </widget>
     </item>

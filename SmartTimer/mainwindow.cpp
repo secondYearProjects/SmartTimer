@@ -3,6 +3,7 @@
 #include "timerwidget.h"
 #include "addtimerdialog.h"
 
+
 #include <iostream>
 
 #include <QListWidget>
@@ -25,6 +26,8 @@ MainWindow::MainWindow(QWidget *parent) :
     scrollWidget->setMaximumWidth(400);
     ui->timerScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
     ui->timerScroll->setWidget(scrollWidget);
+
+    //ui->alarmScroll->layout()->addWidget(new ToggleSwitch(this));
 
     logger->runLogger();
 }

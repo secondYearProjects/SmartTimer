@@ -13,13 +13,13 @@
   <property name="minimumSize">
    <size>
     <width>420</width>
-    <height>700</height>
+    <height>800</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>420</width>
-    <height>1024</height>
+    <height>800</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -42,7 +42,7 @@
    <property name="maximumSize">
     <size>
      <width>420</width>
-     <height>16777215</height>
+     <height>800</height>
     </size>
    </property>
    <property name="styleSheet">
@@ -72,104 +72,150 @@ QPushButton#addTimerButton:hover {
 
 </string>
    </property>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QTabWidget" name="SmartTimerTabs">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>422</width>
+      <width>421</width>
       <height>801</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="Timers">
+     <attribute name="title">
+      <string>Timers</string>
+     </attribute>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>10</y>
+        <width>422</width>
+        <height>761</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="addTimerButton">
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Add new Timer</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
        </item>
-       <item>
-        <widget class="QPushButton" name="addTimerButton">
+       <item row="1" column="0">
+        <widget class="QScrollArea" name="timerScroll">
          <property name="minimumSize">
           <size>
-           <width>300</width>
-           <height>40</height>
+           <width>420</width>
+           <height>0</height>
           </size>
          </property>
-         <property name="text">
-          <string>Add new Timer</string>
+         <property name="maximumSize">
+          <size>
+           <width>420</width>
+           <height>16777215</height>
+          </size>
          </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>420</width>
+            <height>709</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>420</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>420</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
         </widget>
        </item>
-       <item>
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
       </layout>
-     </item>
-     <item row="1" column="0">
-      <widget class="QScrollArea" name="timerScroll">
-       <property name="minimumSize">
-        <size>
-         <width>420</width>
-         <height>0</height>
-        </size>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Alarms">
+     <attribute name="title">
+      <string>Alarms</string>
+     </attribute>
+     <widget class="QScrollArea" name="alarmScroll">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>30</y>
+        <width>421</width>
+        <height>661</height>
+       </rect>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>419</width>
+         <height>659</height>
+        </rect>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>420</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>420</width>
-          <height>749</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>420</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>420</width>
-          <height>16777215</height>
-         </size>
-        </property>
-       </widget>
       </widget>
-     </item>
-    </layout>
+     </widget>
+    </widget>
    </widget>
   </widget>
  </widget>
