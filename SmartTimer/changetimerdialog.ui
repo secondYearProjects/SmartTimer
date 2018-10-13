@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Change timer</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/change-icon.png</normaloff>:/icons/change-icon.png</iconset>
   </property>
   <widget class="QWidget" name="DialogGrid" native="true">
    <property name="geometry">
@@ -258,6 +262,8 @@ QTimeEdit::down-button  {
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

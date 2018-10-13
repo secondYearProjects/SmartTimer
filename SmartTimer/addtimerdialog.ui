@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Add new timer</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/add-icon.png</normaloff>:/icons/add-icon.png</iconset>
+  </property>
   <widget class="QWidget" name="DialogGrid" native="true">
    <property name="geometry">
     <rect>
@@ -270,6 +274,8 @@ QTimeEdit::down-button  {
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

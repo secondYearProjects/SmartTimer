@@ -25,6 +25,13 @@
   <property name="windowTitle">
    <string>Smart Timer</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/tray-icon.png</normaloff>:/icons/tray-icon.png</iconset>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <property name="minimumSize">
     <size>
@@ -167,7 +174,9 @@ QPushButton#addTimerButton:hover {
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
  <slots>
   <slot>addTimer()</slot>

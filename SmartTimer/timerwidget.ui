@@ -516,6 +516,14 @@ QPushButton[blinky=&quot;true&quot;] {
     </property>
     <item row="2" column="0">
      <widget class="QLabel" name="TimerName">
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Timer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
@@ -547,8 +555,8 @@ QPushButton[blinky=&quot;true&quot;] {
       </property>
       <property name="iconSize">
        <size>
-        <width>80</width>
-        <height>80</height>
+        <width>32</width>
+        <height>32</height>
        </size>
       </property>
      </widget>
@@ -574,12 +582,13 @@ QPushButton[blinky=&quot;true&quot;] {
         </property>
         <property name="icon">
          <iconset resource="resources.qrc">
-          <normaloff>:/icons/stop-icon.png</normaloff>:/icons/stop-icon.png</iconset>
+          <normaloff>:/icons/stop-icon.png</normaloff>
+          <disabledoff>:/icons/stop-icon-disabled.png</disabledoff>:/icons/stop-icon.png</iconset>
         </property>
         <property name="iconSize">
          <size>
-          <width>200</width>
-          <height>200</height>
+          <width>60</width>
+          <height>60</height>
          </size>
         </property>
        </widget>
@@ -609,13 +618,17 @@ QPushButton[blinky=&quot;true&quot;] {
         </property>
         <property name="icon">
          <iconset resource="resources.qrc">
-          <normaloff>:/icons/play-icon.png</normaloff>:/icons/play-icon.png</iconset>
+          <normaloff>:/icons/play-icon-enabled.png</normaloff>
+          <disabledoff>:/icons/play-icon-disabled.png</disabledoff>:/icons/play-icon-enabled.png</iconset>
         </property>
         <property name="iconSize">
          <size>
-          <width>200</width>
-          <height>200</height>
+          <width>60</width>
+          <height>60</height>
          </size>
+        </property>
+        <property name="autoRepeatInterval">
+         <number>100</number>
         </property>
         <property name="autoDefault">
          <bool>false</bool>
@@ -647,12 +660,13 @@ QPushButton[blinky=&quot;true&quot;] {
         </property>
         <property name="icon">
          <iconset resource="resources.qrc">
-          <normaloff>:/icons/setting-icon.png</normaloff>:/icons/setting-icon.png</iconset>
+          <normaloff>:/icons/setting-icon.png</normaloff>
+          <disabledoff>:/icons/setting-icon-disabled.png</disabledoff>:/icons/setting-icon.png</iconset>
         </property>
         <property name="iconSize">
          <size>
-          <width>120</width>
-          <height>120</height>
+          <width>50</width>
+          <height>50</height>
          </size>
         </property>
        </widget>
