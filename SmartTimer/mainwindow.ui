@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>420</width>
-    <height>700</height>
+    <height>800</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,7 +19,7 @@
   <property name="maximumSize">
    <size>
     <width>420</width>
-    <height>700</height>
+    <height>1024</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -36,7 +36,7 @@
    <property name="minimumSize">
     <size>
      <width>420</width>
-     <height>0</height>
+     <height>800</height>
     </size>
    </property>
    <property name="maximumSize">
@@ -78,7 +78,7 @@ QPushButton#addTimerButton:hover {
       <x>0</x>
       <y>0</y>
       <width>422</width>
-      <height>701</height>
+      <height>801</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -151,7 +151,7 @@ QPushButton#addTimerButton:hover {
           <x>0</x>
           <y>0</y>
           <width>420</width>
-          <height>649</height>
+          <height>749</height>
          </rect>
         </property>
         <property name="minimumSize">
