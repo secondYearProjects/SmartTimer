@@ -141,7 +141,7 @@ void TimerWidget::updateLeftTime()
 
 void TimerWidget::changeTimer()
 {
-    ChangeTimerDialog *changeDial = new ChangeTimerDialog(this);
+    auto *changeDial = new ChangeTimerDialog(this);
 
     changeDial->exec();
 }

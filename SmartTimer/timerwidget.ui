@@ -505,7 +505,7 @@ QPushButton#deleteTimerButton {
 QPushButton:hover:enabled {
 
 	
-	background-color: rgb(239, 104, 32);
+	background-color: rgb(213, 126, 76);
 }
 
 QPushButton[blinky=&quot;false&quot;] {

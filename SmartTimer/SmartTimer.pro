@@ -32,14 +32,16 @@ SOURCES += \
     timerwidget.cpp \
     addtimerdialog.cpp \
     changetimerdialog.cpp \
-    smarttimerlog.cpp
+    smarttimerlog.cpp \
+    toggleswitch.cpp
 
 HEADERS += \
         mainwindow.h \
     timerwidget.h \
     addtimerdialog.h \
     changetimerdialog.h \
-    smarttimerlog.h
+    smarttimerlog.h \
+    toggleswitch.h
 
 FORMS += \
         mainwindow.ui \

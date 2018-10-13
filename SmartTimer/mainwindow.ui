@@ -69,6 +69,37 @@ QPushButton#addTimerButton:hover {
 	color: rgb(230,230,230);
 }
 
+QTabWidget {
+	border: 0px;
+}
+
+QTabBar::tab {
+	color: white;
+	font: 14pt ;
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.333333 rgba(139, 139, 139, 197), stop:1 rgba(255, 255, 255, 0));
+	border-bottom: 0px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	min-width: 202px;
+	min-height: 30px;
+	padding: 2px;
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+     background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.333333 rgba(149, 149, 149, 197), stop:1 rgba(255, 255, 255, 0));
+}
+
+QTabBar::tab:selected {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.373134 rgba(213, 126, 76, 208), stop:1 rgba(255, 255, 255, 0));
+	font: 14pt  bold;
+}
+
+QTabBar::tab:!selected {
+    margin-top: 5px; /* make non-selected tabs look smaller */
+}
+
 
 </string>
    </property>
@@ -76,9 +107,9 @@ QPushButton#addTimerButton:hover {
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>10</y>
       <width>421</width>
-      <height>801</height>
+      <height>781</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -196,9 +227,9 @@ QPushButton#addTimerButton:hover {
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>30</y>
+        <y>10</y>
         <width>421</width>
-        <height>661</height>
+        <height>681</height>
        </rect>
       </property>
       <property name="widgetResizable">
@@ -210,9 +241,19 @@ QPushButton#addTimerButton:hover {
          <x>0</x>
          <y>0</y>
          <width>419</width>
-         <height>659</height>
+         <height>679</height>
         </rect>
        </property>
+       <widget class="ToggleSwitch" name="widget" native="true">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>60</y>
+          <width>71</width>
+          <height>41</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>
@@ -220,6 +261,14 @@ QPushButton#addTimerButton:hover {
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ToggleSwitch</class>
+   <extends>QWidget</extends>
+   <header>toggleswitch.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="resources.qrc"/>
  </resources>

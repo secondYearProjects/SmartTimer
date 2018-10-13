@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->addTimerButton, SIGNAL(clicked()), this, SLOT(addTimer()));
     // TODO : here
-    connect(logger, SIGNAL(createTimer(int,const QString&)), this, SLOT(onTimeRecieved(int, const QString&)));
+    connect(logger, SIGNAL(createTimer(int,QString)), this, SLOT(onTimeRecieved(int,QString)));
 
     scrollWidget = new QWidget;
     scrollWidget->setLayout(new QVBoxLayout);
@@ -43,7 +43,7 @@ MainWindow::~MainWindow()
 void MainWindow::addTimer()
 {
     auto *addDial = new addTimerDialog();
-    connect(addDial,SIGNAL(sendTimerData(int, const QString&)),this, SLOT(onTimeRecieved(int, const QString&)));
+    connect(addDial,SIGNAL(sendTimerData(int,QString)),this, SLOT(onTimeRecieved(int,QString)));
 
     addDial->exec();
 }
