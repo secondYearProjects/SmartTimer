@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>alertwidget</class>
  <widget class="QWidget" name="alertwidget">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -40,16 +43,38 @@
 QWidget#alertSwitch {
 	margin-right: 5px;
 }
-</string>
+
+QPushButton {
+		background-color: rgb(113,113,113);
+		color: white;
+		border: 0px;
+		border-radius: 35px;
+}
+
+QPushButton:hover:enabled {	
+	background-color: rgb(213, 126, 76);
+}</string>
   </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>401</width>
-     <height>101</height>
+     <width>400</width>
+     <height>100</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>400</width>
+     <height>100</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>400</width>
+     <height>100</height>
+    </size>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
@@ -97,13 +122,42 @@ QWidget#alertSwitch {
      </layout>
     </item>
     <item>
+     <widget class="QPushButton" name="stopButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>70</width>
+        <height>70</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/icons/stop-icon.png</normaloff>:/icons/stop-icon.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>70</width>
+        <height>70</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
      <spacer name="horizontalSpacer">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>80</width>
+        <width>75</width>
         <height>20</height>
        </size>
       </property>
@@ -149,6 +203,8 @@ QWidget#alertSwitch {
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

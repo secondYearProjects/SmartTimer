@@ -8,6 +8,24 @@ int getMsecs(const QTime& t)
     return (t.hour()*3600+t.minute()*60+t.second())*1000;
 }
 
+int calculateDuration(const QTime &t)
+{
+    int alertMsecs = getMsecs(t);
+    int currMsecs = getMsecs(QTime::currentTime());
+
+    if (currMsecs > alertMsecs)
+    {
+        int wholeDay = 3600*24*1000;
+        return (wholeDay+alertMsecs-currMsecs);
+    }
+    else if (currMsecs < alertMsecs)
+    {
+        return (alertMsecs-currMsecs);
+    }
+    else
+        return 0;
+}
+
 alertwidget::alertwidget(int msecs, const QString& name, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::alertwidget)
@@ -18,6 +36,14 @@ alertwidget::alertwidget(int msecs, const QString& name, QWidget *parent) :
     blinking = false;
     blinky=false;
 
+    playlist = new QMediaPlaylist();
+    playlist->addMedia(QUrl("qrc:/sounds/sound1.wav"));
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+
+    player = new QMediaPlayer();
+    player->setPlaylist(playlist);
+
+
     ui->setupUi(this);
 
     ui->timeLabel->setText(alertTime.toString("hh:mm"));
@@ -25,13 +51,17 @@ alertwidget::alertwidget(int msecs, const QString& name, QWidget *parent) :
 
     ui->alertSwitch->setStatus(state);
 
+    ui->stopButton->hide();
+
     connect(ui->alertSwitch, SIGNAL(statusChanged(bool)),this, SLOT(statusChanged(bool)));
     connect(&alertTick, SIGNAL(timeout()), this, SLOT(onTickCheck()));
     connect(&blinkTimer, SIGNAL(timeout()),this,SLOT(blink()));
+    connect(ui->stopButton, SIGNAL(clicked()), this, SLOT(stopBlinking()));
 }
 
 alertwidget::~alertwidget()
 {
+    player->stop();
     delete ui;
 }
 
@@ -44,29 +74,31 @@ void alertwidget::statusChanged(bool stat)
 {
     state = stat;
     if (stat)
-        alertTick.start(1000);
+    {
+
+        std::cout << calculateDuration(alertTime) << " " << QTime::currentTime().hour() <<":" <<   QTime::currentTime().minute() << std::endl;
+        alertTick.start(calculateDuration(alertTime));
+    }
     else
     {
         alertTick.stop();
         blinkTimer.stop();
         blinking = false;
+        ui->widget->setStyleSheet("QWidget { background-color: rgb(113,113,113); }");
+        player->stop();
+        ui->stopButton->hide();
     }
 }
 
 
 void alertwidget::onTickCheck()
 {
-
-    if (abs(getMsecs(QTime::currentTime())- getMsecs(alertTime)) < 2000)
-    {
-        std::cout << "!alert!" << std::endl;
-        alertTick.stop();
-        blinkTimer.start(300);
-        blinking = true;
-
-    }
-    else
-        std::cout << "tick" << abs(getMsecs(QTime::currentTime())- getMsecs(alertTime)) << std::endl;
+    std::cout << "!alert!" << std::endl;
+    alertTick.stop();
+    blinkTimer.start(300);
+    blinking = true;
+    player->play();
+    ui->stopButton->show();
 }
 
 void alertwidget::blink()
@@ -74,12 +106,31 @@ void alertwidget::blink()
     //TODO: here
     if (blinky)
     {
-
-        ui->widget->setStyleSheet("QWidget { background-color: black; }");
+        ui->widget->setStyleSheet("QWidget {"
+                                  " background-color: qlineargradient(spread:pad, x1:0.622, y1:0.0113636, x2:1, y2:0, stop:0 rgb(183, 106, 56), stop:0.626368 rgba(0, 0, 0, 0));"
+                                  " border-radius: 30px;"
+                                  " }");
     }
     else
     {
-        ui->widget->setStyleSheet("QWidget { background-color: white; }");
+        ui->widget->setStyleSheet("QWidget { background-color: rgb(113,113,113); }");
     }
     blinky = !blinky;
 }
+
+void alertwidget::stopBlinking()
+{
+    alertTick.stop();
+    blinkTimer.stop();
+    blinking = false;
+    ui->widget->setStyleSheet("QWidget { background-color: rgb(113,113,113); }");
+    player->stop();
+    ui->stopButton->hide();
+    if (state)
+    {
+        std::cout << calculateDuration(alertTime) << " " << QTime::currentTime().hour() <<":" <<   QTime::currentTime().minute() << std::endl;
+        alertTick.start(calculateDuration(alertTime));
+    }
+}
+
+

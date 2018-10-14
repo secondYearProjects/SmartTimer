@@ -109,11 +109,11 @@ QTabBar::tab:!selected {
       <x>0</x>
       <y>10</y>
       <width>421</width>
-      <height>781</height>
+      <height>791</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Timers">
      <attribute name="title">
@@ -235,7 +235,7 @@ QTabBar::tab:!selected {
         <x>0</x>
         <y>10</y>
         <width>422</width>
-        <height>731</height>
+        <height>741</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
@@ -308,7 +308,7 @@ QTabBar::tab:!selected {
             <x>0</x>
             <y>0</y>
             <width>420</width>
-            <height>679</height>
+            <height>689</height>
            </rect>
           </property>
           <property name="minimumSize">

@@ -4,6 +4,10 @@
 #include <QWidget>
 #include <QTime>
 #include <QTimer>
+#include <QSound>
+#include <QMediaPlayer>
+#include <QUrl>
+#include <QMediaPlaylist>
 
 namespace Ui {
 class alertwidget;
@@ -25,6 +29,7 @@ public slots:
     void statusChanged(bool);
     void onTickCheck();
     void blink();
+    void stopBlinking();
 
 signals:
 
@@ -41,9 +46,14 @@ private:
     bool blinking;
     bool blinky;
 
+    QMediaPlaylist *playlist;
+    QMediaPlayer *player;
+
 };
 
 
 int getMsecs(const QTime& t);
+
+int calculateDuration(const QTime& t);
 
 #endif // ALERTWIDGET_H
