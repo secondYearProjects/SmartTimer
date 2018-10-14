@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "timerwidget.h"
 #include "addtimerdialog.h"
+#include "addalarmdialog.h"
 #include "alertwidget.h"
 
 
@@ -18,7 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     logger = new smartTimerLog(this);
 
-    connect(ui->addTimerButton, SIGNAL(clicked()), this, SLOT(addTimer()));
+    connect(ui->addTimerButton,SIGNAL(clicked()),this,SLOT(addTimer()));
+    connect(ui->addAlarmButton,SIGNAL(clicked()),this,SLOT(addAlarm()));
     // TODO : here
     connect(logger, SIGNAL(createTimer(int,QString)), this, SLOT(onTimeRecieved(int,QString)));
 
@@ -68,6 +70,14 @@ void MainWindow::addTimer()
     addDial->exec();
 }
 
+void MainWindow::addAlarm()
+{
+    auto *addDial = new addAlarmDialog();
+    connect(addDial,SIGNAL(sendAlarmData(int,QString)),this, SLOT(onAlarmTimeRecieved(int,QString)));
+
+    addDial->exec();
+}
+
 void MainWindow::onTimeRecieved(int msecs, const QString& _name)
 {
     auto *newTimer = new TimerWidget(msecs, _name);
@@ -96,4 +106,16 @@ void MainWindow::onTimerFinished()
     system("notify-send 'Timer alert' '<b>Timer finished</b>' '-t' 5000");
     //system("notify-send '-i' '/home/sergei/work/SmartTimer/SmartTimer/icons/play-icon.png'");
 #endif
+}
+
+void MainWindow::onAlarmTimeRecieved(int msecs, const QString& _name)
+{
+    auto *newAlarm = new alertwidget(msecs, _name);
+
+    alarmScrollWidget->layout()->addWidget(newAlarm);
+
+    //connect(newAlarm, SIGNAL(del(const TimerWidget*)), this, SLOT(remove(const TimerWidget*)));
+    //connect(newAlarm, SIGNAL(alarmFinished()), this, SLOT(onAlarmFinished()));
+
+    alarmsList.append(newAlarm);
 }

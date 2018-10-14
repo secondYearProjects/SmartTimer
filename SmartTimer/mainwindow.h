@@ -3,6 +3,7 @@
 
 #include "smarttimerlog.h"
 #include "timerwidget.h"
+#include "alertwidget.h"
 
 #include <QMainWindow>
 #include <QSettings>
@@ -22,9 +23,11 @@ public:
 
 public slots:
     void addTimer();
+    void addAlarm();
     void onTimeRecieved(int msecs, const QString& _name);
     void remove(const TimerWidget* twidget);
     void onTimerFinished();
+    void onAlarmTimeRecieved(int msecs, const QString& _name);
 
 signals:
     void del(QList<TimerWidget*> timers);
@@ -34,6 +37,7 @@ private:
     smartTimerLog* logger;
 
     QList<TimerWidget*> timersList;
+    QList<alertwidget*> alarmsList;
 
     QWidget *timerScrollWidget;
     QWidget *alarmScrollWidget;

@@ -32,7 +32,7 @@ public slots:
     void stopBlinking();
 
 signals:
-
+    void alarmFinished();
 
 private:
     Ui::alertwidget *ui;
