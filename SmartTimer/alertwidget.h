@@ -44,9 +44,6 @@ private:
 };
 
 
-int getMsecs(const QTime& t)
-{
-    return (t.hour()*3600+t.minute()*60+t.second())*1000;
-}
+int getMsecs(const QTime& t);
 
 #endif // ALERTWIDGET_H

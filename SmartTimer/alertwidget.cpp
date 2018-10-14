@@ -3,6 +3,11 @@
 
 #include <iostream>
 
+int getMsecs(const QTime& t)
+{
+    return (t.hour()*3600+t.minute()*60+t.second())*1000;
+}
+
 alertwidget::alertwidget(int msecs, const QString& name, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::alertwidget)
@@ -51,7 +56,7 @@ void alertwidget::statusChanged(bool stat)
 
 void alertwidget::onTickCheck()
 {
-    //TODO: here
+
     if (abs(getMsecs(QTime::currentTime())- getMsecs(alertTime)) < 2000)
     {
         std::cout << "!alert!" << std::endl;
@@ -66,13 +71,15 @@ void alertwidget::onTickCheck()
 
 void alertwidget::blink()
 {
+    //TODO: here
     if (blinky)
     {
 
+        ui->widget->setStyleSheet("QWidget { background-color: black; }");
     }
     else
     {
-
+        ui->widget->setStyleSheet("QWidget { background-color: white; }");
     }
     blinky = !blinky;
 }
