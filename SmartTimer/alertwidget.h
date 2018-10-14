@@ -24,6 +24,7 @@ public:
 public slots:
     void statusChanged(bool);
     void onTickCheck();
+    void blink();
 
 signals:
 
@@ -38,6 +39,14 @@ private:
 
     bool state;
     bool blinking;
+    bool blinky;
+
 };
+
+
+int getMsecs(const QTime& t)
+{
+    return (t.hour()*3600+t.minute()*60+t.second())*1000;
+}
 
 #endif // ALERTWIDGET_H

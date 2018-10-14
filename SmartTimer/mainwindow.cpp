@@ -36,7 +36,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     QString s = "ss";
-    auto* al = new alertwidget(QTime(0,28,0).elapsed(),s);
+    auto* al = new alertwidget(10*3600*1000 + 49*60*1000,s);
     alarmScrollWidget->layout()->addWidget(al);
     alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
     alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));

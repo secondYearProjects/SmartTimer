@@ -11,6 +11,7 @@ alertwidget::alertwidget(int msecs, const QString& name, QWidget *parent) :
     alertTime = QTime::fromMSecsSinceStartOfDay(msecs);
     state = false;
     blinking = false;
+    blinky=false;
 
     ui->setupUi(this);
 
@@ -21,6 +22,7 @@ alertwidget::alertwidget(int msecs, const QString& name, QWidget *parent) :
 
     connect(ui->alertSwitch, SIGNAL(statusChanged(bool)),this, SLOT(statusChanged(bool)));
     connect(&alertTick, SIGNAL(timeout()), this, SLOT(onTickCheck()));
+    connect(&blinkTimer, SIGNAL(timeout()),this,SLOT(blink()));
 }
 
 alertwidget::~alertwidget()
@@ -30,7 +32,7 @@ alertwidget::~alertwidget()
 
 int alertwidget::getAlertTime()
 {
-    return alertTime.elapsed()/1000;
+    return getMsecs(alertTime)/1000;
 }
 
 void alertwidget::statusChanged(bool stat)
@@ -46,16 +48,31 @@ void alertwidget::statusChanged(bool stat)
     }
 }
 
+
 void alertwidget::onTickCheck()
 {
     //TODO: here
-    if (QTime::currentTime() == alertTime)
+    if (abs(getMsecs(QTime::currentTime())- getMsecs(alertTime)) < 2000)
     {
         std::cout << "!alert!" << std::endl;
         alertTick.stop();
-        blinkTimer.stop();
-        blinking = false;
+        blinkTimer.start(300);
+        blinking = true;
+
     }
     else
-        std::cout << "tick" << std::endl;
+        std::cout << "tick" << abs(getMsecs(QTime::currentTime())- getMsecs(alertTime)) << std::endl;
+}
+
+void alertwidget::blink()
+{
+    if (blinky)
+    {
+
+    }
+    else
+    {
+
+    }
+    blinky = !blinky;
 }
