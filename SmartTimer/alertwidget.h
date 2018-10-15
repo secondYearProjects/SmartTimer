@@ -49,6 +49,8 @@ private:
     QMediaPlaylist *playlist;
     QMediaPlayer *player;
 
+    void mousePressEvent(QMouseEvent *e);
+
 };
 
 

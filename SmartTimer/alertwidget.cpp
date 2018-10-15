@@ -76,7 +76,8 @@ void alertwidget::statusChanged(bool stat)
     if (stat)
     {
 
-        std::cout << calculateDuration(alertTime) << " " << QTime::currentTime().hour() <<":" <<   QTime::currentTime().minute() << std::endl;
+        std::cout << calculateDuration(alertTime) << " "
+                  << QTime::currentTime().hour() <<":" << QTime::currentTime().minute() << std::endl;
         alertTick.start(calculateDuration(alertTime));
     }
     else
@@ -107,7 +108,8 @@ void alertwidget::blink()
     if (blinky)
     {
         ui->widget->setStyleSheet("QWidget {"
-                                  " background-color: qlineargradient(spread:pad, x1:0.622, y1:0.0113636, x2:1, y2:0, stop:0 rgb(183, 106, 56), stop:0.626368 rgba(0, 0, 0, 0));"
+                                  " background-color: qlineargradient(spread:pad, x1:0.622, y1:0.0113636,"
+                                  " x2:1, y2:0, stop:0 rgb(183, 106, 56), stop:0.626368 rgba(0, 0, 0, 0));"
                                   " border-radius: 30px;"
                                   " }");
     }
@@ -128,9 +130,19 @@ void alertwidget::stopBlinking()
     ui->stopButton->hide();
     if (state)
     {
-        std::cout << calculateDuration(alertTime) << " " << QTime::currentTime().hour() <<":" <<   QTime::currentTime().minute() << std::endl;
+        std::cout << calculateDuration(alertTime) << " "
+                  << QTime::currentTime().hour() <<":" << QTime::currentTime().minute() << std::endl;
         alertTick.start(calculateDuration(alertTime));
     }
 }
 
+
+void alertwidget::mousePressEvent(QMouseEvent *e)
+{
+    if (e->button() == Qt::RightButton)
+    {
+        player->stop();
+        this->close();
+    }
+}
 
