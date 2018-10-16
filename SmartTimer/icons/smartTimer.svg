@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1024"
+   height="1025"
+   viewBox="0 0 270.93333 271.19791"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="smartTimer.svg"
+   inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/ST-main-icon.png"
+   inkscape:export-xdpi="95.906258"
+   inkscape:export-ydpi="95.906258">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="364.09123"
+     inkscape:cy="472.4319"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1853"
+     inkscape:window-height="1025"
+     inkscape:window-x="67"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:lockguides="true"
+     units="px" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     transform="translate(0,-25.802112)">
+    <path
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:1.10088539;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path836-9"
+       d="M 142.85468,175.71448 A 67.178894,67.178894 0 0 1 80.789471,134.24383 67.178894,67.178894 0 0 1 95.352023,61.032933 67.178894,67.178894 0 0 1 168.56292,46.470378 67.178894,67.178894 0 0 1 210.03357,108.53558 l -67.17889,0 z"
+       sodipodi:type="arc"
+       sodipodi:start="1.5707963"
+       sodipodi:end="0"
+       sodipodi:ry="67.178894"
+       sodipodi:rx="67.178894"
+       sodipodi:cy="108.53558"
+       sodipodi:cx="142.85468"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:1.10088539;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path836-6-2"
+       d="m -143.4525,-158.492 a 67.178894,67.178894 0 0 1 -62.0652,-41.47065 67.178894,67.178894 0 0 1 14.56255,-73.2109 67.178894,67.178894 0 0 1 73.2109,-14.56255 67.178894,67.178894 0 0 1 41.470645,62.0652 l -67.178895,0 z"
+       sodipodi:type="arc"
+       sodipodi:start="1.5707963"
+       sodipodi:end="0"
+       sodipodi:ry="67.178894"
+       sodipodi:rx="67.178894"
+       sodipodi:cy="-225.6709"
+       sodipodi:cx="-143.4525"
+       transform="rotate(-179.70899)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:0.83002359;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path836-6-7-0"
+       d="m -143.4525,-175.0207 a 50.650196,50.650196 0 0 1 -46.79468,-31.26721 50.650196,50.650196 0 0 1 10.97958,-55.19809 50.650196,50.650196 0 0 1 55.19809,-10.97958 50.650196,50.650196 0 0 1 31.267207,46.79468 H -143.4525 Z"
+       sodipodi:type="arc"
+       sodipodi:start="1.5707963"
+       sodipodi:end="0"
+       sodipodi:ry="50.650196"
+       sodipodi:rx="50.650196"
+       sodipodi:cy="-225.6709"
+       sodipodi:cx="-143.4525"
+       transform="rotate(-179.70899)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:0.83002359;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path836-6-7-5-2"
+       d="M 143.40408,158.45881 A 50.650196,50.650196 0 0 1 96.609404,127.1916 50.650196,50.650196 0 0 1 107.58899,71.993512 50.650196,50.650196 0 0 1 162.78707,61.013929 50.650196,50.650196 0 0 1 194.05428,107.80861 l -50.6502,0 z"
+       sodipodi:type="arc"
+       sodipodi:start="1.5707963"
+       sodipodi:end="0"
+       sodipodi:ry="50.650196"
+       sodipodi:rx="50.650196"
+       sodipodi:cy="107.80861"
+       sodipodi:cx="143.40408"
+       transform="rotate(0.29101)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-3"
+       width="19.268364"
+       height="1.6924915"
+       x="93.717552"
+       y="107.25218"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:1.10859168;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-6-7"
+       width="35.690105"
+       height="3.4212151"
+       x="108.60169"
+       y="106.58772"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:1.14661944;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-6-2-5"
+       width="38.573898"
+       height="3.3863363"
+       x="106.57769"
+       y="-144.23135"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-9"
+       width="19.268364"
+       height="1.6924915"
+       x="59.496426"
+       y="-143.12781"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-1-22"
+       width="19.268364"
+       height="1.6924915"
+       x="-73.000961"
+       y="-174.73134"
+       transform="rotate(135)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-1-2-8"
+       width="19.268364"
+       height="1.6924915"
+       x="-148.30244"
+       y="26.782938"
+       transform="rotate(-135)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-1-2-0-9"
+       width="19.268364"
+       height="1.6924915"
+       x="5.1400142"
+       y="178.47398"
+       transform="matrix(-0.70710678,0.70710678,0.70710678,0.70710678,0,0)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-93-7"
+       width="19.268364"
+       height="1.6924915"
+       x="-191.2731"
+       y="-227.3792"
+       transform="scale(-1)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:1.10859168;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-6-6-3"
+       width="35.690105"
+       height="3.4212151"
+       x="-176.29689"
+       y="-228.04364"
+       transform="scale(-1)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:1.14661956;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-6-2-0-6"
+       width="38.573898"
+       height="3.3863363"
+       x="-228.05365"
+       y="140.66725"
+       transform="rotate(-90)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-6-1"
+       width="19.268364"
+       height="1.6924915"
+       x="-275.13492"
+       y="141.77078"
+       transform="rotate(-90)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-1-26-2"
+       width="19.268364"
+       height="1.6924915"
+       x="-108.16731"
+       y="263.34238"
+       transform="rotate(-45)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-1-2-1-9"
+       width="19.268364"
+       height="1.6924915"
+       x="289.77124"
+       y="61.949276"
+       transform="rotate(45)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="display:inline;fill:#a14a1b;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-1-2-0-8-3"
+       width="19.268364"
+       height="1.6924915"
+       x="-30.026335"
+       y="-260.6412"
+       transform="matrix(0.70710678,-0.70710678,-0.70710678,-0.70710678,0,0)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline"
+     transform="translate(0,-25.802112)">
+    <path
+       style="fill:#ef6820;fill-opacity:1;stroke:none;stroke-width:1.10088527;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path836"
+       d="M 128.03307,163.28645 A 67.178894,67.178894 0 0 1 65.967861,121.8158 67.178894,67.178894 0 0 1 80.530414,48.604901 67.178894,67.178894 0 0 1 153.74132,34.042346 67.178894,67.178894 0 0 1 195.21196,96.107552 l -67.17889,0 z"
+       sodipodi:type="arc"
+       sodipodi:start="1.5707963"
+       sodipodi:end="0"
+       sodipodi:ry="67.178894"
+       sodipodi:rx="67.178894"
+       sodipodi:cy="96.107552"
+       sodipodi:cx="128.03307"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       style="fill:#ef6820;fill-opacity:1;stroke:none;stroke-width:1.10088539;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path836-6"
+       d="m -128.56798,-146.13939 a 67.178894,67.178894 0 0 1 -62.0652,-41.47064 67.178894,67.178894 0 0 1 14.56255,-73.2109 67.178894,67.178894 0 0 1 73.2109,-14.56256 67.178894,67.178894 0 0 1 41.470646,62.06521 l -67.178896,0 z"
+       sodipodi:type="arc"
+       sodipodi:start="1.5707963"
+       sodipodi:end="0"
+       sodipodi:ry="67.178894"
+       sodipodi:rx="67.178894"
+       sodipodi:cy="-213.31828"
+       sodipodi:cx="-128.56798"
+       transform="rotate(-179.70899)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       style="fill:#d5d5d5;fill-opacity:1;stroke:none;stroke-width:0.83002359;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path836-6-7"
+       d="m -128.56798,-162.66809 a 50.650196,50.650196 0 0 1 -46.79468,-31.2672 50.650196,50.650196 0 0 1 10.97958,-55.19809 50.650196,50.650196 0 0 1 55.19809,-10.97958 50.650196,50.650196 0 0 1 31.267208,46.79468 h -50.650198 z"
+       sodipodi:type="arc"
+       sodipodi:start="1.5707963"
+       sodipodi:end="0"
+       sodipodi:ry="50.650196"
+       sodipodi:rx="50.650196"
+       sodipodi:cy="-213.31828"
+       sodipodi:cx="-128.56798"
+       transform="rotate(-179.70899)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       style="fill:#d5d5d5;fill-opacity:1;stroke:none;stroke-width:0.83002359;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path836-6-7-5"
+       d="m 128.51955,146.10621 a 50.650196,50.650196 0 0 1 -46.794683,-31.2672 50.650196,50.650196 0 0 1 10.979582,-55.19809 50.650196,50.650196 0 0 1 55.198091,-10.979583 50.650196,50.650196 0 0 1 31.2672,46.79468 l -50.65019,0 z"
+       sodipodi:type="arc"
+       sodipodi:start="1.5707963"
+       sodipodi:end="0"
+       sodipodi:ry="50.650196"
+       sodipodi:rx="50.650196"
+       sodipodi:cy="95.456017"
+       sodipodi:cx="128.51955"
+       transform="rotate(0.29101)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#ef6820;fill-opacity:1;stroke:none;stroke-width:0.57291889;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886"
+       width="19.268364"
+       height="1.6924915"
+       x="78.895943"
+       y="94.824135"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#ef6820;fill-opacity:1;stroke:none;stroke-width:1.10859168;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-6"
+       width="35.690105"
+       height="3.4212151"
+       x="93.780098"
+       y="94.159691"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#ef6820;fill-opacity:1;stroke:none;stroke-width:1.14661944;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-6-2"
+       width="38.573891"
+       height="3.3863363"
+       x="94.149651"
+       y="-129.40973"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#959595;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9"
+       width="19.268364"
+       height="1.6924915"
+       x="47.068394"
+       y="-128.3062"
+       transform="rotate(90)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#959595;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-1"
+       width="19.268364"
+       height="1.6924915"
+       x="-71.308456"
+       y="-155.46292"
+       transform="rotate(135)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#959595;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-1-2"
+       width="19.268364"
+       height="1.6924915"
+       x="-129.03404"
+       y="25.090437"
+       transform="rotate(-135)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#959595;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-1-2-0"
+       width="19.268364"
+       height="1.6924915"
+       x="6.8325181"
+       y="159.2056"
+       transform="matrix(-0.70710678,0.70710678,0.70710678,0.70710678,0,0)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#ef6820;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-93"
+       width="19.268364"
+       height="1.6924915"
+       x="-176.45151"
+       y="-214.95116"
+       transform="scale(-1)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#ef6820;fill-opacity:1;stroke:none;stroke-width:1.10859168;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-6-6"
+       width="35.690105"
+       height="3.4212151"
+       x="-161.47528"
+       y="-215.6156"
+       transform="scale(-1)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#ef6820;fill-opacity:1;stroke:none;stroke-width:1.14661944;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-6-2-0"
+       width="38.573898"
+       height="3.3863363"
+       x="-215.62561"
+       y="125.84563"
+       transform="rotate(-90)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#959595;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-6"
+       width="19.268364"
+       height="1.6924915"
+       x="-262.70688"
+       y="126.94917"
+       transform="rotate(-90)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#959595;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-1-26"
+       width="19.268364"
+       height="1.6924915"
+       x="-109.8598"
+       y="244.07399"
+       transform="rotate(-45)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#959595;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-1-2-1"
+       width="19.268364"
+       height="1.6924915"
+       x="270.50284"
+       y="63.641766"
+       transform="rotate(45)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#959595;fill-opacity:1;stroke:none;stroke-width:0.57291895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect886-9-1-2-0-8"
+       width="19.268364"
+       height="1.6924915"
+       x="-31.718836"
+       y="-241.37285"
+       transform="matrix(0.70710678,-0.70710678,-0.70710678,-0.70710678,0,0)"
+       inkscape:export-filename="/home/sergei/work/SmartTimer/SmartTimer/icons/main.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+</svg>
