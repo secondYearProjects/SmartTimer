@@ -2,6 +2,7 @@
 #define SMARTTIMERLOG_H
 
 #include "timerwidget.h"
+#include "alertwidget.h"
 
 #include <QObject>
 #include <QString>
@@ -16,11 +17,11 @@ public:
 
 signals:
     void createTimer(int duration, const QString& timerName);
+    void createAlarm(int msecs, const QString &alarmName, bool turnedOn);
 public slots:
-    void saveLog(QList<TimerWidget*> timers);
+    void saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alarms);
 
 private:
-    QString filePath = "saves/save.txt";
 
     QObject* par;
 

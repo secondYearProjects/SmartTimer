@@ -17,7 +17,7 @@ public:
 public slots:
     void sendData();
 signals:
-    void sendAlarmData(int,const QString&);
+    void sendAlarmData(int,const QString&,bool);
 private:
     Ui::addAlarmDialog *ui;
 };

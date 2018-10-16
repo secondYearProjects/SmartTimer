@@ -23,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->addAlarmButton,SIGNAL(clicked()),this,SLOT(addAlarm()));
     // TODO : here
     connect(logger, SIGNAL(createTimer(int,QString)), this, SLOT(onTimeRecieved(int,QString)));
+    connect(logger, SIGNAL(createAlarm(int,QString,bool)), this, SLOT(onAlarmTimeRecieved(int,QString,bool)));
+
 
     timerScrollWidget = new QWidget;
     timerScrollWidget->setLayout(new QVBoxLayout);
@@ -36,27 +38,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->alarmScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
     ui->alarmScroll->setWidget(alarmScrollWidget);
 
-
-    QString s = "ss";
-    auto* al = new alertwidget(1000*(QTime::currentTime().hour()*3600+QTime::currentTime().minute()*60+QTime::currentTime().second()+3),s);
-    alarmScrollWidget->layout()->addWidget(al);
-    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
-    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
-    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
-    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
-    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
-    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
-    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
-    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
-    alarmScrollWidget->layout()->addWidget(new alertwidget(10000,s));
-
-
     logger->runLogger();
 }
 
 MainWindow::~MainWindow()
 {
-    emit del(this->timersList);
+    emit del(this->timersList, this->alarmsList);
 
     delete ui;
 }
@@ -73,7 +60,7 @@ void MainWindow::addTimer()
 void MainWindow::addAlarm()
 {
     auto *addDial = new addAlarmDialog();
-    connect(addDial,SIGNAL(sendAlarmData(int,QString)),this, SLOT(onAlarmTimeRecieved(int,QString)));
+    connect(addDial,SIGNAL(sendAlarmData(int,QString,bool)),this, SLOT(onAlarmTimeRecieved(int,QString,bool)));
 
     addDial->exec();
 }
@@ -98,6 +85,14 @@ void MainWindow::remove(const TimerWidget *twidget)
     }
 }
 
+void MainWindow::remove(const alertwidget *awidget)
+{
+    if (std::find(alarmsList.begin(),alarmsList.end(),awidget) != alarmsList.end())
+    {
+        alarmsList.erase(std::find(alarmsList.begin(),alarmsList.end(),awidget));
+    }
+}
+
 void MainWindow::onTimerFinished()
 {
 
@@ -108,14 +103,14 @@ void MainWindow::onTimerFinished()
 #endif
 }
 
-void MainWindow::onAlarmTimeRecieved(int msecs, const QString& _name)
+void MainWindow::onAlarmTimeRecieved(int msecs, const QString& _name, bool turnedOn)
 {
-    auto *newAlarm = new alertwidget(msecs, _name);
+    auto *newAlarm = new alertwidget(msecs, _name, turnedOn);
 
     alarmScrollWidget->layout()->addWidget(newAlarm);
 
-    //connect(newAlarm, SIGNAL(del(const TimerWidget*)), this, SLOT(remove(const TimerWidget*)));
-    //connect(newAlarm, SIGNAL(alarmFinished()), this, SLOT(onAlarmFinished()));
+    connect(newAlarm, SIGNAL(del(const alertwidget*)), this, SLOT(remove(const alertwidget*)));
+    //connect(newAlarm, SIGNAL(alarmFinished()), this, SLOT(onAlarmFinished())); CONSOLE
 
     alarmsList.append(newAlarm);
 }

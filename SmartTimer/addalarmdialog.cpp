@@ -24,6 +24,6 @@ addAlarmDialog::~addAlarmDialog()
 
 void addAlarmDialog::sendData()
 {
-    emit sendAlarmData(getMsecs(ui->alarmTime->time()),ui->alarmName->text());
+    emit sendAlarmData(getMsecs(ui->alarmTime->time()),ui->alarmName->text(),true);
     this->close();
 }

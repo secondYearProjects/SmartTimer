@@ -18,7 +18,7 @@ class alertwidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit alertwidget(int msecs, const QString& name, QWidget *parent = nullptr);
+    explicit alertwidget(int msecs, const QString& name, bool turnedOn = false, QWidget *parent = nullptr);
     ~alertwidget();
 
     inline bool getState() { return state; }
@@ -30,9 +30,11 @@ public slots:
     void onTickCheck();
     void blink();
     void stopBlinking();
+    void closeAlarm();
 
 signals:
     void alarmFinished();
+    void del(const alertwidget*);
 
 private:
     Ui::alertwidget *ui;

@@ -26,13 +26,13 @@ int calculateDuration(const QTime &t)
         return 0;
 }
 
-alertwidget::alertwidget(int msecs, const QString& name, QWidget *parent) :
+alertwidget::alertwidget(int msecs, const QString& name, bool turnedOn, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::alertwidget)
 {
     alertName = name;
     alertTime = QTime::fromMSecsSinceStartOfDay(msecs);
-    state = false;
+    state = turnedOn;
     blinking = false;
     blinky=false;
 
@@ -57,18 +57,28 @@ alertwidget::alertwidget(int msecs, const QString& name, QWidget *parent) :
     connect(&alertTick, SIGNAL(timeout()), this, SLOT(onTickCheck()));
     connect(&blinkTimer, SIGNAL(timeout()),this,SLOT(blink()));
     connect(ui->stopButton, SIGNAL(clicked()), this, SLOT(stopBlinking()));
+
+
+    if (state)
+    {
+        std::cout << calculateDuration(alertTime) << " "
+                  << QTime::currentTime().hour() <<":" << QTime::currentTime().minute() << std::endl;
+        alertTick.start(calculateDuration(alertTime));
+    }
 }
 
 alertwidget::~alertwidget()
 {
     player->stop();
+
     delete ui;
 }
 
 int alertwidget::getAlertTime()
 {
-    return getMsecs(alertTime)/1000;
+    return getMsecs(this->alertTime);
 }
+
 
 void alertwidget::statusChanged(bool stat)
 {
@@ -136,13 +146,26 @@ void alertwidget::stopBlinking()
     }
 }
 
+void alertwidget::closeAlarm()
+{
+    alertTick.stop();
+    blinkTimer.stop();
+    player->stop();
+
+
+    emit del(this);
+
+    this->close();
+}
+
 
 void alertwidget::mousePressEvent(QMouseEvent *e)
 {
     if (e->button() == Qt::RightButton)
     {
         player->stop();
-        this->close();
+
+        emit closeAlarm();
     }
 }
 
