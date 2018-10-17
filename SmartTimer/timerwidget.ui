@@ -441,9 +441,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget#TimerWidget  {	
-	background-color: rgb(113, 113, 113);	
-}</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
@@ -467,57 +465,26 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">QWidget#widget  {	
-	background-color: rgb(113, 113, 113);	
-}
-
-QLabel {
-	color: rgb(230, 230, 230);
-}
-
-QPushButton {
-
+    <string notr="true">QPushButton {
 	border-radius: 30px;
-	
+	border: 0px;
 	color: rgb(230, 230, 230);
 }
 
 QPushButton#editButton {
-
 	border-radius: 25px;
 }
 
 QPushButton#restartButton {
-
 	border-radius: 25px;
 }
 
-
-QPushButton:!enabled {
-
-}
-
 QPushButton#deleteTimerButton {
-
 	border-radius: 16px;
 }
 
-QPushButton:hover:enabled {
-
-	
+QPushButton:hover:enabled {	
 	background-color: rgb(213, 126, 76);
-}
-
-QPushButton[blinky=&quot;false&quot;] {
-	border: 2px solid #FF8C00;
-	border-radius: 30px;
-	
-	color: rgb(230, 230, 230);
-}
-
-QPushButton[blinky=&quot;true&quot;] {
-	
-	background-color: rgb(245, 121, 0);
 }</string>
    </property>
    <layout class="QGridLayout" name="gridLayout">

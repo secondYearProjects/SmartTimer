@@ -48,6 +48,13 @@ alertwidget::alertwidget(int msecs, const QString& name, bool turnedOn, QWidget 
 
     ui->setupUi(this);
 
+    QFile file(":/stylesheet.qss");
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        this->setStyleSheet(file.readAll());
+        file.close();
+    }
+
     ui->timeLabel->setText(alertTime.toString("hh:mm"));
     ui->alarmNameLabel->setText(alertName);
 

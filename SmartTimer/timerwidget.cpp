@@ -6,6 +6,8 @@
 #include <iostream>
 #include <string>
 
+#include <QFile>
+
 int TimerWidget::MAXID = 0;
 
 TimerWidget::TimerWidget( int _interval, const QString& _name, QWidget *parent) :
@@ -13,6 +15,13 @@ TimerWidget::TimerWidget( int _interval, const QString& _name, QWidget *parent) 
     ui(new Ui::TimerWidget)
 {
     ui->setupUi(this);
+
+    QFile file(":/stylesheet.qss");
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        this->setStyleSheet(file.readAll());
+        file.close();
+    }
 
     timer = new QTimer(this);
     tickTimer = new QTimer(this);

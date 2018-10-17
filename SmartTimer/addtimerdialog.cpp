@@ -1,11 +1,22 @@
 #include "addtimerdialog.h"
 #include "ui_addtimerdialog.h"
 
+#include <QFile>
+
 addTimerDialog::addTimerDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::addTimerDialog)
 {
     ui->setupUi(this);
+
+    QFile file(":/stylesheet.qss");
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        this->setStyleSheet(file.readAll());
+        file.close();
+    }
+
+
 
     connect(ui->cancelButton, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->createButton, SIGNAL(clicked()), this, SLOT(returnAndClose()));

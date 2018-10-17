@@ -52,62 +52,7 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">QWidget {
-	background-color: rgb(113, 113, 113);	
-}
-
-QPushButton#addTimerButton, QPushButton#addAlarmButton {
-	background-color: rgb(113, 113, 113);	
-	border: 2px solid rgb(200,200,200);
-	border-radius: 8px;
-	
-	font: 14pt bold;
-	color: rgb(230,230,230);
-}
-
-QPushButton#addTimerButton:hover, QPushButton#addAlarmButton:hover {
-	
-	background-color: rgba(151, 151, 151, 86);
-	border: 2px solid rgb(200,200,200);
-	border-radius: 8px;
-	
-	font: 14pt bold;
-	color: rgb(230,230,230);
-}
-
-QTabWidget {
-	border: 0px;
-}
-
-QTabBar::tab {
-	color: white;
-	font: 14pt ;
-	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.333333 rgba(139, 139, 139, 197), stop:1 rgba(255, 255, 255, 0));
-	border-bottom: 0px;
-	border-top-left-radius: 20px;
-	border-top-right-radius: 20px;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	min-width: 202px;
-	min-height: 30px;
-	padding: 2px;
-}
-
-QTabBar::tab:selected, QTabBar::tab:hover {
-     background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.333333 rgba(149, 149, 149, 197), stop:1 rgba(255, 255, 255, 0));
-}
-
-QTabBar::tab:selected {
-	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.373134 rgba(213, 126, 76, 208), stop:1 rgba(255, 255, 255, 0));
-	font: 14pt  bold;
-}
-
-QTabBar::tab:!selected {
-    margin-top: 5px; /* make non-selected tabs look smaller */
-}
-
-
-</string>
+    <string notr="true"/>
    </property>
    <widget class="QTabWidget" name="SmartTimerTabs">
     <property name="geometry">

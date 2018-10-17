@@ -17,5 +17,6 @@
         <file>icons/off-icon.png</file>
         <file>icons/ST-main-icon.png</file>
         <file>icons/ST-main-icon64.png</file>
+        <file>stylesheet.qss</file>
     </qresource>
 </RCC>

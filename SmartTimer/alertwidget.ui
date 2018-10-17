@@ -35,18 +35,11 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget {
-	background-color: rgb(113,113,113);
-	color: rgb(210,210,210);
-}
-
-QWidget#alertSwitch {
+   <string notr="true">QWidget#alertSwitch {
 	margin-right: 5px;
 }
 
 QPushButton {
-		background-color: rgb(113,113,113);
-		color: white;
 		border: 0px;
 		border-radius: 35px;
 }

@@ -17,6 +17,15 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
+    QFile file(":/stylesheet.qss");
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        this->setStyleSheet(file.readAll());
+        file.close();
+    }
+
+
     logger = new smartTimerLog(this);
 
     connect(ui->addTimerButton,SIGNAL(clicked()),this,SLOT(addTimer()));

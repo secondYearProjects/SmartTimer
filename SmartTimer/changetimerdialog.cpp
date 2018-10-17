@@ -2,12 +2,21 @@
 #include "ui_changetimerdialog.h"
 
 #include <QTime>
+#include <QFile>
 
 ChangeTimerDialog::ChangeTimerDialog(TimerWidget *parent) :
     QDialog(parent),
     ui(new Ui::ChangeTimerDialog)
 {
     ui->setupUi(this);
+
+    QFile file(":/stylesheet.qss");
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        this->setStyleSheet(file.readAll());
+        file.close();
+    }
+
 
     par = parent;
 

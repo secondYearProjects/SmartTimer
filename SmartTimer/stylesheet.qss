@@ -1,0 +1,147 @@
+QWidget {
+        background-color: rgb(113, 113, 113);
+        color: rgb(230,230,230);
+}
+
+QPushButton#addTimerButton, QPushButton#addAlarmButton {
+        background-color: rgb(113, 113, 113);
+        border: 2px solid rgb(200,200,200);
+        border-radius: 8px;
+
+        font: 14pt bold;
+        color: rgb(230,230,230);
+}
+
+QPushButton#addTimerButton:hover, QPushButton#addAlarmButton:hover {
+
+        background-color: rgba(151, 151, 151, 86);
+        border: 2px solid rgb(200,200,200);
+        border-radius: 8px;
+
+        font: 14pt bold;
+        color: rgb(230,230,230);
+}
+
+QTabWidget {
+        border: 0px;
+}
+
+QTabBar::tab {
+        color: white;
+        font: 14pt ;
+        background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.333333 rgba(139, 139, 139, 197), stop:1 rgba(255, 255, 255, 0));
+        border-bottom: 0px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        min-width: 202px;
+        min-height: 30px;
+        padding: 2px;
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+     background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.333333 rgba(149, 149, 149, 197), stop:1 rgba(255, 255, 255, 0));
+}
+
+QTabBar::tab:selected {
+        background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.373134 rgba(213, 126, 76, 208), stop:1 rgba(255, 255, 255, 0));
+        font: 14pt  bold;
+}
+
+QTabBar::tab:!selected {
+    margin-top: 5px; /* make non-selected tabs look smaller */
+}
+
+
+
+
+QWidget#DialogGrid {
+
+        background-color: rgb(113, 113, 113);
+
+}
+
+QLabel {
+        color: rgb(238, 238, 236);
+        font: bold;
+        margin-left: 3px;
+}
+
+QPushButton {
+        background-color: rgb(113, 113, 113);
+        border: 2px solid rgb(200,200,200);
+        border-radius: 8px;
+
+        font: 14pt bold;
+        color: rgb(230,230,230);
+}
+
+QPushButton#createButton {
+
+        background-color: rgb(213, 126, 76);
+}
+
+QPushButton#createButton:hover {
+        background-color: rgb(220, 136, 86);
+}
+
+QPushButton#cancelButton:hover {
+        background-color: rgb(123, 123, 123);
+}
+
+QLineEdit {
+        border-radius: 10px;
+        color: rgb(238, 238, 236);
+        background-color: rgb(255, 204, 157,10);
+}
+
+QTimeEdit {
+        border-radius: 10px;
+        color: rgb(238, 238, 236);
+        font: 19pt bold;
+        background-color: rgb(255, 204, 157,10);
+}
+
+QTimeEdit::up-button  {
+        subcontrol-origin: border;
+         subcontrol-position: top right;
+
+        background-color: rgb(213, 126, 76);
+        width: 25px;
+        height: 25px;
+        border-width: 3px;
+        border-color: rgb(85, 87, 83);
+        border-radius: 4px;
+
+        margin-bottom: 2px;
+}
+
+QTimeEdit::down-button  {
+        subcontrol-origin: border;
+        subcontrol-position: bottom right;
+
+        background-color: rgb(213, 126, 76);
+        width: 25px;
+        height: 25px;
+        border-width: 3px;
+        border-color: rgb(85, 87, 83);
+        border-radius: 4px;
+        margin-top: 2px;
+}
+
+QPushButton#changeButton {
+        background-color: rgb(213, 126, 76);
+}
+
+QPushButton#changeButton:hover {
+        background-color: rgb(220, 136, 86);
+}
+
+
+
+
+
+
+
+
