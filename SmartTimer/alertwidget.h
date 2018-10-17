@@ -36,6 +36,8 @@ public slots:
 
     void ShowContextMenu(const QPoint &);
 
+    void setAlarm(int,const QString&);
+
 signals:
     void alarmFinished();
     void del(const alertwidget*);

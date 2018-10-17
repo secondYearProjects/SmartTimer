@@ -1,5 +1,7 @@
 #include "alertwidget.h"
 #include "ui_alertwidget.h"
+#include "changealarmdialog.h"
+
 
 #include <iostream>
 
@@ -167,7 +169,11 @@ void alertwidget::closeAlarm()
 
 void alertwidget::changeAlarm()
 {
+    ChangeAlarmDialog *dial = new ChangeAlarmDialog(this);
 
+    connect(dial, SIGNAL(changeAlarmSignal(int,QString)),this,SLOT(setAlarm(int,QString)));
+
+    dial->exec();
 }
 
 void alertwidget::ShowContextMenu(const QPoint &pos)
@@ -182,6 +188,18 @@ void alertwidget::ShowContextMenu(const QPoint &pos)
     contextMenu.addAction(&action2);
 
     contextMenu.exec(mapToGlobal(pos));
+}
+
+void alertwidget::setAlarm(int msecs, const QString & _name)
+{
+    ui->timeLabel->setText(QTime::fromMSecsSinceStartOfDay(msecs).toString("hh:mm"));
+    ui->alarmNameLabel->setText(_name);
+
+    alertTime = QTime::fromMSecsSinceStartOfDay(msecs);
+    alertName = _name;
+
+    statusChanged(true);
+
 }
 
 
