@@ -65,6 +65,13 @@ alertwidget::alertwidget(int msecs, const QString& name, bool turnedOn, QWidget 
                   << QTime::currentTime().hour() <<":" << QTime::currentTime().minute() << std::endl;
         alertTick.start(calculateDuration(alertTime));
     }
+
+
+    this->setContextMenuPolicy(Qt::CustomContextMenu);
+
+    connect(this, SIGNAL(customContextMenuRequested(const QPoint &)),
+            this, SLOT(ShowContextMenu(const QPoint &)));
+
 }
 
 alertwidget::~alertwidget()
@@ -158,6 +165,25 @@ void alertwidget::closeAlarm()
     this->close();
 }
 
+void alertwidget::changeAlarm()
+{
+
+}
+
+void alertwidget::ShowContextMenu(const QPoint &pos)
+{
+    QMenu contextMenu(tr("Context menu"), this);
+
+    QAction action1("Delete alarm", this);
+    QAction action2("Change alarm", this);
+    connect(&action1, SIGNAL(triggered()), this, SLOT(closeAlarm()));
+    connect(&action2, SIGNAL(triggered()), this, SLOT(changeAlarm()));
+    contextMenu.addAction(&action1);
+    contextMenu.addAction(&action2);
+
+    contextMenu.exec(mapToGlobal(pos));
+}
+
 
 void alertwidget::mousePressEvent(QMouseEvent *e)
 {
@@ -165,7 +191,8 @@ void alertwidget::mousePressEvent(QMouseEvent *e)
     {
         player->stop();
 
-        emit closeAlarm();
+        ShowContextMenu(e->pos());
+        //emit closeAlarm();
     }
 }
 

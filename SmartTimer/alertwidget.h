@@ -32,9 +32,15 @@ public slots:
     void stopBlinking();
     void closeAlarm();
 
+    void changeAlarm();
+
+    void ShowContextMenu(const QPoint &);
+
 signals:
     void alarmFinished();
     void del(const alertwidget*);
+
+    void customContextMenuRequested(const QPoint &);
 
 private:
     Ui::alertwidget *ui;
