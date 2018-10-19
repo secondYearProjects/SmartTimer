@@ -139,6 +139,14 @@ QPushButton#changeButton:hover {
 }
 
 
+QMenu {
+    color: rgb(218,218,218);
+    font: 15pt;
+}
+
+QMenu::item:selected {
+    background-color: rgb(220,150,90);
+}
 
 
 

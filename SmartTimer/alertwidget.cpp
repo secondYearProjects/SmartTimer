@@ -2,7 +2,6 @@
 #include "ui_alertwidget.h"
 #include "changealarmdialog.h"
 
-
 #include <iostream>
 
 int getMsecs(const QTime& t)
@@ -126,6 +125,7 @@ void alertwidget::onTickCheck()
     blinking = true;
     player->play();
     ui->stopButton->show();
+    ui->stopButton->setEnabled(true);
 }
 
 void alertwidget::blink()
@@ -137,11 +137,15 @@ void alertwidget::blink()
                                   " background-color: qlineargradient(spread:pad, x1:0.622, y1:0.0113636,"
                                   " x2:1, y2:0, stop:0 rgb(183, 106, 56), stop:0.626368 rgba(0, 0, 0, 0));"
                                   " border-radius: 30px;"
+                                  " border: 0px;"
                                   " }");
     }
     else
     {
-        ui->widget->setStyleSheet("QWidget { background-color: rgb(113,113,113); }");
+        ui->widget->setStyleSheet("QWidget {"
+                                  " background-color: rgb(113,113,113);"
+                                  " border: 0px; "
+                                  "}");
     }
     blinky = !blinky;
 }
@@ -187,14 +191,16 @@ void alertwidget::ShowContextMenu(const QPoint &pos)
 {
     QMenu contextMenu(tr("Context menu"), this);
 
-    QAction action1("Delete alarm", this);
-    QAction action2("Change alarm", this);
-    connect(&action1, SIGNAL(triggered()), this, SLOT(closeAlarm()));
-    connect(&action2, SIGNAL(triggered()), this, SLOT(changeAlarm()));
-    contextMenu.addAction(&action1);
-    contextMenu.addAction(&action2);
+    QAction actionDelete("Delete alarm", this);
+    QAction actionChange("Change alarm", this);
+
+    connect(&actionDelete, SIGNAL(triggered()), this, SLOT(closeAlarm()));
+    connect(&actionChange, SIGNAL(triggered()), this, SLOT(changeAlarm()));
+    contextMenu.addAction(&actionDelete);
+    contextMenu.addAction(&actionChange);
 
     contextMenu.exec(mapToGlobal(pos));
+
 }
 
 void alertwidget::setAlarm(int msecs, const QString & _name)
@@ -209,15 +215,12 @@ void alertwidget::setAlarm(int msecs, const QString & _name)
 
 }
 
-
 void alertwidget::mousePressEvent(QMouseEvent *e)
 {
     if (e->button() == Qt::RightButton)
     {
         player->stop();
-
         ShowContextMenu(e->pos());
-        //emit closeAlarm();
     }
 }
 

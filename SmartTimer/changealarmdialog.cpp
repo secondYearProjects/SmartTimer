@@ -20,6 +20,7 @@ ChangeAlarmDialog::ChangeAlarmDialog(alertwidget *parent) :
     ui->time->setTime(QTime::fromMSecsSinceStartOfDay(parent->getAlertTime()));
 
     connect(ui->changeButton,SIGNAL(clicked()), this, SLOT(changeAlarm()));
+    connect(ui->cancelButton,SIGNAL(clicked()), this, SLOT(close()));
 }
 
 ChangeAlarmDialog::~ChangeAlarmDialog()
