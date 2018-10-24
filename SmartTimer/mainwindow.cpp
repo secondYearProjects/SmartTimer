@@ -104,11 +104,10 @@ void MainWindow::remove(const alertwidget *awidget)
 
 void MainWindow::onTimerFinished()
 {
-
-    // TODO: something here or give up
 #ifdef Q_OS_LINUX
-    system("notify-send 'Timer alert' '<b>Timer finished</b>' '-t' 5000");
-    //system("notify-send '-i' '/home/sergei/work/SmartTimer/SmartTimer/icons/play-icon.png'");
+    int sysRespond = system("notify-send 'Timer alert' '<b>Timer finished</b>' '-t' 5000");
+    if (sysRespond)
+        std::cerr << "Sys respond: " << sysRespond << std::endl;
 #endif
 }
 
@@ -119,7 +118,6 @@ void MainWindow::onAlarmTimeRecieved(int msecs, const QString& _name, bool turne
     alarmScrollWidget->layout()->addWidget(newAlarm);
 
     connect(newAlarm, SIGNAL(del(const alertwidget*)), this, SLOT(remove(const alertwidget*)));
-    //connect(newAlarm, SIGNAL(alarmFinished()), this, SLOT(onAlarmFinished())); CONSOLE
 
     alarmsList.append(newAlarm);
 }
