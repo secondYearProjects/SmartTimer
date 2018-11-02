@@ -30,7 +30,7 @@ public slots:
     void onTimerFinished();
     void onAlarmTimeRecieved(int msecs, const QString& _name, bool turnedOn);
 
-    void tabBlinking(const QString &tabName, bool enable);
+    void tabBlinking(QString tabName, bool enable);
     void alarmsTabBlink();
     void timersTabBlink();
 
@@ -47,14 +47,14 @@ private:
     QWidget *timerScrollWidget;
     QWidget *alarmScrollWidget;
 
-    int alarmsBlink = 0;
-    int timersBlink = 0;
+    int blinkingAlarms = 0;
+    int blinkingTimers = 0;
 
     bool alarmsBlinking = false;
     bool timersBlinking = false;
 
-    bool alarmsBlinky = false;
-    bool timersBlinky = false;
+    bool alarmsBlinkState = false;
+    bool timersBlinkState = false;
 
     QTimer *alarmsBlinkTimer;
     QTimer *timersBlinkTimer;

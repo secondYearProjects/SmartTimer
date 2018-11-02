@@ -53,7 +53,7 @@ signals:
     void addBlink();
     void deleteBlink();
 
-    void blinkInfo(const QString &tabName,bool enable);
+    void blinkInfo(QString tabName,bool enable);
 
 private:
     static int MAXID;

@@ -3,6 +3,8 @@ QWidget {
         color: rgb(230,230,230);
 }
 
+
+
 QPushButton#addTimerButton, QPushButton#addAlarmButton {
         background-color: rgb(113, 113, 113);
         border: 2px solid rgb(200,200,200);
@@ -25,6 +27,8 @@ QPushButton#addTimerButton:hover, QPushButton#addAlarmButton:hover {
 QTabWidget {
         border: 0px;
 }
+
+
 
 QTabBar::tab {
         color: white;
@@ -53,10 +57,42 @@ QTabBar::tab:!selected {
     margin-top: 5px; /* make non-selected tabs look smaller */
 }
 
-QTabBar::tab[blink=true]
-{
-    background: rgb(0,0,0);
+QWidget[blink=true] {
+        color: white;
+        font: 14pt ;
+        background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.333333 rgba(149, 149, 149, 197), stop:1 rgba(255, 255, 255, 0));
+        border-bottom: 0px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        min-width: 202px;
+        min-height: 30px;
+        padding: 2px;
 }
+
+
+QScrollBar:vertical {
+    border: 0px;
+
+    background: solid rgb(116,116,116);
+    width: 10px;
+    margin: 22px 0 22px 0;
+}
+
+
+QScrollBar::handle:vertical {
+     background: rgba(223, 136, 86);
+     border-radius: 5px;
+     min-height: 20px;
+ }
+
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+     border: 0px;
+     width: 0px;
+     height: 0px;
+ }
+
 
 
 
@@ -152,8 +188,6 @@ QMenu {
 QMenu::item:selected {
     background-color: rgb(220,150,90);
 }
-
-
 
 
 

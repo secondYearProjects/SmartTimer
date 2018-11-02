@@ -77,7 +77,7 @@ alertwidget::alertwidget(int msecs, const QString& name, bool turnedOn, QWidget 
 
     this->setContextMenuPolicy(Qt::CustomContextMenu);
 
-    connect(this, SIGNAL(customContextMenuRequested(const QPoint &)),
+    connect(this, SIGNAL(customContextMenuRequest(const QPoint &)),
             this, SLOT(ShowContextMenu(const QPoint &)));
 
 }

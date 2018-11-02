@@ -90,7 +90,7 @@ void MainWindow::onTimeRecieved(int msecs, const QString& _name)
 
     connect(newTimer, SIGNAL(del(const TimerWidget*)), this, SLOT(remove(const TimerWidget*)));
     connect(newTimer, SIGNAL(timerFinished()), this, SLOT(onTimerFinished()));
-    connect(newTimer, SIGNAL(blikInfo(const QString&, bool)), this, SLOT(tabBlinking(const QString&,bool)));
+    connect(newTimer, SIGNAL(blinkInfo(QString, bool)), this, SLOT(tabBlinking(QString,bool)));
 
 
     timersList.append(newTimer);
@@ -128,81 +128,99 @@ void MainWindow::onAlarmTimeRecieved(int msecs, const QString& _name, bool turne
     alarmScrollWidget->layout()->addWidget(newAlarm);
 
     connect(newAlarm, SIGNAL(del(const alertwidget*)), this, SLOT(remove(const alertwidget*)));
-    connect(newAlarm, SIGNAL(blikInfo(QString, bool)), this, SLOT(tabBlinking(QString,bool)));
+    connect(newAlarm, SIGNAL(blinkInfo(QString, bool)), this, SLOT(tabBlinking(QString,bool)));
 
 
     alarmsList.append(newAlarm);
 }
 
-void MainWindow::tabBlinking(const QString &tabName, bool enable)
+void MainWindow::tabBlinking(QString tabName, bool enable)
 {
     if (enable)
     {
         if (tabName=="Timers")
         {
-            timersBlink++;
+            blinkingTimers++;
+            ui->SmartTimerTabs->setCurrentIndex(0);
         }
         if (tabName=="Alarms")
         {
-            alarmsBlink++;
+            blinkingAlarms++;
+            ui->SmartTimerTabs->setCurrentIndex(1);
         }
     }
     else
     {
-        if (tabName=="Timers")
+        if (tabName=="Timers" && blinkingTimers)
         {
-            timersBlink--;
+            blinkingTimers--;
         }
-        if (tabName=="Alarms")
+        if (tabName=="Alarms" && blinkingAlarms)
         {
-            alarmsBlink--;
+            blinkingAlarms--;
         }
     }
-    if (timersBlink && !timersBlinking)
+    if (blinkingTimers && !timersBlinking)
     {
         timersBlinkTimer->start(400);
+        timersBlinking = true;
+        timersBlinkState = false;
     }
-    if (alarmsBlink && !alarmsBlinking)
+    if (blinkingAlarms && !alarmsBlinking)
     {
         alarmsBlinkTimer->start(400);
+        alarmsBlinking = true;
+        alarmsBlinkState = false;
     }
 
-    if (!timersBlink)
+    if (!blinkingTimers)
     {
         timersBlinkTimer->stop();
 
-        ui->Timers->setProperty("blinky", false);
+        ui->Timers->setProperty("blink", false);
         this->style()->unpolish(ui->Timers);
         this->style()->polish(ui->Timers);
+
+        timersBlinkState = false;
+
+        timersBlinking = false;
+
     }
 
-    if (!alarmsBlink)
+    if (!blinkingAlarms)
     {
         alarmsBlinkTimer->stop();
 
-        ui->Alarms->setProperty("blinky", !alarmsBlinky);
+        ui->Alarms->setProperty("blink", false);
         this->style()->unpolish(ui->Alarms);
         this->style()->polish(ui->Alarms);
 
-        alarmsBlinky = !alarmsBlinky;
+        alarmsBlinkState = false;
+
+        alarmsBlinking = false;
     }
 
 }
 
 void MainWindow::alarmsTabBlink()
 {
-    ui->Alarms->setProperty("blinky", !alarmsBlinky);
-    this->style()->unpolish(ui->Alarms);
-    this->style()->polish(ui->Alarms);
+    ui->Alarms->setProperty("blink", !alarmsBlinkState);
+    ui->Alarms->style()->unpolish(ui->Alarms);
+    ui->Alarms->style()->polish(ui->Alarms);
 
-    alarmsBlinky = !alarmsBlinky;
+
+    alarmsBlinkState = !alarmsBlinkState;
 }
 
 void MainWindow::timersTabBlink()
 {
-    ui->Timers->setProperty("blinky", !timersBlinky);
-    this->style()->unpolish(ui->Timers);
-    this->style()->polish(ui->Timers);
 
-    timersBlinky = !timersBlinky;
+    ui->Timers->setProperty("blink", !timersBlinkState);
+    ui->Timers->style()->unpolish(ui->Timers);
+    ui->Timers->style()->polish(ui->Timers);
+    ui->Timers->update();
+
+
+
+    timersBlinkState = !timersBlinkState;
 }

@@ -121,6 +121,8 @@ void TimerWidget::resetTimer()
     ui->editButton->setEnabled(true);
 
     ui->restartButton->setStyleSheet("");
+
+    emit blinkInfo("Timers",false);
 }
 
 void TimerWidget::timerExecuted()
@@ -174,13 +176,19 @@ void TimerWidget::blink()
 
 void TimerWidget::closeTimer()
 {
+    if (blinkTimer->isActive())
+        emit blinkInfo("Timers",false);
+
     player->stop();
     timer->stop();
     tickTimer->stop();
     blinkTimer->stop();
 
+
+
     emit del(this);
-    emit blinkInfo("Timers",false);
+
+
 
     this->close();
 }
