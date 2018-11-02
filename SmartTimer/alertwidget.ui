@@ -44,7 +44,7 @@ QPushButton {
 		border-radius: 35px;
 }
 
-QPushButton:hover:enabled {	
+QPushButton#stopButton:hover:enabled {	
 	background-color: rgb(213, 126, 76);
 }</string>
   </property>
@@ -108,7 +108,7 @@ QPushButton:hover:enabled {
          </font>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>Alarm</string>
         </property>
        </widget>
       </item>

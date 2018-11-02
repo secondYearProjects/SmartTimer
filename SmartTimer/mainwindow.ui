@@ -63,10 +63,18 @@
       <height>791</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget[blink=true] {
+	background-color: black;
+}</string>
+    </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Timers">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <attribute name="title">
       <string>Timers</string>
      </attribute>

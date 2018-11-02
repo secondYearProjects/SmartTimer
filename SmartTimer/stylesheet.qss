@@ -3,6 +3,8 @@ QWidget {
         color: rgb(230,230,230);
 }
 
+
+
 QPushButton#addTimerButton, QPushButton#addAlarmButton {
         background-color: rgb(113, 113, 113);
         border: 2px solid rgb(200,200,200);
@@ -25,6 +27,8 @@ QPushButton#addTimerButton:hover, QPushButton#addAlarmButton:hover {
 QTabWidget {
         border: 0px;
 }
+
+
 
 QTabBar::tab {
         color: white;
@@ -51,6 +55,49 @@ QTabBar::tab:selected {
 
 QTabBar::tab:!selected {
     margin-top: 5px; /* make non-selected tabs look smaller */
+}
+
+QWidget[blink=true] {
+        color: white;
+        font: 14pt ;
+        background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.373134 rgba(213, 126, 76, 208), stop:1 rgba(255, 255, 255, 0));
+        border-bottom: 0px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        min-width: 202px;
+        min-height: 30px;
+        padding: 2px;
+}
+
+
+QScrollBar:vertical {
+      border: 1px #c6c6c6;
+      background: rgb(123,123,123);
+      width: 13px;
+      margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:vertical  {
+      background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(131, 131, 131, 0), stop:0.0625 rgba(213, 126, 76, 208), stop:0.517045 rgba(223, 136, 86, 208), stop:0.920455 rgba(213, 126, 76, 208), stop:1 rgba(158, 158, 158, 0));
+      border: 1px grey;
+      border-radius: 6px;
+      min-height: 25px;
+}
+QScrollBar::add-line:vertical {
+      height: 0px;
+      subcontrol-position: bottom;
+      subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical {
+      height: 0 px;
+      subcontrol-position: top;
+      subcontrol-origin: margin;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background: none;
 }
 
 
@@ -147,8 +194,6 @@ QMenu {
 QMenu::item:selected {
     background-color: rgb(220,150,90);
 }
-
-
 
 
 

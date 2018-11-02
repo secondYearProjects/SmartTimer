@@ -78,6 +78,16 @@
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
+          <property name="displayFormat">
+           <string>HH:mm</string>
+          </property>
+          <property name="time">
+           <time>
+            <hour>0</hour>
+            <minute>0</minute>
+            <second>0</second>
+           </time>
+          </property>
          </widget>
         </item>
        </layout>
@@ -119,6 +129,18 @@
             <width>260</width>
             <height>50</height>
            </size>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Alarm</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>

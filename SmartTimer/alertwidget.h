@@ -42,7 +42,9 @@ signals:
     void alarmFinished();
     void del(const alertwidget*);
 
-    void customContextMenuRequested(const QPoint &);
+    void customContextMenuRequest(const QPoint &);
+
+    void blinkInfo(QString tabName, bool enable);
 
 private:
     Ui::alertwidget *ui;

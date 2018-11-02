@@ -47,7 +47,8 @@ HEADERS += \
     toggleswitch.h \
     alertwidget.h \
     addalarmdialog.h \
-    changealarmdialog.h
+    changealarmdialog.h \
+    widgetsettings.h
 
 FORMS += \
         mainwindow.ui \
