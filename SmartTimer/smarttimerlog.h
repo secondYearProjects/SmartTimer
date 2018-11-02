@@ -3,6 +3,7 @@
 
 #include "timerwidget.h"
 #include "alertwidget.h"
+#include "widgetsettings.h"
 
 #include <QObject>
 #include <QString>

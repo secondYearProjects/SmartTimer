@@ -1,5 +1,6 @@
 #include "smarttimerlog.h"
 #include "timerwidget.h"
+#include "widgetsettings.h"
 
 #include <iostream>
 #include <fstream>
@@ -7,6 +8,8 @@
 #include <QTextStream>
 #include <QUrl>
 #include <QString>
+
+#include <QJsonDocument>
 
 smartTimerLog::smartTimerLog(QObject *parent) : QObject(parent)
 {
@@ -66,6 +69,19 @@ void smartTimerLog::runLogger()
     }
 
     logFile2.close();
+
+
+
+    QString alarms = "alarms.json";
+
+
+
+
+
+
+
+
+
 }
 
 void smartTimerLog::saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alarms)
