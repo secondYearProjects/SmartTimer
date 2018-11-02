@@ -27,12 +27,19 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     logger = new smartTimerLog(this);
+    alarmsBlinkTimer = new QTimer(this);
+    timersBlinkTimer = new QTimer(this);
 
     connect(ui->addTimerButton,SIGNAL(clicked()),this,SLOT(addTimer()));
     connect(ui->addAlarmButton,SIGNAL(clicked()),this,SLOT(addAlarm()));
-    // TODO : here
+
     connect(logger, SIGNAL(createTimer(int,QString)), this, SLOT(onTimeRecieved(int,QString)));
     connect(logger, SIGNAL(createAlarm(int,QString,bool)), this, SLOT(onAlarmTimeRecieved(int,QString,bool)));
+
+
+    connect(alarmsBlinkTimer,SIGNAL(timeout()),this,SLOT(alarmsTabBlink()));
+    connect(timersBlinkTimer,SIGNAL(timeout()),this,SLOT(timersTabBlink()));
+
 
 
     timerScrollWidget = new QWidget;
@@ -63,6 +70,7 @@ void MainWindow::addTimer()
     auto *addDial = new addTimerDialog();
     connect(addDial,SIGNAL(sendTimerData(int,QString)),this, SLOT(onTimeRecieved(int,QString)));
 
+
     addDial->exec();
 }
 
@@ -82,6 +90,8 @@ void MainWindow::onTimeRecieved(int msecs, const QString& _name)
 
     connect(newTimer, SIGNAL(del(const TimerWidget*)), this, SLOT(remove(const TimerWidget*)));
     connect(newTimer, SIGNAL(timerFinished()), this, SLOT(onTimerFinished()));
+    connect(newTimer, SIGNAL(blikInfo(const QString&, bool)), this, SLOT(tabBlinking(const QString&,bool)));
+
 
     timersList.append(newTimer);
 }
@@ -118,6 +128,81 @@ void MainWindow::onAlarmTimeRecieved(int msecs, const QString& _name, bool turne
     alarmScrollWidget->layout()->addWidget(newAlarm);
 
     connect(newAlarm, SIGNAL(del(const alertwidget*)), this, SLOT(remove(const alertwidget*)));
+    connect(newAlarm, SIGNAL(blikInfo(QString, bool)), this, SLOT(tabBlinking(QString,bool)));
+
 
     alarmsList.append(newAlarm);
+}
+
+void MainWindow::tabBlinking(const QString &tabName, bool enable)
+{
+    if (enable)
+    {
+        if (tabName=="Timers")
+        {
+            timersBlink++;
+        }
+        if (tabName=="Alarms")
+        {
+            alarmsBlink++;
+        }
+    }
+    else
+    {
+        if (tabName=="Timers")
+        {
+            timersBlink--;
+        }
+        if (tabName=="Alarms")
+        {
+            alarmsBlink--;
+        }
+    }
+    if (timersBlink && !timersBlinking)
+    {
+        timersBlinkTimer->start(400);
+    }
+    if (alarmsBlink && !alarmsBlinking)
+    {
+        alarmsBlinkTimer->start(400);
+    }
+
+    if (!timersBlink)
+    {
+        timersBlinkTimer->stop();
+
+        ui->Timers->setProperty("blinky", false);
+        this->style()->unpolish(ui->Timers);
+        this->style()->polish(ui->Timers);
+    }
+
+    if (!alarmsBlink)
+    {
+        alarmsBlinkTimer->stop();
+
+        ui->Alarms->setProperty("blinky", !alarmsBlinky);
+        this->style()->unpolish(ui->Alarms);
+        this->style()->polish(ui->Alarms);
+
+        alarmsBlinky = !alarmsBlinky;
+    }
+
+}
+
+void MainWindow::alarmsTabBlink()
+{
+    ui->Alarms->setProperty("blinky", !alarmsBlinky);
+    this->style()->unpolish(ui->Alarms);
+    this->style()->polish(ui->Alarms);
+
+    alarmsBlinky = !alarmsBlinky;
+}
+
+void MainWindow::timersTabBlink()
+{
+    ui->Timers->setProperty("blinky", !timersBlinky);
+    this->style()->unpolish(ui->Timers);
+    this->style()->polish(ui->Timers);
+
+    timersBlinky = !timersBlinky;
 }

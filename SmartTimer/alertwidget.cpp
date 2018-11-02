@@ -126,6 +126,8 @@ void alertwidget::onTickCheck()
     player->play();
     ui->stopButton->show();
     ui->stopButton->setEnabled(true);
+
+    emit blinkInfo("Alarms",true);
 }
 
 void alertwidget::blink()
@@ -174,6 +176,7 @@ void alertwidget::closeAlarm()
 
 
     emit del(this);
+    emit blinkInfo("Alarms",false);
 
     this->close();
 }

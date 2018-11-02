@@ -50,6 +50,11 @@ signals:
 
     void timerFinished();
 
+    void addBlink();
+    void deleteBlink();
+
+    void blinkInfo(const QString &tabName,bool enable);
+
 private:
     static int MAXID;
 

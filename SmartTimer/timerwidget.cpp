@@ -135,6 +135,7 @@ void TimerWidget::timerExecuted()
     ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(0)));
 
     emit timerFinished();
+    emit blinkInfo("Timers",true);
 }
 
 void TimerWidget::updateLeftTime()
@@ -179,6 +180,7 @@ void TimerWidget::closeTimer()
     blinkTimer->stop();
 
     emit del(this);
+    emit blinkInfo("Timers",false);
 
     this->close();
 }

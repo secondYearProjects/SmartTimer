@@ -53,6 +53,11 @@ QTabBar::tab:!selected {
     margin-top: 5px; /* make non-selected tabs look smaller */
 }
 
+QTabBar::tab[blink=true]
+{
+    background: rgb(0,0,0);
+}
+
 
 
 

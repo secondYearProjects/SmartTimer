@@ -44,6 +44,8 @@ signals:
 
     void customContextMenuRequested(const QPoint &);
 
+    void blinkInfo(const QString &tabName, bool enable);
+
 private:
     Ui::alertwidget *ui;
 
