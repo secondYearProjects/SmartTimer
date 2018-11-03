@@ -107,6 +107,9 @@ void alertwidget::statusChanged(bool stat)
     }
     else
     {
+        if (blinkTimer.isActive())
+            emit blinkInfo("Alarms",false);
+
         alertTick.stop();
         blinkTimer.stop();
         blinking = false;
@@ -154,6 +157,9 @@ void alertwidget::blink()
 
 void alertwidget::stopBlinking()
 {
+    if (blinkTimer.isActive())
+        emit blinkInfo("Alarms",false);
+
     alertTick.stop();
     blinkTimer.stop();
     blinking = false;
@@ -170,13 +176,16 @@ void alertwidget::stopBlinking()
 
 void alertwidget::closeAlarm()
 {
+    if (blinkTimer.isActive())
+        emit blinkInfo("Alarms",false);
+
     alertTick.stop();
     blinkTimer.stop();
     player->stop();
 
 
     emit del(this);
-    emit blinkInfo("Alarms",false);
+
 
     this->close();
 }
@@ -220,7 +229,7 @@ void alertwidget::setAlarm(int msecs, const QString & _name)
 
 void alertwidget::mousePressEvent(QMouseEvent *e)
 {
-    if (e->button() == Qt::RightButton)
+    if (e->button() == Qt::RightButton && !blinkTimer.isActive())
     {
         player->stop();
         ShowContextMenu(e->pos());

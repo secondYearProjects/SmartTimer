@@ -23,4 +23,15 @@ private:
 
 };
 
+struct GlobalSettings
+{
+public:
+    GlobalSettings(double opacity=1.0 ,QString alarmFormat="HH:mm" ,QString timerFormat="HH:mm:ss"):
+        windowOpacity(opacity), alarmTimeFormat(alarmFormat), timerTimeFormat(timerFormat) {}
+
+    double windowOpacity=1.0;
+    QString alarmTimeFormat = "HH:mm";
+    QString timerTimeFormat = "HH:mm:ss";
+};
+
 #endif // WIDGETSETTINGS_H

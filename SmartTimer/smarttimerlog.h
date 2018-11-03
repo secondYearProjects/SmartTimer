@@ -1,9 +1,9 @@
-#ifndef SMARTTIMERLOG_H
-#define SMARTTIMERLOG_H
+#pragma once
 
 #include "timerwidget.h"
 #include "alertwidget.h"
 #include "widgetsettings.h"
+
 
 #include <QObject>
 #include <QString>
@@ -19,17 +19,17 @@ public:
 signals:
     void createTimer(int duration, const QString& timerName);
     void createAlarm(int msecs, const QString &alarmName, bool turnedOn);
+    void createSettings(GlobalSettings settings);
 public slots:
-    void saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alarms);
+    void saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alarms, GlobalSettings settings);
 
 private:
 
     QObject* par;
 
-    bool validateLog();
     QString toLoadFormat(const QString& str);
     QString toSaveFormat(const QString& str);
 
 };
 
-#endif // SMARTTIMERLOG_H
+
