@@ -148,7 +148,7 @@ void MainWindow::tabBlinking(QString tabName, bool enable)
 {
     if (enable)
     {
-        this->showMaximized();
+        this->activateWindow();
         if (tabName=="Timers")
         {
             blinkingTimers++;

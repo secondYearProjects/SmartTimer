@@ -92,7 +92,7 @@ void smartTimerLog::runLogger()
     QString alarmFormat;
     QString timerFormat;
     stream3 >> opacity >> alarmFormat >> timerFormat;
-    emit createSettings(GlobalSettings(opacity,alarmFormat,timerFormat));
+    emit createSettings(GlobalSettings(opacity,toLoadFormat(alarmFormat), toLoadFormat(timerFormat)));
 
 
     logFile3.close();
@@ -157,8 +157,8 @@ void smartTimerLog::saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alar
     QTextStream stream3( &logFile3 );
 
     stream3 << settings.windowOpacity << "\n";
-    stream3 << toLoadFormat(settings.alarmTimeFormat) << "\n";
-    stream3 << toLoadFormat(settings.timerTimeFormat) << "\n";
+    stream3 << toSaveFormat(settings.alarmTimeFormat) << "\n";
+    stream3 << toSaveFormat(settings.timerTimeFormat) << "\n";
 
     logFile3.close();
 }
