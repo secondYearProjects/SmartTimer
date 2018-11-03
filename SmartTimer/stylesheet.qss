@@ -187,6 +187,18 @@ QPushButton#changeButton:hover {
 }
 
 
+QPushButton#settingsButton {
+    background-color: rgb(113, 113, 113);
+    border: 0px;
+    border-radius: 15px;
+}
+QPushButton#settingsButton:hover {
+    background-color: rgb(213, 126, 76);
+    border: 0px;
+    border-radius: 15px;
+}
+
+
 QMenu {
     color: rgb(218,218,218);
     font: 15pt;

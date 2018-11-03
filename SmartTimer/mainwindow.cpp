@@ -4,6 +4,7 @@
 #include "addtimerdialog.h"
 #include "addalarmdialog.h"
 #include "alertwidget.h"
+#include "globalsettingsdialog.h"
 
 
 #include <iostream>
@@ -34,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->addTimerButton,SIGNAL(clicked()),this,SLOT(addTimer()));
     connect(ui->addAlarmButton,SIGNAL(clicked()),this,SLOT(addAlarm()));
+    connect(ui->settingsButton,SIGNAL(clicked()),this,SLOT(changeSettings()));
 
     connect(logger, SIGNAL(createTimer(int,QString)), this, SLOT(onTimeRecieved(int,QString)));
     connect(logger, SIGNAL(createAlarm(int,QString,bool)), this, SLOT(onAlarmTimeRecieved(int,QString,bool)));
@@ -85,6 +87,16 @@ void MainWindow::addAlarm()
     connect(addDial,SIGNAL(sendAlarmData(int,QString,bool)),this, SLOT(onAlarmTimeRecieved(int,QString,bool)));
 
     addDial->exec();
+}
+
+void MainWindow::changeSettings()
+{
+    GlobalSettingsDialog* dial = new GlobalSettingsDialog(this->Settings,this);
+
+    connect(dial,SIGNAL(changeSettings(GlobalSettings)),this,SLOT(onSettingsRecieved(GlobalSettings)));
+
+    dial->exec();
+
 }
 
 void MainWindow::onTimeRecieved(int msecs, const QString& _name)
@@ -142,7 +154,12 @@ void MainWindow::onAlarmTimeRecieved(int msecs, const QString& _name, bool turne
 void MainWindow::onSettingsRecieved(GlobalSettings settings)
 {
     Settings = settings;
+
+    this->setWindowOpacity(Settings.windowOpacity);
 }
+
+// TODO: here
+// update settings handler
 
 void MainWindow::tabBlinking(QString tabName, bool enable)
 {

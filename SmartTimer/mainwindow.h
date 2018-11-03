@@ -35,12 +35,14 @@ public:
 public slots:
     void addTimer();
     void addAlarm();
+    void changeSettings();
     void onTimeRecieved(int msecs, const QString& _name);
     void remove(const TimerWidget* twidget);
     void remove(const alertwidget* awidget);
     void onTimerFinished();
     void onAlarmTimeRecieved(int msecs, const QString& _name, bool turnedOn);
     void onSettingsRecieved(GlobalSettings settings);
+
 
     void tabBlinking(QString tabName, bool enable);
     void alarmsTabBlink();
