@@ -177,9 +177,10 @@ void MainWindow::tabBlinking(QString tabName, bool enable)
     {
         timersBlinkTimer->stop();
 
-        ui->Timers->setProperty("blink", false);
-        this->style()->unpolish(ui->Timers);
-        this->style()->polish(ui->Timers);
+        ui->TimersBlink->setProperty("blink", false);
+        ui->TimersBlink->style()->unpolish(ui->TimersBlink);
+        ui->TimersBlink->style()->polish(ui->TimersBlink);
+        ui->TimersBlink->update();;
 
         timersBlinkState = false;
 
@@ -191,9 +192,10 @@ void MainWindow::tabBlinking(QString tabName, bool enable)
     {
         alarmsBlinkTimer->stop();
 
-        ui->Alarms->setProperty("blink", false);
-        this->style()->unpolish(ui->Alarms);
-        this->style()->polish(ui->Alarms);
+        ui->AlarmsBlink->setProperty("blink", false);
+        ui->AlarmsBlink->style()->unpolish(ui->AlarmsBlink);
+        ui->AlarmsBlink->style()->polish(ui->AlarmsBlink);
+        ui->AlarmsBlink->update();
 
         alarmsBlinkState = false;
 
@@ -204,10 +206,10 @@ void MainWindow::tabBlinking(QString tabName, bool enable)
 
 void MainWindow::alarmsTabBlink()
 {
-    ui->Alarms->setProperty("blink", !alarmsBlinkState);
-    ui->Alarms->style()->unpolish(ui->Alarms);
-    ui->Alarms->style()->polish(ui->Alarms);
-
+    ui->AlarmsBlink->setProperty("blink", !alarmsBlinkState);
+    ui->AlarmsBlink->style()->unpolish(ui->AlarmsBlink);
+    ui->AlarmsBlink->style()->polish(ui->AlarmsBlink);
+    ui->AlarmsBlink->update();
 
     alarmsBlinkState = !alarmsBlinkState;
 }
@@ -215,10 +217,10 @@ void MainWindow::alarmsTabBlink()
 void MainWindow::timersTabBlink()
 {
 
-    ui->Timers->setProperty("blink", !timersBlinkState);
-    ui->Timers->style()->unpolish(ui->Timers);
-    ui->Timers->style()->polish(ui->Timers);
-    ui->Timers->update();
+    ui->TimersBlink->setProperty("blink", !timersBlinkState);
+    ui->TimersBlink->style()->unpolish(ui->TimersBlink);
+    ui->TimersBlink->style()->polish(ui->TimersBlink);
+    ui->TimersBlink->update();
 
 
 
