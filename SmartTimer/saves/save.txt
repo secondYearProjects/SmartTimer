@@ -1,3 +1,0 @@
-1000 Timer1
-2323 Timer2
-343434 Timer3

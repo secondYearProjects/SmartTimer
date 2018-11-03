@@ -1,9 +1,9 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include "smarttimerlog.h"
 #include "timerwidget.h"
 #include "alertwidget.h"
+#include "widgetsettings.h"
 
 #include <QMainWindow>
 #include <QSettings>
@@ -20,6 +20,17 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    GlobalSettings getSettings() {return Settings; }
+
+    double getOpacity() { return Settings.windowOpacity; }
+    QString getAlarmFormat() {return Settings.alarmTimeFormat; }
+    QString getTimerFormat() {return Settings.timerTimeFormat; }
+
+    void setSettings(GlobalSettings val) { Settings = val; this->update(); }
+
+    void setOpacity(double val) { Settings.windowOpacity = val; this->update();}
+    void setAlarmFormat(QString val) {Settings.alarmTimeFormat = val; this->update();}
+    void setTimerFormat(QString val) {Settings.timerTimeFormat = val; this->update();}
 
 public slots:
     void addTimer();
@@ -29,13 +40,14 @@ public slots:
     void remove(const alertwidget* awidget);
     void onTimerFinished();
     void onAlarmTimeRecieved(int msecs, const QString& _name, bool turnedOn);
+    void onSettingsRecieved(GlobalSettings settings);
 
     void tabBlinking(QString tabName, bool enable);
     void alarmsTabBlink();
     void timersTabBlink();
 
 signals:
-    void del(QList<TimerWidget*> timers,QList<alertwidget*> alarms);
+    void del(QList<TimerWidget*> timers,QList<alertwidget*> alarms,GlobalSettings);
 private:
     Ui::MainWindow *ui;
 
@@ -59,6 +71,7 @@ private:
     QTimer *alarmsBlinkTimer;
     QTimer *timersBlinkTimer;
 
+    GlobalSettings Settings;
+
 };
 
-#endif // MAINWINDOW_H

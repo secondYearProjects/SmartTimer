@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
 
 
@@ -29,12 +30,14 @@ MainWindow::MainWindow(QWidget *parent) :
     logger = new smartTimerLog(this);
     alarmsBlinkTimer = new QTimer(this);
     timersBlinkTimer = new QTimer(this);
+    Settings = GlobalSettings(1.0,"HH:mm","HH:mm:ss");
 
     connect(ui->addTimerButton,SIGNAL(clicked()),this,SLOT(addTimer()));
     connect(ui->addAlarmButton,SIGNAL(clicked()),this,SLOT(addAlarm()));
 
     connect(logger, SIGNAL(createTimer(int,QString)), this, SLOT(onTimeRecieved(int,QString)));
     connect(logger, SIGNAL(createAlarm(int,QString,bool)), this, SLOT(onAlarmTimeRecieved(int,QString,bool)));
+    connect(logger, SIGNAL(createSettings(GlobalSettings)), this, SLOT(onSettingsRecieved(GlobalSettings)));
 
 
     connect(alarmsBlinkTimer,SIGNAL(timeout()),this,SLOT(alarmsTabBlink()));
@@ -55,11 +58,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->alarmScroll->setWidget(alarmScrollWidget);
 
     logger->runLogger();
+
+    this->setWindowOpacity(Settings.windowOpacity);
 }
 
 MainWindow::~MainWindow()
 {
-    emit del(this->timersList, this->alarmsList);
+    emit del(this->timersList, this->alarmsList, this->Settings);
 
     delete ui;
 }
@@ -134,10 +139,16 @@ void MainWindow::onAlarmTimeRecieved(int msecs, const QString& _name, bool turne
     alarmsList.append(newAlarm);
 }
 
+void MainWindow::onSettingsRecieved(GlobalSettings settings)
+{
+    Settings = settings;
+}
+
 void MainWindow::tabBlinking(QString tabName, bool enable)
 {
     if (enable)
     {
+        this->showMaximized();
         if (tabName=="Timers")
         {
             blinkingTimers++;

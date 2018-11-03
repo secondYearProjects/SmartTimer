@@ -1,6 +1,7 @@
 #include "smarttimerlog.h"
 #include "timerwidget.h"
 #include "widgetsettings.h"
+#include "widgetsettings.h"
 
 #include <iostream>
 #include <fstream>
@@ -11,10 +12,10 @@
 
 #include <QJsonDocument>
 
-smartTimerLog::smartTimerLog(QObject *parent) : QObject(parent)
+smartTimerLog::smartTimerLog(QObject *parent) : par(parent)
 {
     this->par = parent;
-    connect(par, SIGNAL(del(QList<TimerWidget*>,QList<alertwidget*>)), this, SLOT(saveLog(QList<TimerWidget*>,QList<alertwidget*>)));
+    connect(par, SIGNAL(del(QList<TimerWidget*>,QList<alertwidget*>, GlobalSettings)), this, SLOT(saveLog(QList<TimerWidget*>,QList<alertwidget*>,GlobalSettings)));
 
 }
 
@@ -27,6 +28,8 @@ void smartTimerLog::runLogger()
     int boolTmp;
 
     QFile logFile("save.txt");
+    if (!logFile.exists())
+        return;
     if (!logFile.open(QIODevice::ReadOnly))
     {
         // std::cerr << "Can't open log file." << std::endl;
@@ -50,6 +53,8 @@ void smartTimerLog::runLogger()
 
     // alarm part
     QFile logFile2("saveA.txt");
+    if (!logFile2.exists())
+        return;
     if (!logFile2.open(QIODevice::ReadOnly))
     {
         // std::cerr << "Can't open log file." << std::endl;
@@ -57,6 +62,7 @@ void smartTimerLog::runLogger()
     }
 
     QTextStream stream2( &logFile2 );
+
     while(!stream2.atEnd())
     {
         stream2 >> tim >> str >> boolTmp;
@@ -70,21 +76,29 @@ void smartTimerLog::runLogger()
 
     logFile2.close();
 
+    // global settings
+
+    QFile logFile3("saveSettings.txt");
+    if (!logFile3.exists())
+        return;
+    if (!logFile3.open(QIODevice::ReadOnly))
+    {
+        // std::cerr << "Can't open log file." << std::endl;
+        return;
+    }
+
+    QTextStream stream3( &logFile3 );
+    double opacity;
+    QString alarmFormat;
+    QString timerFormat;
+    stream3 >> opacity >> alarmFormat >> timerFormat;
+    emit createSettings(GlobalSettings(opacity,alarmFormat,timerFormat));
 
 
-    QString alarms = "alarms.json";
-
-
-
-
-
-
-
-
-
+    logFile3.close();
 }
 
-void smartTimerLog::saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alarms)
+void smartTimerLog::saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alarms, GlobalSettings settings)
 {
 
     int tim;
@@ -131,13 +145,24 @@ void smartTimerLog::saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alar
     }
 
     logFile2.close();
+
+
+    // Global settings
+    QFile logFile3("saveSettings.txt");
+    if (!logFile3.open(QIODevice::WriteOnly))
+    {
+        std::cerr << "Log file can't be created.";
+    }
+
+    QTextStream stream3( &logFile3 );
+
+    stream3 << settings.windowOpacity << "\n";
+    stream3 << toLoadFormat(settings.alarmTimeFormat) << "\n";
+    stream3 << toLoadFormat(settings.timerTimeFormat) << "\n";
+
+    logFile3.close();
 }
 
-// TODO: validator
-bool smartTimerLog::validateLog()
-{
-    return true;
-}
 
 QString smartTimerLog::toLoadFormat(const QString &str)
 {
