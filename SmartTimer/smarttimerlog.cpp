@@ -119,7 +119,7 @@ void smartTimerLog::saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alar
         tim = timer->getTimerDuration();
         str = timer->getTimerName();
         str = toSaveFormat(str);
-        stream << tim << " " << str << "\n";
+        stream << tim << " " << str << " \n";
     }
 
 
@@ -141,7 +141,7 @@ void smartTimerLog::saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alar
         turned = alarm->getState();
 
         str = toSaveFormat(str);
-        stream2 << tim << " " << str << " " << static_cast<int>(turned) << "\n";
+        stream2 << tim << " " << str << " " << static_cast<int>(turned) << " \n";
     }
 
     logFile2.close();
@@ -156,9 +156,9 @@ void smartTimerLog::saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alar
 
     QTextStream stream3( &logFile3 );
 
-    stream3 << settings.windowOpacity << "\n";
-    stream3 << toSaveFormat(settings.alarmTimeFormat) << "\n";
-    stream3 << toSaveFormat(settings.timerTimeFormat) << "\n";
+    stream3 << settings.windowOpacity << " \n";
+    stream3 << toSaveFormat(settings.alarmTimeFormat) << " \n";
+    stream3 << toSaveFormat(settings.timerTimeFormat) << " \n";
 
     logFile3.close();
 }

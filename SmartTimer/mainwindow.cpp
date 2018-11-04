@@ -166,6 +166,7 @@ void MainWindow::tabBlinking(QString tabName, bool enable)
     if (enable)
     {
         this->activateWindow();
+        this->raise();
         if (tabName=="Timers")
         {
             blinkingTimers++;

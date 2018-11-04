@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>420</width>
-    <height>465</height>
+    <width>500</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>420</width>
-    <height>0</height>
+    <height>300</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>420</width>
+    <width>16777215</width>
     <height>16777215</height>
    </size>
   </property>
@@ -30,8 +30,14 @@
     <normaloff>:/icons/change-icon.png</normaloff>:/icons/change-icon.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetMinimumSize</enum>
+   </property>
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetNoConstraint</enum>
+     </property>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
@@ -143,13 +149,25 @@
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QPushButton" name="confirmButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
          <property name="text">
-          <string>Confirtm</string>
+          <string>Confirm</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="cancelButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
          <property name="text">
           <string>Cancel</string>
          </property>
