@@ -156,6 +156,8 @@ void MainWindow::onSettingsRecieved(GlobalSettings settings)
     Settings = settings;
 
     this->setWindowOpacity(Settings.windowOpacity);
+
+    updateWidgets();
 }
 
 // TODO: here
@@ -254,4 +256,12 @@ void MainWindow::timersTabBlink()
 
 
     timersBlinkState = !timersBlinkState;
+}
+
+void MainWindow::updateWidgets()
+{
+    for (auto timer:timersList)
+    {
+        timer->updateWidget(Settings);
+    }
 }

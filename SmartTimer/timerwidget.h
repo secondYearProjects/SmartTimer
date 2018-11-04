@@ -5,6 +5,7 @@
 
 #include "widgetsettings.h"
 
+
 #include <QWidget>
 #include <QTimer>
 #include <QTime>
@@ -35,6 +36,8 @@ public:
     void setTimerName(const QString &_name);
     void setTimerDuration(int _duration);
 
+    void updateWidget(GlobalSettings _globalSettings);
+
 public slots:
     void startTimer();
     void resetTimer();
@@ -60,6 +63,7 @@ private:
     static int MAXID;
 
     WidgetSettings Settings;
+    GlobalSettings globalSettings;
 
     int id;
     QTimer *timer;
@@ -76,6 +80,8 @@ private:
     Ui::TimerWidget *ui;
 
     std::string secondsToTimeString(int val);
+
+
 };
 
 

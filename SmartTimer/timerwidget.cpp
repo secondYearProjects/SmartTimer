@@ -7,6 +7,7 @@
 #include <string>
 
 #include <QFile>
+#include <QTextFormat>
 
 int TimerWidget::MAXID = 0;
 
@@ -101,6 +102,14 @@ void TimerWidget::setTimerDuration(int _duration)
 
     ui->intervalTime->setText(QString::fromStdString(secondsToTimeString(Settings.msecs/1000)));
     ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(Settings.msecs/1000)));
+}
+
+void TimerWidget::updateWidget(GlobalSettings _globalSettings)
+{
+    globalSettings = _globalSettings;
+    ui->intervalTime->setText((QTime::fromMSecsSinceStartOfDay(Settings.msecs)).toString(globalSettings.timerTimeFormat));
+
+    //ui->timeLeft->setText((QTime::fromMSecsSinceStartOfDay(Settings.msecs)).toString(globalSettings.timerTimeFormat));
 }
 
 void TimerWidget::resetTimer()
