@@ -16,6 +16,12 @@
     <height>300</height>
    </size>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>420</width>
+    <height>300</height>
+   </size>
+  </property>
   <property name="font">
    <font>
     <pointsize>15</pointsize>

@@ -10,6 +10,12 @@
     <height>800</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="minimumSize">
    <size>
     <width>420</width>
@@ -19,7 +25,7 @@
   <property name="maximumSize">
    <size>
     <width>420</width>
-    <height>800</height>
+    <height>801</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -42,25 +48,25 @@
    <property name="sizePolicy">
     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
      <horstretch>0</horstretch>
-     <verstretch>1</verstretch>
+     <verstretch>0</verstretch>
     </sizepolicy>
    </property>
    <property name="minimumSize">
     <size>
      <width>420</width>
-     <height>900</height>
+     <height>800</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
      <width>420</width>
-     <height>1400</height>
+     <height>800</height>
     </size>
    </property>
    <property name="sizeIncrement">
     <size>
      <width>0</width>
-     <height>1</height>
+     <height>0</height>
     </size>
    </property>
    <property name="styleSheet">
@@ -218,15 +224,21 @@
      <widget class="QTabWidget" name="SmartTimerTabs">
       <property name="minimumSize">
        <size>
-        <width>0</width>
+        <width>420</width>
         <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>420</width>
+        <height>16777215</height>
        </size>
       </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Timers">
        <property name="sizePolicy">
