@@ -74,7 +74,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::addTimer()
 {
-    auto *addDial = new addTimerDialog();
+    auto *addDial = new addTimerDialog(this);
     connect(addDial,SIGNAL(sendTimerData(int,QString)),this, SLOT(onTimeRecieved(int,QString)));
 
 
@@ -83,7 +83,7 @@ void MainWindow::addTimer()
 
 void MainWindow::addAlarm()
 {
-    auto *addDial = new addAlarmDialog();
+    auto *addDial = new addAlarmDialog(this);
     connect(addDial,SIGNAL(sendAlarmData(int,QString,bool)),this, SLOT(onAlarmTimeRecieved(int,QString,bool)));
 
     addDial->exec();
