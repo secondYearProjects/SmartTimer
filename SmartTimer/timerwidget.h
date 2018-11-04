@@ -3,6 +3,7 @@
 #ifndef TIMERWIDGET_H
 #define TIMERWIDGET_H
 
+#include "widgetsettings.h"
 
 #include <QWidget>
 #include <QTimer>
@@ -21,7 +22,7 @@ class TimerWidget : public QWidget
     Q_OBJECT
 
 public:    
-    explicit TimerWidget(int _interval, const QString &_name, QWidget *parent = nullptr);
+    explicit TimerWidget(WidgetSettings settings, QWidget *parent = nullptr);
     ~TimerWidget();
 
     int getID() { return id; }
@@ -58,12 +59,14 @@ signals:
 private:
     static int MAXID;
 
+    WidgetSettings Settings;
+
     int id;
     QTimer *timer;
     QTimer *tickTimer;
     QTimer *blinkTimer;
-    QString name;
-    int duration;
+    //QString name;
+    //int duration;
     int timeLeft;
     bool blinky;
 

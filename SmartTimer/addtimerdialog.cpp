@@ -44,7 +44,7 @@ void addTimerDialog::returnAndClose()
 
     QString timerName = ui->timerName->text();
 
-    emit this->sendTimerData(elpasedTime, timerName);
+    emit this->sendTimerData(WidgetSettings(elpasedTime, timerName));
 
     this->close();
 }

@@ -17,8 +17,8 @@ public:
     void runLogger();
 
 signals:
-    void createTimer(int duration, const QString& timerName);
-    void createAlarm(int msecs, const QString &alarmName, bool turnedOn);
+    void createTimer(WidgetSettings settings);
+    void createAlarm(WidgetSettings settings);
     void createSettings(GlobalSettings settings);
 public slots:
     void saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alarms, GlobalSettings settings);

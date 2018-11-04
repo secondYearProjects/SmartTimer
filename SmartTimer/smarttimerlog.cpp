@@ -44,7 +44,7 @@ void smartTimerLog::runLogger()
         if (str != "")
         {
             str = toLoadFormat(str);
-            emit createTimer(tim,str);
+            emit createTimer(WidgetSettings(tim,str));
         }
     }
 
@@ -70,7 +70,8 @@ void smartTimerLog::runLogger()
         if (str != "")
         {
             str = toLoadFormat(str);
-            emit createAlarm(tim,str,turned);
+
+            emit createAlarm(WidgetSettings(tim,str,turned));
         }
     }
 

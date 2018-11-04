@@ -36,11 +36,11 @@ public slots:
     void addTimer();
     void addAlarm();
     void changeSettings();
-    void onTimeRecieved(int msecs, const QString& _name);
+    void onTimeRecieved(WidgetSettings settings);
     void remove(const TimerWidget* twidget);
     void remove(const alertwidget* awidget);
     void onTimerFinished();
-    void onAlarmTimeRecieved(int msecs, const QString& _name, bool turnedOn);
+    void onAlarmTimeRecieved(WidgetSettings settings);
     void onSettingsRecieved(GlobalSettings settings);
 
 

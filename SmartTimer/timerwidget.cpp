@@ -10,11 +10,13 @@
 
 int TimerWidget::MAXID = 0;
 
-TimerWidget::TimerWidget( int _interval, const QString& _name, QWidget *parent) :
+TimerWidget::TimerWidget(WidgetSettings settings, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TimerWidget)
 {
     ui->setupUi(this);
+
+    Settings = settings;
 
     QFile file(":/stylesheet.qss");
     if(file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -27,23 +29,21 @@ TimerWidget::TimerWidget( int _interval, const QString& _name, QWidget *parent) 
     tickTimer = new QTimer(this);
     blinkTimer = new QTimer(this);
 
-    duration = _interval;
     timeLeft = 0;
-    name = _name;
 
     blinky = false;
 
     playlist = new QMediaPlaylist();
-    playlist->addMedia(QUrl("qrc:/sounds/sound1.wav"));
+    playlist->addMedia(QUrl(Settings.signalPath));
     playlist->setPlaybackMode(QMediaPlaylist::Loop);
 
     player = new QMediaPlayer();
     player->setPlaylist(playlist);
 
 
-    ui->intervalTime->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
-    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
-    ui->TimerName->setText(_name);
+    ui->intervalTime->setText(QString::fromStdString(secondsToTimeString(Settings.msecs/1000)));
+    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(Settings.msecs/1000)));
+    ui->TimerName->setText(Settings.name);
 
     connect(timer,SIGNAL(timeout()),this, SLOT(timerExecuted()));
     connect(tickTimer,SIGNAL(timeout()),this,SLOT(updateLeftTime()));
@@ -74,23 +74,23 @@ TimerWidget::~TimerWidget()
 
 QString TimerWidget::getTimerName()
 {
-    return name;
+    return Settings.name;
 }
 
 int TimerWidget::getTimerDuration()
 {
-    return duration;
+    return Settings.msecs;
 }
 
 void TimerWidget::setTimerName(const QString &_name)
 {
-    name = _name;
+    Settings.name = _name;
     ui->TimerName->setText(_name);
 }
 
 void TimerWidget::setTimerDuration(int _duration)
 {
-    duration = _duration;
+    Settings.msecs = _duration;
 
     timer->stop();
     tickTimer->stop();
@@ -99,8 +99,8 @@ void TimerWidget::setTimerDuration(int _duration)
     ui->editButton->setEnabled(true);
     ui->restartButton->setDisabled(true);
 
-    ui->intervalTime->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
-    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
+    ui->intervalTime->setText(QString::fromStdString(secondsToTimeString(Settings.msecs/1000)));
+    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(Settings.msecs/1000)));
 }
 
 void TimerWidget::resetTimer()
@@ -114,7 +114,7 @@ void TimerWidget::resetTimer()
         player->stop();
 
     timeLeft = 0;
-    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(duration/1000)));
+    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(Settings.msecs/1000)));
 
     ui->restartButton->setDisabled(true);
     ui->startButton->setEnabled(true);
@@ -197,9 +197,9 @@ void TimerWidget::closeTimer()
 
 void TimerWidget::startTimer()
 {
-    timeLeft = duration/1000-1;
+    timeLeft = Settings.msecs/1000-1;
     tickTimer->start(1000);
-    timer->start(duration);
+    timer->start(Settings.msecs);
     ui->startButton->setDisabled(true);
     ui->editButton->setDisabled(true);
     ui->restartButton->setEnabled(true);

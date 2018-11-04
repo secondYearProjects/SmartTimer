@@ -223,6 +223,12 @@ QLabel {
     font: bold 15pt;
 }
 
+
+QLabel#intervalTime {
+    color: rgb(220,220,220);
+    font: bold 14pt;
+}
+
 QSlider::groove:horizontal {
     border: 1px solid rgb(153,153,153);
     height: 2px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */

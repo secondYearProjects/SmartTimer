@@ -32,7 +32,7 @@ ChangeAlarmDialog::~ChangeAlarmDialog()
 
 void ChangeAlarmDialog::changeAlarm()
 {
-    emit changeAlarmSignal(getMsecs(ui->time->time()), ui->alarmName->text());
+    emit changeAlarmSignal(WidgetSettings(getMsecs(ui->time->time()), ui->alarmName->text()));
 
     this->close();
 }

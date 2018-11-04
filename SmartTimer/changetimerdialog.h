@@ -2,6 +2,7 @@
 #define CHANGETIMERDIALOG_H
 
 #include "timerwidget.h"
+#include "widgetsettings.h"
 
 #include <QDialog>
 

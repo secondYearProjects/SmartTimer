@@ -1,6 +1,8 @@
 #ifndef ADDALARMDIALOG_H
 #define ADDALARMDIALOG_H
 
+#include "widgetsettings.h"
+
 #include <QDialog>
 
 namespace Ui {
@@ -17,7 +19,7 @@ public:
 public slots:
     void sendData();
 signals:
-    void sendAlarmData(int,const QString&,bool);
+    void sendAlarmData(WidgetSettings);
 private:
     Ui::addAlarmDialog *ui;
 };

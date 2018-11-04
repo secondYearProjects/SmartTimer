@@ -37,8 +37,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->addAlarmButton,SIGNAL(clicked()),this,SLOT(addAlarm()));
     connect(ui->settingsButton,SIGNAL(clicked()),this,SLOT(changeSettings()));
 
-    connect(logger, SIGNAL(createTimer(int,QString)), this, SLOT(onTimeRecieved(int,QString)));
-    connect(logger, SIGNAL(createAlarm(int,QString,bool)), this, SLOT(onAlarmTimeRecieved(int,QString,bool)));
+    connect(logger, SIGNAL(createTimer(WidgetSettings)), this, SLOT(onTimeRecieved(WidgetSettings)));
+    connect(logger, SIGNAL(createAlarm(WidgetSettings)), this, SLOT(onAlarmTimeRecieved(WidgetSettings)));
     connect(logger, SIGNAL(createSettings(GlobalSettings)), this, SLOT(onSettingsRecieved(GlobalSettings)));
 
 
@@ -75,7 +75,7 @@ MainWindow::~MainWindow()
 void MainWindow::addTimer()
 {
     auto *addDial = new addTimerDialog(this);
-    connect(addDial,SIGNAL(sendTimerData(int,QString)),this, SLOT(onTimeRecieved(int,QString)));
+    connect(addDial,SIGNAL(sendTimerData(WidgetSettings)),this, SLOT(onTimeRecieved(WidgetSettings)));
 
 
     addDial->exec();
@@ -84,7 +84,7 @@ void MainWindow::addTimer()
 void MainWindow::addAlarm()
 {
     auto *addDial = new addAlarmDialog(this);
-    connect(addDial,SIGNAL(sendAlarmData(int,QString,bool)),this, SLOT(onAlarmTimeRecieved(int,QString,bool)));
+    connect(addDial,SIGNAL(sendAlarmData(WidgetSettings)),this, SLOT(onAlarmTimeRecieved(WidgetSettings)));
 
     addDial->exec();
 }
@@ -99,9 +99,9 @@ void MainWindow::changeSettings()
 
 }
 
-void MainWindow::onTimeRecieved(int msecs, const QString& _name)
+void MainWindow::onTimeRecieved(WidgetSettings settings)
 {
-    auto *newTimer = new TimerWidget(msecs, _name, this);
+    auto *newTimer = new TimerWidget(WidgetSettings(settings.msecs, settings.name), this);
 
     timerScrollWidget->layout()->addWidget(newTimer);
 
@@ -138,9 +138,9 @@ void MainWindow::onTimerFinished()
 #endif
 }
 
-void MainWindow::onAlarmTimeRecieved(int msecs, const QString& _name, bool turnedOn)
+void MainWindow::onAlarmTimeRecieved(WidgetSettings settings)
 {
-    auto *newAlarm = new alertwidget(msecs, _name, turnedOn, this);
+    auto *newAlarm = new alertwidget(settings, this);
 
     alarmScrollWidget->layout()->addWidget(newAlarm);
 
