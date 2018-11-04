@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>438</width>
-    <height>220</height>
+    <height>250</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>438</width>
-    <height>220</height>
+    <height>250</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>438</width>
-    <height>220</height>
+    <width>442</width>
+    <height>250</height>
    </size>
   </property>
   <property name="palette">
@@ -481,7 +481,10 @@ QPushButton:hover:enabled {
 	background-color: rgb(213, 126, 76);
 }</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
+     <layout class="QGridLayout" name="gridLayout" rowstretch="0,1,0,0,0,0" rowminimumheight="0,0,0,0,0,0">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
       <property name="leftMargin">
        <number>2</number>
       </property>
@@ -493,6 +496,9 @@ QPushButton:hover:enabled {
       </property>
       <item row="2" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetFixedSize</enum>
+        </property>
         <item>
          <widget class="QPushButton" name="restartButton">
           <property name="minimumSize">
