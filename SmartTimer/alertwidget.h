@@ -1,6 +1,8 @@
 #ifndef ALERTWIDGET_H
 #define ALERTWIDGET_H
 
+#include "widgetsettings.h"
+
 #include <QWidget>
 #include <QTime>
 #include <QTimer>
@@ -49,6 +51,8 @@ signals:
 private:
     Ui::alertwidget *ui;
 
+    WidgetSettings Settings;
+
     QTime alertTime;
     QTimer alertTick;
     QTimer blinkTimer;
@@ -61,7 +65,10 @@ private:
     QMediaPlaylist *playlist;
     QMediaPlayer *player;
 
+
+
     void mousePressEvent(QMouseEvent *e);
+
 
 };
 

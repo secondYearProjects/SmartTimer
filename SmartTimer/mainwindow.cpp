@@ -101,7 +101,7 @@ void MainWindow::changeSettings()
 
 void MainWindow::onTimeRecieved(int msecs, const QString& _name)
 {
-    auto *newTimer = new TimerWidget(msecs, _name);
+    auto *newTimer = new TimerWidget(msecs, _name, this);
 
     timerScrollWidget->layout()->addWidget(newTimer);
 
@@ -140,7 +140,7 @@ void MainWindow::onTimerFinished()
 
 void MainWindow::onAlarmTimeRecieved(int msecs, const QString& _name, bool turnedOn)
 {
-    auto *newAlarm = new alertwidget(msecs, _name, turnedOn);
+    auto *newAlarm = new alertwidget(msecs, _name, turnedOn, this);
 
     alarmScrollWidget->layout()->addWidget(newAlarm);
 
@@ -209,7 +209,7 @@ void MainWindow::tabBlinking(QString tabName, bool enable)
         ui->TimersBlink->setProperty("blink", false);
         ui->TimersBlink->style()->unpolish(ui->TimersBlink);
         ui->TimersBlink->style()->polish(ui->TimersBlink);
-        ui->TimersBlink->update();;
+        ui->TimersBlink->update();
 
         timersBlinkState = false;
 

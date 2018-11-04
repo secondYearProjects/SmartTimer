@@ -24,7 +24,7 @@ GlobalSettingsDialog::GlobalSettingsDialog(GlobalSettings old, QWidget *parent) 
     ui->alarmFormat->setText(old.alarmTimeFormat);
     ui->TimerFormat->setText(old.timerTimeFormat);
 
-    connect(ui->cancelButton,SIGNAL(clicked()),this,SLOT(close()));
+    connect(ui->cancelButton,SIGNAL(clicked()),this,SLOT(canceled()));
     connect(ui->confirmButton,SIGNAL(clicked()),this, SLOT(confirmed()));
     connect( ui->opacitySlider,SIGNAL(valueChanged(int)),this,SLOT(opacityChanged()));
 
