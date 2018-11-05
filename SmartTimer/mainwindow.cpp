@@ -80,6 +80,7 @@ void MainWindow::addTimer()
     connect(addDial,SIGNAL(sendTimerData(WidgetSettings)),this, SLOT(onTimeRecieved(WidgetSettings)));
 
 
+    addDial->updateWidget(Settings);
     addDial->exec();
 }
 
@@ -88,6 +89,7 @@ void MainWindow::addAlarm()
     auto *addDial = new addAlarmDialog(this);
     connect(addDial,SIGNAL(sendAlarmData(WidgetSettings)),this, SLOT(onAlarmTimeRecieved(WidgetSettings)));
 
+    addDial->updateWidget(Settings);
     addDial->exec();
 }
 
@@ -111,9 +113,7 @@ void MainWindow::onTimeRecieved(WidgetSettings settings)
     connect(newTimer, SIGNAL(timerFinished()), this, SLOT(onTimerFinished()));
     connect(newTimer, SIGNAL(blinkInfo(QString, bool)), this, SLOT(tabBlinking(QString,bool)));
 
-
     timersList.append(newTimer);
-
     newTimer->updateWidget(Settings);
 }
 

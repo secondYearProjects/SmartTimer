@@ -18,6 +18,7 @@ public:
     explicit ChangeAlarmDialog(alertwidget *parent = nullptr);
     ~ChangeAlarmDialog();
 
+    void updateWidget(GlobalSettings _globalSettings);
 public slots:
     void changeAlarm();
 signals:
@@ -25,6 +26,7 @@ signals:
 
 private:
     Ui::ChangeAlarmDialog *ui;
+    GlobalSettings globalSettings;
 };
 
 #endif // CHANGEALARMDIALOG_H

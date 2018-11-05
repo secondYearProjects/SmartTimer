@@ -55,7 +55,7 @@ alertwidget::alertwidget(WidgetSettings settings, QWidget *parent) :
         file.close();
     }
 
-    ui->timeLabel->setText(alertTime.toString("hh:mm"));
+    ui->timeLabel->setText(alertTime.toString(globalSettings.alarmTimeFormat));
     ui->alarmNameLabel->setText(Settings.name);
 
     ui->alertSwitch->setStatus(Settings.enabled);
@@ -136,7 +136,6 @@ void alertwidget::onTickCheck()
 
 void alertwidget::blink()
 {
-    //TODO: here
     if (blinky)
     {
         ui->widget->setStyleSheet("QWidget {"
@@ -197,6 +196,7 @@ void alertwidget::changeAlarm()
 
     connect(dial, SIGNAL(changeAlarmSignal(WidgetSettings)),this,SLOT(setAlarm(WidgetSettings)));
 
+    dial->updateWidget(globalSettings);
     dial->exec();
 }
 
@@ -220,7 +220,7 @@ void alertwidget::setAlarm(WidgetSettings settings)
 {
     Settings = settings;
 
-    ui->timeLabel->setText(QTime::fromMSecsSinceStartOfDay(Settings.msecs).toString("hh:mm"));
+    ui->timeLabel->setText(QTime::fromMSecsSinceStartOfDay(Settings.msecs).toString(globalSettings.alarmTimeFormat));
     ui->alarmNameLabel->setText(Settings.name);
 
     alertTime = QTime::fromMSecsSinceStartOfDay(Settings.msecs);

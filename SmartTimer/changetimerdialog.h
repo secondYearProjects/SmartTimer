@@ -18,12 +18,15 @@ public:
     explicit ChangeTimerDialog(TimerWidget *parent = nullptr);
     ~ChangeTimerDialog();
 
+    void updateWidget(GlobalSettings _globalSettings);
 public slots:
     void changeTimerAndQuit();
 
 private:
     Ui::ChangeTimerDialog *ui;
     TimerWidget *par;
+
+    GlobalSettings globalSettings;
 };
 
 #endif // CHANGETIMERDIALOG_H

@@ -41,9 +41,8 @@ TimerWidget::TimerWidget(WidgetSettings settings, QWidget *parent) :
     player = new QMediaPlayer();
     player->setPlaylist(playlist);
 
-
-    ui->intervalTime->setText(QString::fromStdString(secondsToTimeString(Settings.msecs/1000)));
-    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(Settings.msecs/1000)));
+    ui->intervalTime->setText(QTime::fromMSecsSinceStartOfDay(Settings.msecs).toString(globalSettings.timerTimeFormat));
+    ui->timeLeft->setText(QTime::fromMSecsSinceStartOfDay(Settings.msecs).toString(globalSettings.timerTimeFormat));
     ui->TimerName->setText(Settings.name);
 
     connect(timer,SIGNAL(timeout()),this, SLOT(timerExecuted()));
@@ -100,15 +99,15 @@ void TimerWidget::setTimerDuration(int _duration)
     ui->editButton->setEnabled(true);
     ui->restartButton->setDisabled(true);
 
-    ui->intervalTime->setText(QString::fromStdString(secondsToTimeString(Settings.msecs/1000)));
-    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(Settings.msecs/1000)));
+    ui->intervalTime->setText(QTime::fromMSecsSinceStartOfDay(Settings.msecs).toString(globalSettings.timerTimeFormat));
+    ui->timeLeft->setText(QTime::fromMSecsSinceStartOfDay(Settings.msecs).toString(globalSettings.timerTimeFormat));
 }
 
 void TimerWidget::updateWidget(GlobalSettings _globalSettings)
 {
     globalSettings = _globalSettings;
     ui->intervalTime->setText((QTime::fromMSecsSinceStartOfDay(Settings.msecs)).toString(globalSettings.timerTimeFormat));
-
+    ui->timeLeft->setText((QTime::fromMSecsSinceStartOfDay(Settings.msecs)).toString(globalSettings.timerTimeFormat));
 
 }
 
@@ -123,7 +122,7 @@ void TimerWidget::resetTimer()
         player->stop();
 
     timeLeft = 0;
-    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(Settings.msecs/1000)));
+    ui->timeLeft->setText(QTime::fromMSecsSinceStartOfDay(Settings.msecs).toString(globalSettings.timerTimeFormat));
 
     ui->restartButton->setDisabled(true);
     ui->startButton->setEnabled(true);
@@ -142,8 +141,7 @@ void TimerWidget::timerExecuted()
 
     timer->stop();
     tickTimer->stop();
-
-    ui->timeLeft->setText(QString::fromStdString(secondsToTimeString(0)));
+    ui->timeLeft->setText(QTime::fromMSecsSinceStartOfDay(0).toString(globalSettings.timerTimeFormat));
 
     emit timerFinished();
     emit blinkInfo("Timers",true);
@@ -153,8 +151,7 @@ void TimerWidget::updateLeftTime()
 {
     if(timeLeft >= 0)
     {
-        std::string time = secondsToTimeString(timeLeft);
-        ui->timeLeft->setText(QString::fromStdString(time));
+        ui->timeLeft->setText(QTime::fromMSecsSinceStartOfDay(timeLeft*1000).toString(globalSettings.timerTimeFormat));
 
         timeLeft--;
     }
@@ -164,6 +161,7 @@ void TimerWidget::changeTimer()
 {
     auto *changeDial = new ChangeTimerDialog(this);
 
+    changeDial->updateWidget(globalSettings);
     changeDial->exec();
 }
 
@@ -213,7 +211,7 @@ void TimerWidget::startTimer()
     ui->editButton->setDisabled(true);
     ui->restartButton->setEnabled(true);
 }
-
+/*
 std::string TimerWidget::secondsToTimeString(int val)
 {
     int tmp = val/3600;
@@ -226,4 +224,4 @@ std::string TimerWidget::secondsToTimeString(int val)
     time += (tmp<10)?("0"+std::to_string(tmp)):std::to_string(tmp);
 
     return time;
-}
+}*/

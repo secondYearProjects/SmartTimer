@@ -17,6 +17,7 @@ public:
     explicit addTimerDialog(QWidget *parent = nullptr);
     ~addTimerDialog();
 
+    void updateWidget(GlobalSettings _globalSettings);
 public slots:
     void returnAndClose();
 signals:
@@ -25,6 +26,7 @@ signals:
 
 private:
     Ui::addTimerDialog *ui;
+    GlobalSettings globalSettings;
 };
 
 #endif // ADDTIMERDIALOG_H

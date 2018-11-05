@@ -16,12 +16,15 @@ class addAlarmDialog : public QDialog
 public:
     explicit addAlarmDialog(QWidget *parent = nullptr);
     ~addAlarmDialog();
+
+    void updateWidget(GlobalSettings _globalSettings);
 public slots:
     void sendData();
 signals:
     void sendAlarmData(WidgetSettings);
 private:
     Ui::addAlarmDialog *ui;
+    GlobalSettings globalSettings;
 };
 
 #endif // ADDALARMDIALOG_H
