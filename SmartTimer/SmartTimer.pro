@@ -37,7 +37,8 @@ SOURCES += \
     alertwidget.cpp \
     addalarmdialog.cpp \
     changealarmdialog.cpp \
-    globalsettingsdialog.cpp
+    globalsettingsdialog.cpp \
+    rangewidget.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -50,7 +51,8 @@ HEADERS += \
     addalarmdialog.h \
     changealarmdialog.h \
     widgetsettings.h \
-    globalsettingsdialog.h
+    globalsettingsdialog.h \
+    rangewidget.h
 
 FORMS += \
         mainwindow.ui \

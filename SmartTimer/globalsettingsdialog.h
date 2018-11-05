@@ -20,6 +20,7 @@ public slots:
     void confirmed();
     void canceled();
     void opacityChanged();
+    void rangeChanged(int min,int max);
 signals:
     void changeSettings(GlobalSettings settings);
 

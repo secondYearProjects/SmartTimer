@@ -1,8 +1,10 @@
 #include "globalsettingsdialog.h"
 #include "ui_globalsettingsdialog.h"
+#include "rangewidget.h"
 
 #include <QFile>
 #include <QSlider>
+#include <QHBoxLayout>
 
 GlobalSettingsDialog::GlobalSettingsDialog(GlobalSettings old, QWidget *parent) :
     QDialog(parent),
@@ -23,6 +25,12 @@ GlobalSettingsDialog::GlobalSettingsDialog(GlobalSettings old, QWidget *parent) 
     ui->SliderValue->setText(QString::number(static_cast<int>(old.windowOpacity*100))+"%");
     ui->alarmFormat->setText(old.alarmTimeFormat);
     ui->TimerFormat->setText(old.timerTimeFormat);
+
+    RangeWidget *DDrange = new RangeWidget(Qt::Horizontal);
+    ui->RangeLayout->addWidget(DDrange);
+
+    connect(DDrange,SIGNAL(rangeChanged(int , int )),this,SLOT(rangeChanged(int,int)));
+
 
     connect(ui->cancelButton,SIGNAL(clicked()),this,SLOT(canceled()));
     connect(ui->confirmButton,SIGNAL(clicked()),this, SLOT(confirmed()));
@@ -55,4 +63,9 @@ void GlobalSettingsDialog::opacityChanged()
     ui->SliderValue->setText(QString::number(static_cast<int>(newSettings.windowOpacity*100))+"%");
 
     emit changeSettings(newSettings);
+}
+
+void GlobalSettingsDialog::rangeChanged(int min, int max)
+{
+    ui->RangeValue->setText(QString::number(min)+" : "+QString::number(max));
 }
