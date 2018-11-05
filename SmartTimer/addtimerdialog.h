@@ -1,6 +1,8 @@
 #ifndef ADDTIMERDIALOG_H
 #define ADDTIMERDIALOG_H
 
+#include "widgetsettings.h"
+
 #include <QDialog>
 
 namespace Ui {
@@ -15,14 +17,16 @@ public:
     explicit addTimerDialog(QWidget *parent = nullptr);
     ~addTimerDialog();
 
+    void updateWidget(GlobalSettings _globalSettings);
 public slots:
     void returnAndClose();
 signals:
-    void sendTimerData(int msecs, const QString& _name);
+    void sendTimerData(WidgetSettings settings);
 
 
 private:
     Ui::addTimerDialog *ui;
+    GlobalSettings globalSettings;
 };
 
 #endif // ADDTIMERDIALOG_H

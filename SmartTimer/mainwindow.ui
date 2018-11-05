@@ -10,6 +10,12 @@
     <height>800</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="minimumSize">
    <size>
     <width>420</width>
@@ -19,7 +25,7 @@
   <property name="maximumSize">
    <size>
     <width>420</width>
-    <height>800</height>
+    <height>801</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -39,6 +45,12 @@
    </size>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="minimumSize">
     <size>
      <width>420</width>
@@ -51,13 +63,19 @@
      <height>800</height>
     </size>
    </property>
-   <property name="styleSheet">
-    <string notr="true">QWidget[blink=&quot;true&quot;] {
-        background-color: rgba(213, 126, 76, 208);
-        border: 0px;
-}</string>
+   <property name="sizeIncrement">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
    </property>
-   <layout class="QGridLayout" name="gridLayout_3">
+   <property name="styleSheet">
+    <string notr="true">*[blink=&quot;true&quot;] {
+        background-color: rgba(213, 126, 76, 208);
+}
+</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,1">
     <property name="leftMargin">
      <number>0</number>
     </property>
@@ -72,6 +90,9 @@
     </property>
     <item row="0" column="1">
      <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <property name="bottomMargin">
+       <number>5</number>
+      </property>
       <item>
        <spacer name="horizontalSpacer_5">
         <property name="orientation">
@@ -203,8 +224,14 @@
      <widget class="QTabWidget" name="SmartTimerTabs">
       <property name="minimumSize">
        <size>
-        <width>0</width>
+        <width>420</width>
         <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>420</width>
+        <height>16777215</height>
        </size>
       </property>
       <property name="styleSheet">
@@ -214,6 +241,12 @@
        <number>0</number>
       </property>
       <widget class="QWidget" name="Timers">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>1</verstretch>
+        </sizepolicy>
+       </property>
        <property name="minimumSize">
         <size>
          <width>420</width>
@@ -336,6 +369,12 @@
        </widget>
       </widget>
       <widget class="QWidget" name="Alarms">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>1</verstretch>
+        </sizepolicy>
+       </property>
        <property name="minimumSize">
         <size>
          <width>420</width>

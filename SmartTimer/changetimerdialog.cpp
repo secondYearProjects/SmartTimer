@@ -38,6 +38,13 @@ ChangeTimerDialog::~ChangeTimerDialog()
     delete ui;
 }
 
+void ChangeTimerDialog::updateWidget(GlobalSettings _globalSettings)
+{
+    globalSettings = _globalSettings;
+
+    ui->interval->setDisplayFormat(globalSettings.timerTimeFormat);
+}
+
 void ChangeTimerDialog::changeTimerAndQuit()
 {
     int elpasedTime = ui->interval->time().hour()*3600*1000+

@@ -1,6 +1,8 @@
 #ifndef ALERTWIDGET_H
 #define ALERTWIDGET_H
 
+#include "widgetsettings.h"
+
 #include <QWidget>
 #include <QTime>
 #include <QTimer>
@@ -18,11 +20,11 @@ class alertwidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit alertwidget(int msecs, const QString& name, bool turnedOn = false, QWidget *parent = nullptr);
+    explicit alertwidget(WidgetSettings settings, QWidget *parent = nullptr);
     ~alertwidget();
 
-    inline bool getState() { return state; }
-    inline QString getName() {return alertName; }
+    inline bool getState() { return Settings.enabled; }
+    inline QString getName() {return Settings.name; }
     int getAlertTime();
 
 public slots:
@@ -36,7 +38,9 @@ public slots:
 
     void ShowContextMenu(const QPoint &);
 
-    void setAlarm(int,const QString&);
+    void setAlarm(WidgetSettings settings);
+
+    void updateWidget(GlobalSettings _globalSettings);
 
 signals:
     void alarmFinished();
@@ -46,22 +50,28 @@ signals:
 
     void blinkInfo(QString tabName, bool enable);
 
+
 private:
     Ui::alertwidget *ui;
+
+    WidgetSettings Settings;
+    GlobalSettings globalSettings;
 
     QTime alertTime;
     QTimer alertTick;
     QTimer blinkTimer;
-    QString alertName;
+    //QString alertName;
 
-    bool state;
     bool blinking;
     bool blinky;
 
     QMediaPlaylist *playlist;
     QMediaPlayer *player;
 
+
+
     void mousePressEvent(QMouseEvent *e);
+
 
 };
 

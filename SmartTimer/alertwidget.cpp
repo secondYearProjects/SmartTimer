@@ -27,18 +27,19 @@ int calculateDuration(const QTime &t)
         return 0;
 }
 
-alertwidget::alertwidget(int msecs, const QString& name, bool turnedOn, QWidget *parent) :
+alertwidget::alertwidget(WidgetSettings settings, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::alertwidget)
 {
-    alertName = name;
-    alertTime = QTime::fromMSecsSinceStartOfDay(msecs);
-    state = turnedOn;
+    Settings = settings;
+
+    alertTime = QTime::fromMSecsSinceStartOfDay(Settings.msecs);
+
     blinking = false;
     blinky=false;
 
     playlist = new QMediaPlaylist();
-    playlist->addMedia(QUrl("qrc:/sounds/sound1.wav"));
+    playlist->addMedia(QUrl(Settings.signalPath));
     playlist->setPlaybackMode(QMediaPlaylist::Loop);
 
     player = new QMediaPlayer();
@@ -54,10 +55,10 @@ alertwidget::alertwidget(int msecs, const QString& name, bool turnedOn, QWidget 
         file.close();
     }
 
-    ui->timeLabel->setText(alertTime.toString("hh:mm"));
-    ui->alarmNameLabel->setText(alertName);
+    ui->timeLabel->setText(alertTime.toString(globalSettings.alarmTimeFormat));
+    ui->alarmNameLabel->setText(Settings.name);
 
-    ui->alertSwitch->setStatus(state);
+    ui->alertSwitch->setStatus(Settings.enabled);
 
     ui->stopButton->hide();
 
@@ -67,7 +68,7 @@ alertwidget::alertwidget(int msecs, const QString& name, bool turnedOn, QWidget 
     connect(ui->stopButton, SIGNAL(clicked()), this, SLOT(stopBlinking()));
 
 
-    if (state)
+    if (Settings.enabled)
     {
         std::cout << calculateDuration(alertTime) << " "
                   << QTime::currentTime().hour() <<":" << QTime::currentTime().minute() << std::endl;
@@ -97,7 +98,7 @@ int alertwidget::getAlertTime()
 
 void alertwidget::statusChanged(bool stat)
 {
-    state = stat;
+    Settings.enabled = stat;
     if (stat)
     {
 
@@ -135,7 +136,6 @@ void alertwidget::onTickCheck()
 
 void alertwidget::blink()
 {
-    //TODO: here
     if (blinky)
     {
         ui->widget->setStyleSheet("QWidget {"
@@ -166,7 +166,7 @@ void alertwidget::stopBlinking()
     ui->widget->setStyleSheet("QWidget { background-color: rgb(113,113,113); }");
     player->stop();
     ui->stopButton->hide();
-    if (state)
+    if (Settings.enabled)
     {
         std::cout << calculateDuration(alertTime) << " "
                   << QTime::currentTime().hour() <<":" << QTime::currentTime().minute() << std::endl;
@@ -194,8 +194,9 @@ void alertwidget::changeAlarm()
 {
     ChangeAlarmDialog *dial = new ChangeAlarmDialog(this);
 
-    connect(dial, SIGNAL(changeAlarmSignal(int,QString)),this,SLOT(setAlarm(int,QString)));
+    connect(dial, SIGNAL(changeAlarmSignal(WidgetSettings)),this,SLOT(setAlarm(WidgetSettings)));
 
+    dial->updateWidget(globalSettings);
     dial->exec();
 }
 
@@ -215,17 +216,27 @@ void alertwidget::ShowContextMenu(const QPoint &pos)
 
 }
 
-void alertwidget::setAlarm(int msecs, const QString & _name)
+void alertwidget::setAlarm(WidgetSettings settings)
 {
-    ui->timeLabel->setText(QTime::fromMSecsSinceStartOfDay(msecs).toString("hh:mm"));
-    ui->alarmNameLabel->setText(_name);
+    Settings = settings;
 
-    alertTime = QTime::fromMSecsSinceStartOfDay(msecs);
-    alertName = _name;
+    ui->timeLabel->setText(QTime::fromMSecsSinceStartOfDay(Settings.msecs).toString(globalSettings.alarmTimeFormat));
+    ui->alarmNameLabel->setText(Settings.name);
+
+    alertTime = QTime::fromMSecsSinceStartOfDay(Settings.msecs);
+
 
     statusChanged(true);
 
 }
+
+void alertwidget::updateWidget(GlobalSettings _globalSettings)
+{
+    globalSettings = _globalSettings;
+    ui->timeLabel->setText((QTime::fromMSecsSinceStartOfDay(Settings.msecs)).toString(globalSettings.alarmTimeFormat));
+
+}
+
 
 void alertwidget::mousePressEvent(QMouseEvent *e)
 {

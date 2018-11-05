@@ -37,8 +37,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->addAlarmButton,SIGNAL(clicked()),this,SLOT(addAlarm()));
     connect(ui->settingsButton,SIGNAL(clicked()),this,SLOT(changeSettings()));
 
-    connect(logger, SIGNAL(createTimer(int,QString)), this, SLOT(onTimeRecieved(int,QString)));
-    connect(logger, SIGNAL(createAlarm(int,QString,bool)), this, SLOT(onAlarmTimeRecieved(int,QString,bool)));
+    connect(logger, SIGNAL(createTimer(WidgetSettings)), this, SLOT(onTimeRecieved(WidgetSettings)));
+    connect(logger, SIGNAL(createAlarm(WidgetSettings)), this, SLOT(onAlarmTimeRecieved(WidgetSettings)));
     connect(logger, SIGNAL(createSettings(GlobalSettings)), this, SLOT(onSettingsRecieved(GlobalSettings)));
 
 
@@ -62,6 +62,8 @@ MainWindow::MainWindow(QWidget *parent) :
     logger->runLogger();
 
     this->setWindowOpacity(Settings.windowOpacity);
+
+    this->updateWidgets();
 }
 
 MainWindow::~MainWindow()
@@ -74,18 +76,20 @@ MainWindow::~MainWindow()
 
 void MainWindow::addTimer()
 {
-    auto *addDial = new addTimerDialog();
-    connect(addDial,SIGNAL(sendTimerData(int,QString)),this, SLOT(onTimeRecieved(int,QString)));
+    auto *addDial = new addTimerDialog(this);
+    connect(addDial,SIGNAL(sendTimerData(WidgetSettings)),this, SLOT(onTimeRecieved(WidgetSettings)));
 
 
+    addDial->updateWidget(Settings);
     addDial->exec();
 }
 
 void MainWindow::addAlarm()
 {
-    auto *addDial = new addAlarmDialog();
-    connect(addDial,SIGNAL(sendAlarmData(int,QString,bool)),this, SLOT(onAlarmTimeRecieved(int,QString,bool)));
+    auto *addDial = new addAlarmDialog(this);
+    connect(addDial,SIGNAL(sendAlarmData(WidgetSettings)),this, SLOT(onAlarmTimeRecieved(WidgetSettings)));
 
+    addDial->updateWidget(Settings);
     addDial->exec();
 }
 
@@ -99,9 +103,9 @@ void MainWindow::changeSettings()
 
 }
 
-void MainWindow::onTimeRecieved(int msecs, const QString& _name)
+void MainWindow::onTimeRecieved(WidgetSettings settings)
 {
-    auto *newTimer = new TimerWidget(msecs, _name);
+    auto *newTimer = new TimerWidget(WidgetSettings(settings.msecs, settings.name), this);
 
     timerScrollWidget->layout()->addWidget(newTimer);
 
@@ -109,8 +113,8 @@ void MainWindow::onTimeRecieved(int msecs, const QString& _name)
     connect(newTimer, SIGNAL(timerFinished()), this, SLOT(onTimerFinished()));
     connect(newTimer, SIGNAL(blinkInfo(QString, bool)), this, SLOT(tabBlinking(QString,bool)));
 
-
     timersList.append(newTimer);
+    newTimer->updateWidget(Settings);
 }
 
 void MainWindow::remove(const TimerWidget *twidget)
@@ -138,9 +142,9 @@ void MainWindow::onTimerFinished()
 #endif
 }
 
-void MainWindow::onAlarmTimeRecieved(int msecs, const QString& _name, bool turnedOn)
+void MainWindow::onAlarmTimeRecieved(WidgetSettings settings)
 {
-    auto *newAlarm = new alertwidget(msecs, _name, turnedOn);
+    auto *newAlarm = new alertwidget(settings, this);
 
     alarmScrollWidget->layout()->addWidget(newAlarm);
 
@@ -149,6 +153,8 @@ void MainWindow::onAlarmTimeRecieved(int msecs, const QString& _name, bool turne
 
 
     alarmsList.append(newAlarm);
+
+    newAlarm->updateWidget(Settings);
 }
 
 void MainWindow::onSettingsRecieved(GlobalSettings settings)
@@ -156,6 +162,8 @@ void MainWindow::onSettingsRecieved(GlobalSettings settings)
     Settings = settings;
 
     this->setWindowOpacity(Settings.windowOpacity);
+
+    updateWidgets();
 }
 
 // TODO: here
@@ -166,6 +174,7 @@ void MainWindow::tabBlinking(QString tabName, bool enable)
     if (enable)
     {
         this->activateWindow();
+        this->raise();
         if (tabName=="Timers")
         {
             blinkingTimers++;
@@ -208,7 +217,7 @@ void MainWindow::tabBlinking(QString tabName, bool enable)
         ui->TimersBlink->setProperty("blink", false);
         ui->TimersBlink->style()->unpolish(ui->TimersBlink);
         ui->TimersBlink->style()->polish(ui->TimersBlink);
-        ui->TimersBlink->update();;
+        ui->TimersBlink->update();
 
         timersBlinkState = false;
 
@@ -253,4 +262,17 @@ void MainWindow::timersTabBlink()
 
 
     timersBlinkState = !timersBlinkState;
+}
+
+void MainWindow::updateWidgets()
+{
+    for (auto timer:timersList)
+    {
+        timer->updateWidget(Settings);
+    }
+
+    for (auto alarm:alarmsList)
+    {
+        alarm->updateWidget(Settings);
+    }
 }

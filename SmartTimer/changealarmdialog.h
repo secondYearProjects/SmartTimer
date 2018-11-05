@@ -2,6 +2,7 @@
 #define CHANGEALARMDIALOG_H
 
 #include "alertwidget.h"
+#include "widgetsettings.h"
 
 #include <QDialog>
 
@@ -17,13 +18,15 @@ public:
     explicit ChangeAlarmDialog(alertwidget *parent = nullptr);
     ~ChangeAlarmDialog();
 
+    void updateWidget(GlobalSettings _globalSettings);
 public slots:
     void changeAlarm();
 signals:
-    void changeAlarmSignal(int, const QString &);
+    void changeAlarmSignal(WidgetSettings settings);
 
 private:
     Ui::ChangeAlarmDialog *ui;
+    GlobalSettings globalSettings;
 };
 
 #endif // CHANGEALARMDIALOG_H

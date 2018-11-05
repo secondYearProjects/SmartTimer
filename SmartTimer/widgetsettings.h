@@ -6,17 +6,17 @@
 
 
 
-class WidgetSettings
+struct WidgetSettings
 {
 public:
-    WidgetSettings (const QString &_name);
+    WidgetSettings (int _msecs=0, const QString &_name="", bool _enabled=true, const QString &_path="qrc:/sounds/sound1.wav"):
+        msecs(_msecs), name(_name), enabled(_enabled), signalPath(_path)
+    {
+    }
 
-private:
-    QString name;
     int msecs;
-
+    QString name;
     bool enabled; // Used for Alarms.
-    bool days[7]; // Used to indicate if alsrm works on some days.
 
     QString signalPath;
 

@@ -31,8 +31,14 @@ addAlarmDialog::~addAlarmDialog()
     delete ui;
 }
 
+void addAlarmDialog::updateWidget(GlobalSettings _globalSettings)
+{
+    globalSettings = _globalSettings;
+    ui->alarmTime->setDisplayFormat(globalSettings.alarmTimeFormat);
+}
+
 void addAlarmDialog::sendData()
 {
-    emit sendAlarmData(getMsecs(ui->alarmTime->time()),ui->alarmName->text(),true);
+    emit sendAlarmData(WidgetSettings(getMsecs(ui->alarmTime->time()),ui->alarmName->text(),true));
     this->close();
 }

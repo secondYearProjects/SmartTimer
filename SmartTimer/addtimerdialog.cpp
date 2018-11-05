@@ -36,6 +36,13 @@ addTimerDialog::~addTimerDialog()
     delete ui;
 }
 
+void addTimerDialog::updateWidget(GlobalSettings _globalSettings)
+{
+    globalSettings = _globalSettings;
+
+    ui->interval->setDisplayFormat(globalSettings.timerTimeFormat);
+}
+
 void addTimerDialog::returnAndClose()
 {
     int elpasedTime = ui->interval->time().hour()*3600*1000+
@@ -44,7 +51,7 @@ void addTimerDialog::returnAndClose()
 
     QString timerName = ui->timerName->text();
 
-    emit this->sendTimerData(elpasedTime, timerName);
+    emit this->sendTimerData(WidgetSettings(elpasedTime, timerName));
 
     this->close();
 }

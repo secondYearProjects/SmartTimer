@@ -30,9 +30,16 @@ ChangeAlarmDialog::~ChangeAlarmDialog()
 
 }
 
+void ChangeAlarmDialog::updateWidget(GlobalSettings _globalSettings)
+{
+    globalSettings = _globalSettings;
+
+    ui->time->setDisplayFormat(globalSettings.alarmTimeFormat);
+}
+
 void ChangeAlarmDialog::changeAlarm()
 {
-    emit changeAlarmSignal(getMsecs(ui->time->time()), ui->alarmName->text());
+    emit changeAlarmSignal(WidgetSettings(getMsecs(ui->time->time()), ui->alarmName->text()));
 
     this->close();
 }
