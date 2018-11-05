@@ -25,6 +25,8 @@ public:
 
     inline bool getState() { return Settings.enabled; }
     inline QString getName() {return Settings.name; }
+    inline WidgetSettings getSettings() const {return this->Settings; }
+
     int getAlertTime();
 
 public slots:

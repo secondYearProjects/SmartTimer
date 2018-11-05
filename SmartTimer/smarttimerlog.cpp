@@ -26,6 +26,7 @@ void smartTimerLog::runLogger()
     QString str;
     bool turned;
     int boolTmp;
+    QString signalPath;
 
     QFile logFile("save.txt");
     if (!logFile.exists())
@@ -39,12 +40,12 @@ void smartTimerLog::runLogger()
     QTextStream stream( &logFile );
     while(!stream.atEnd())
     {
-        stream >> tim >> str;
+        stream >> tim >> str >> signalPath;
 
         if (str != "")
         {
             str = toLoadFormat(str);
-            emit createTimer(WidgetSettings(tim,str));
+            emit createTimer(WidgetSettings(tim,str,true,toLoadFormat(signalPath)));
         }
     }
 
@@ -65,13 +66,13 @@ void smartTimerLog::runLogger()
 
     while(!stream2.atEnd())
     {
-        stream2 >> tim >> str >> boolTmp;
+        stream2 >> tim >> str >> boolTmp >> signalPath;
         turned = boolTmp;
         if (str != "")
         {
             str = toLoadFormat(str);
 
-            emit createAlarm(WidgetSettings(tim,str,turned));
+            emit createAlarm(WidgetSettings(tim,str,turned,toLoadFormat(signalPath)));
         }
     }
 
@@ -106,6 +107,7 @@ void smartTimerLog::saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alar
     std::string tmpstr;
     QString str;
     bool turned;
+    QString signalPath;
 
     QFile logFile("save.txt");
 
@@ -120,7 +122,8 @@ void smartTimerLog::saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alar
         tim = timer->getTimerDuration();
         str = timer->getTimerName();
         str = toSaveFormat(str);
-        stream << tim << " " << str << " \n";
+        signalPath = toSaveFormat(timer->getSettings().signalPath);
+        stream << tim << " " << str << " " << signalPath <<  " \n";
     }
 
 
@@ -140,9 +143,9 @@ void smartTimerLog::saveLog(QList<TimerWidget*> timers, QList<alertwidget*> alar
         tim = alarm->getAlertTime();
         str = alarm->getName();
         turned = alarm->getState();
-
+        signalPath = toSaveFormat(alarm->getSettings().signalPath);
         str = toSaveFormat(str);
-        stream2 << tim << " " << str << " " << static_cast<int>(turned) << " \n";
+        stream2 << tim << " " << str << " " << static_cast<int>(turned) << " " << signalPath << " \n";
     }
 
     logFile2.close();
@@ -170,7 +173,7 @@ QString smartTimerLog::toLoadFormat(const QString &str)
     if (str == "&")
         return "";
     QString res = str;
-    res.replace("_"," ");
+    res.replace("*"," ");
     return res;
 }
 
@@ -179,6 +182,6 @@ QString smartTimerLog::toSaveFormat(const QString &str)
     if (str == "")
         return "&";
     QString res = str;
-    res.replace(" ","_");
+    res.replace(" ","*");
     return res;
 }

@@ -32,6 +32,7 @@ public:
 
     QString getTimerName();
     int getTimerDuration();
+    inline WidgetSettings getSettings() const {return this->Settings; }
 
     void setTimerName(const QString &_name);
     void setTimerDuration(int _duration);
