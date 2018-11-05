@@ -230,6 +230,14 @@ void alertwidget::setAlarm(WidgetSettings settings)
 
 }
 
+void alertwidget::updateWidget(GlobalSettings _globalSettings)
+{
+    globalSettings = _globalSettings;
+    ui->timeLabel->setText((QTime::fromMSecsSinceStartOfDay(Settings.msecs)).toString(globalSettings.alarmTimeFormat));
+
+}
+
+
 void alertwidget::mousePressEvent(QMouseEvent *e)
 {
     if (e->button() == Qt::RightButton && !blinkTimer.isActive())

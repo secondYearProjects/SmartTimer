@@ -62,6 +62,8 @@ MainWindow::MainWindow(QWidget *parent) :
     logger->runLogger();
 
     this->setWindowOpacity(Settings.windowOpacity);
+
+    this->updateWidgets();
 }
 
 MainWindow::~MainWindow()
@@ -111,6 +113,8 @@ void MainWindow::onTimeRecieved(WidgetSettings settings)
 
 
     timersList.append(newTimer);
+
+    newTimer->updateWidget(Settings);
 }
 
 void MainWindow::remove(const TimerWidget *twidget)
@@ -149,6 +153,8 @@ void MainWindow::onAlarmTimeRecieved(WidgetSettings settings)
 
 
     alarmsList.append(newAlarm);
+
+    newAlarm->updateWidget(Settings);
 }
 
 void MainWindow::onSettingsRecieved(GlobalSettings settings)
@@ -263,5 +269,10 @@ void MainWindow::updateWidgets()
     for (auto timer:timersList)
     {
         timer->updateWidget(Settings);
+    }
+
+    for (auto alarm:alarmsList)
+    {
+        alarm->updateWidget(Settings);
     }
 }

@@ -109,7 +109,7 @@ void TimerWidget::updateWidget(GlobalSettings _globalSettings)
     globalSettings = _globalSettings;
     ui->intervalTime->setText((QTime::fromMSecsSinceStartOfDay(Settings.msecs)).toString(globalSettings.timerTimeFormat));
 
-    //ui->timeLeft->setText((QTime::fromMSecsSinceStartOfDay(Settings.msecs)).toString(globalSettings.timerTimeFormat));
+
 }
 
 void TimerWidget::resetTimer()

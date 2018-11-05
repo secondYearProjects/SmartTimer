@@ -40,6 +40,8 @@ public slots:
 
     void setAlarm(WidgetSettings settings);
 
+    void updateWidget(GlobalSettings _globalSettings);
+
 signals:
     void alarmFinished();
     void del(const alertwidget*);
@@ -48,10 +50,12 @@ signals:
 
     void blinkInfo(QString tabName, bool enable);
 
+
 private:
     Ui::alertwidget *ui;
 
     WidgetSettings Settings;
+    GlobalSettings globalSettings;
 
     QTime alertTime;
     QTimer alertTick;
