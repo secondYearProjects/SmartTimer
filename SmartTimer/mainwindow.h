@@ -46,7 +46,7 @@ public slots:
     void onSettingsRecieved(GlobalSettings settings);
 
 
-    void tabBlinking(QString tabName, bool enable);
+    void tabBlinking(const QString &tabName, bool enable);
     void alarmsTabBlink();
     void timersTabBlink();
 

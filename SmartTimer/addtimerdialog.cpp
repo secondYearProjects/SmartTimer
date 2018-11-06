@@ -41,7 +41,7 @@ addTimerDialog::~addTimerDialog()
 
 void addTimerDialog::updateWidget(GlobalSettings _globalSettings)
 {
-    globalSettings = _globalSettings;
+    globalSettings = std::move(_globalSettings);
 
     ui->interval->setDisplayFormat(globalSettings.timerTimeFormat);
 }

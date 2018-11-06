@@ -19,12 +19,11 @@ int calculateDuration(const QTime &t)
         int wholeDay = 3600*24*1000;
         return (wholeDay+alertMsecs-currMsecs);
     }
-    else if (currMsecs < alertMsecs)
+    if (currMsecs < alertMsecs)
     {
         return (alertMsecs-currMsecs);
     }
-    else
-        return 0;
+    return 0;
 }
 
 
@@ -32,7 +31,7 @@ alertwidget::alertwidget(WidgetSettings settings, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::alertwidget)
 {
-    Settings = settings;
+    Settings = std::move(settings);
 
     alertTime = QTime::fromMSecsSinceStartOfDay(Settings.msecs);
 
@@ -79,8 +78,8 @@ alertwidget::alertwidget(WidgetSettings settings, QWidget *parent) :
 
     this->setContextMenuPolicy(Qt::CustomContextMenu);
 
-    connect(this, SIGNAL(customContextMenuRequest(const QPoint &)),
-            this, SLOT(ShowContextMenu(const QPoint &)));
+    connect(this, SIGNAL(customContextMenuRequest(QPoint)),
+            this, SLOT(ShowContextMenu(QPoint)));
 
 }
 
@@ -195,7 +194,7 @@ void alertwidget::closeAlarm()
 
 void alertwidget::changeAlarm()
 {
-    ChangeAlarmDialog *dial = new ChangeAlarmDialog(this);
+    auto dial = new ChangeAlarmDialog(this);
 
     connect(dial, SIGNAL(changeAlarmSignal(WidgetSettings)),this,SLOT(setAlarm(WidgetSettings)));
 
@@ -221,7 +220,7 @@ void alertwidget::ShowContextMenu(const QPoint &pos)
 
 void alertwidget::setAlarm(WidgetSettings settings)
 {
-    Settings = settings;
+    Settings = std::move(settings);
 
     ui->timeLabel->setText(QTime::fromMSecsSinceStartOfDay(Settings.msecs).toString(globalSettings.alarmTimeFormat));
     ui->alarmNameLabel->setText(Settings.name);
@@ -237,7 +236,7 @@ void alertwidget::setAlarm(WidgetSettings settings)
 
 void alertwidget::updateWidget(GlobalSettings _globalSettings)
 {
-    globalSettings = _globalSettings;
+    globalSettings = std::move(_globalSettings);
     ui->timeLabel->setText((QTime::fromMSecsSinceStartOfDay(Settings.msecs)).toString(globalSettings.alarmTimeFormat));
 
 }

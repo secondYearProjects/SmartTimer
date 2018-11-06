@@ -15,7 +15,7 @@
 smartTimerLog::smartTimerLog(QObject *parent) : par(parent)
 {
     this->par = parent;
-    connect(par, SIGNAL(del(QList<TimerWidget*>,QList<alertwidget*>, GlobalSettings)), this, SLOT(saveLog(QList<TimerWidget*>,QList<alertwidget*>,GlobalSettings)));
+    connect(par, SIGNAL(del(QList<TimerWidget*>,QList<alertwidget*>,GlobalSettings)), this, SLOT(saveLog(QList<TimerWidget*>,QList<alertwidget*>,GlobalSettings)));
 
 }
 

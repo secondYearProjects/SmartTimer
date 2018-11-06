@@ -28,15 +28,14 @@ bool DDCheck(GlobalSettings globalSettings)
         {
             if (currTime>=globalSettings.DDstart && currTime <= globalSettings.DDend )
                 return false;
-            else
-                return true;
+
+            return true;
         }
         else
         {
             if (currTime>=globalSettings.DDstart || currTime <= globalSettings.DDend)
                 return false;
-            else
-                return true;
+            return true;
         }
     }
     else
