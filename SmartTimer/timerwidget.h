@@ -32,6 +32,7 @@ public:
 
     QString getTimerName();
     int getTimerDuration();
+    bool isRunning() {return this->timer->isActive(); }
     inline WidgetSettings getSettings() const {return this->Settings; }
 
     void setTimerName(const QString &_name);

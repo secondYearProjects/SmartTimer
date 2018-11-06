@@ -25,6 +25,7 @@ public:
 
     inline bool getState() { return Settings.enabled; }
     inline QString getName() {return Settings.name; }
+    bool isRunning() { return this->alertTick.isActive(); }
     inline WidgetSettings getSettings() const {return this->Settings; }
 
     int getAlertTime();
@@ -62,7 +63,7 @@ private:
     QTime alertTime;
     QTimer alertTick;
     QTimer blinkTimer;
-    //QString alertName;
+
 
     bool blinking;
     bool blinky;
