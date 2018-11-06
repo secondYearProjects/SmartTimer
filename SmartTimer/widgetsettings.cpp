@@ -19,8 +19,25 @@ int elpasedTime(QTime time)
 bool DDCheck(GlobalSettings globalSettings)
 {
     int currTime = elpasedTime(QTime::currentTime());
-    if (currTime>=globalSettings.DDstart && currTime <= globalSettings.DDend )
-        return false;
+
+    if (globalSettings.DDenabled)
+    {
+        if(globalSettings.DDstart<globalSettings.DDend)
+        {
+            if (currTime>=globalSettings.DDstart && currTime <= globalSettings.DDend )
+                return false;
+            else
+                return true;
+        }
+        else
+        {
+            if (currTime>=globalSettings.DDstart || currTime <= globalSettings.DDend)
+                return false;
+            else
+                return true;
+        }
+    }
     else
         return true;
+
 }
