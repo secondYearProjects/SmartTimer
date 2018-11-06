@@ -5,8 +5,8 @@
 void addSounds(QComboBox *soundsCombo)
 {
     soundsCombo->addItem("Standard signal", "qrc:/sounds/sound1.wav");
-    soundsCombo->addItem("Bird", "qrc:/sounds/Bird.mp3");
-    soundsCombo->addItem("Light", "qrc:/sounds/Light.mp3");
+    soundsCombo->addItem("Bird song", "qrc:/sounds/Bird.mp3");
+    soundsCombo->addItem("Light music", "qrc:/sounds/Light.mp3");
 }
 
 int elpasedTime(QTime time)
@@ -22,6 +22,8 @@ bool DDCheck(GlobalSettings globalSettings)
 
     if (globalSettings.DDenabled)
     {
+        if (globalSettings.DDstart==globalSettings.DDend)
+            return true;
         if(globalSettings.DDstart<globalSettings.DDend)
         {
             if (currTime>=globalSettings.DDstart && currTime <= globalSettings.DDend )

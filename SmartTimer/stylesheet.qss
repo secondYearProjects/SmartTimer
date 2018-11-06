@@ -142,7 +142,7 @@ QPushButton#createButton:hover, QPushButton#confirmButton:hover {
         background-color: rgb(220, 136, 86);
 }
 
-QPushButton#cancelButton:hover {
+QPushButton:hover {
         background-color: rgb(123, 123, 123);
 }
 
@@ -255,7 +255,7 @@ QSlider::handle:horizontal {
 }
 
 QComboBox {
-    padding: 0 0 0 50;
+    padding: 0 0 0 70;
     text-align: center;
     color: white;
     font: 15pt;

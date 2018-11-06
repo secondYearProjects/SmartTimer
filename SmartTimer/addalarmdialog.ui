@@ -77,13 +77,13 @@
            <widget class="QTimeEdit" name="alarmTime">
             <property name="minimumSize">
              <size>
-              <width>259</width>
+              <width>260</width>
               <height>55</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>16777215</width>
+              <width>260</width>
               <height>55</height>
              </size>
             </property>
@@ -140,6 +140,12 @@
              <size>
               <width>260</width>
               <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>260</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="font">

@@ -20,8 +20,9 @@ public slots:
     void confirmed();
     void canceled();
     void opacityChanged();
-    void rangeChanged(int min,int max);
+    //void rangeChanged(int min,int max);
     void DDenableState(bool state);
+    void restoreDefault();
 signals:
     void changeSettings(GlobalSettings settings);
 
