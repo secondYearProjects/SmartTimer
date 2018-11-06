@@ -19,9 +19,11 @@ public:
     ~ChangeTimerDialog();
 
     void updateWidget(GlobalSettings _globalSettings);
+
 public slots:
     void changeTimerAndQuit();
-
+signals:
+     void changeTimerSignal(WidgetSettings _settings);
 private:
     Ui::ChangeTimerDialog *ui;
     TimerWidget *par;

@@ -246,4 +246,36 @@ QSlider::handle:horizontal {
     border-radius: 9px;
 }
 
+QComboBox {
+    text-align: center;
+    color: white;
+    font: 15pt;
+    border-radius: 10px;
+    min-height: 50px;
+    background-color: rgb(255, 204, 157,10);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: right center;
+    width: 25px;
+    height: 25px;
+    border-radius: 2px;
+
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: rgb(213, 126, 76);
+    color: rgb(113,113,113);
+}
+
+QComboBox::down-arrow {
+
+}
+
+QComboBox QAbstractItemView {
+    text-align: center;
+    border: 1px darkgray;
+    height: 15px;
+    border-radius: 7px;
+    selection-background-color: rgb(255, 204, 157,10);
+}
 

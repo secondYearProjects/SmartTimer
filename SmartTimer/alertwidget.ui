@@ -109,6 +109,19 @@ QPushButton#stopButton:hover:enabled {
        </layout>
       </item>
       <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
        <widget class="QPushButton" name="stopButton">
         <property name="enabled">
          <bool>true</bool>
@@ -138,19 +151,6 @@ QPushButton#stopButton:hover:enabled {
        </widget>
       </item>
       <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>75</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
        <widget class="ToggleSwitch" name="alertSwitch" native="true">
         <property name="minimumSize">
          <size>
@@ -167,13 +167,13 @@ QPushButton#stopButton:hover:enabled {
        </widget>
       </item>
       <item>
-       <spacer name="horizontalSpacer_2">
+       <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>5</width>
+          <width>40</width>
           <height>20</height>
          </size>
         </property>

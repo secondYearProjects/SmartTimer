@@ -4,6 +4,9 @@
 #include <QString>
 #include <QTime>
 
+#include <QComboBox>
+
+void addSounds(QComboBox* soundsCombo);
 
 
 struct WidgetSettings

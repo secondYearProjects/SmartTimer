@@ -225,6 +225,8 @@ void alertwidget::setAlarm(WidgetSettings settings)
 
     alertTime = QTime::fromMSecsSinceStartOfDay(Settings.msecs);
 
+    playlist->clear();
+    playlist->addMedia(QUrl(Settings.signalPath));
 
     statusChanged(true);
 

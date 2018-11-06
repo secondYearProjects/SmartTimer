@@ -1,5 +1,6 @@
 #include "addalarmdialog.h"
 #include "ui_addalarmdialog.h"
+#include "widgetsettings.h"
 
 #include <QFile>
 
@@ -14,6 +15,8 @@ addAlarmDialog::addAlarmDialog(QWidget *parent) :
     ui(new Ui::addAlarmDialog)
 {
     ui->setupUi(this);
+
+    addSounds(ui->SoundBox);
 
     QFile file(":/stylesheet.qss");
     if(file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -39,6 +42,6 @@ void addAlarmDialog::updateWidget(GlobalSettings _globalSettings)
 
 void addAlarmDialog::sendData()
 {
-    emit sendAlarmData(WidgetSettings(getMsecs(ui->alarmTime->time()),ui->alarmName->text(),true));
+    emit sendAlarmData(WidgetSettings(getMsecs(ui->alarmTime->time()),ui->alarmName->text(),true,ui->SoundBox->itemData(ui->SoundBox->currentIndex()).toString()));
     this->close();
 }

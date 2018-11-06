@@ -48,8 +48,9 @@ public slots:
     void changeTimer();
 
     void blink();
-
     void closeTimer();
+
+    void setTimer(WidgetSettings _settings);
 signals:
     void del(const TimerWidget* twidget);
 
