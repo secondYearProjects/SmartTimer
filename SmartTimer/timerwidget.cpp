@@ -135,7 +135,8 @@ void TimerWidget::resetTimer()
 
 void TimerWidget::timerExecuted()
 {
-    player->play();
+    if (DDCheck(globalSettings))
+        player->play();
     blinkTimer->start(350);
 
     timer->stop();

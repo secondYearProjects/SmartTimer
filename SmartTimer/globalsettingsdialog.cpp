@@ -1,18 +1,13 @@
 #include "globalsettingsdialog.h"
 #include "ui_globalsettingsdialog.h"
 #include "rangewidget.h"
+#include "widgetsettings.h"
 
 #include <QFile>
 #include <QSlider>
 #include <QHBoxLayout>
 
 
-int elpasedTime(QTime time)
-{
-    return time.hour()*3600*1000+
-                time.minute()*60*1000+
-                time.second()*1000;
-}
 
 GlobalSettingsDialog::GlobalSettingsDialog(GlobalSettings old, QWidget *parent) :
     QDialog(parent),

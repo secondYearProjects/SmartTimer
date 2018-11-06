@@ -27,6 +27,7 @@ int calculateDuration(const QTime &t)
         return 0;
 }
 
+
 alertwidget::alertwidget(WidgetSettings settings, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::alertwidget)
@@ -123,11 +124,13 @@ void alertwidget::statusChanged(bool stat)
 
 void alertwidget::onTickCheck()
 {
+    if (DDCheck(globalSettings))
+        player->play();
     std::cout << "!alert!" << std::endl;
     alertTick.stop();
     blinkTimer.start(300);
     blinking = true;
-    player->play();
+
     ui->stopButton->show();
     ui->stopButton->setEnabled(true);
 

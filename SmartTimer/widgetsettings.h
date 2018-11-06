@@ -41,4 +41,7 @@ public:
 
 };
 
+bool DDCheck(GlobalSettings globalSettings);
+int elpasedTime(QTime time);
+
 #endif // WIDGETSETTINGS_H
