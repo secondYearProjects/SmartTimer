@@ -135,8 +135,8 @@ void TimerWidget::resetTimer()
 
 void TimerWidget::timerExecuted()
 {
-    //std::cerr << getID() << " " << "timer executed!";
-    player->play();
+    if (DDCheck(globalSettings))
+        player->play();
     blinkTimer->start(350);
 
     timer->stop();
@@ -161,7 +161,9 @@ void TimerWidget::changeTimer()
 {
     auto *changeDial = new ChangeTimerDialog(this);
 
+    connect(changeDial,SIGNAL(changeTimerSignal(WidgetSettings)),this,SLOT(setTimer(WidgetSettings)));
     changeDial->updateWidget(globalSettings);
+
     changeDial->exec();
 }
 
@@ -191,13 +193,21 @@ void TimerWidget::closeTimer()
     tickTimer->stop();
     blinkTimer->stop();
 
-
-
     emit del(this);
 
-
-
     this->close();
+}
+
+void TimerWidget::setTimer(WidgetSettings _settings)
+{
+    Settings = _settings;
+    ui->intervalTime->setText(QTime::fromMSecsSinceStartOfDay(Settings.msecs).toString(globalSettings.timerTimeFormat));
+    ui->TimerName->setText(Settings.name);
+
+    ui->timeLeft->setText(QTime::fromMSecsSinceStartOfDay(Settings.msecs).toString(globalSettings.timerTimeFormat));
+
+    playlist->clear();
+    playlist->addMedia(QUrl(Settings.signalPath));
 }
 
 
@@ -211,17 +221,3 @@ void TimerWidget::startTimer()
     ui->editButton->setDisabled(true);
     ui->restartButton->setEnabled(true);
 }
-/*
-std::string TimerWidget::secondsToTimeString(int val)
-{
-    int tmp = val/3600;
-    std::string time = (tmp<10)?("0"+std::to_string(tmp)):std::to_string(tmp);
-    time+=":";
-    tmp = (val%3600)/60;
-    time += (tmp<10)?("0"+std::to_string(tmp)):std::to_string(tmp);
-    time+=":";
-    tmp = val%60;
-    time += (tmp<10)?("0"+std::to_string(tmp)):std::to_string(tmp);
-
-    return time;
-}*/

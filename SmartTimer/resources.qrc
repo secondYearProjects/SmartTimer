@@ -18,5 +18,9 @@
         <file>icons/ST-main-icon.png</file>
         <file>icons/ST-main-icon64.png</file>
         <file>stylesheet.qss</file>
+        <file>icons/drop-down.png</file>
+        <file>sounds/Bird.mp3</file>
+        <file>sounds/Light.mp3</file>
+        <file>icons/menu.png</file>
     </qresource>
 </RCC>

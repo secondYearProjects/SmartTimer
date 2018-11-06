@@ -6,7 +6,7 @@
 
 int getMsecs(const QTime& t)
 {
-    return (t.hour()*3600+t.minute()*60+t.second())*1000;
+    return (t.hour()*3600+t.minute()*60+t.second())*1000+t.msec();
 }
 
 int calculateDuration(const QTime &t)
@@ -26,6 +26,7 @@ int calculateDuration(const QTime &t)
     else
         return 0;
 }
+
 
 alertwidget::alertwidget(WidgetSettings settings, QWidget *parent) :
     QWidget(parent),
@@ -123,11 +124,13 @@ void alertwidget::statusChanged(bool stat)
 
 void alertwidget::onTickCheck()
 {
+    if (DDCheck(globalSettings))
+        player->play();
     std::cout << "!alert!" << std::endl;
     alertTick.stop();
     blinkTimer.start(300);
     blinking = true;
-    player->play();
+
     ui->stopButton->show();
     ui->stopButton->setEnabled(true);
 
@@ -225,6 +228,8 @@ void alertwidget::setAlarm(WidgetSettings settings)
 
     alertTime = QTime::fromMSecsSinceStartOfDay(Settings.msecs);
 
+    playlist->clear();
+    playlist->addMedia(QUrl(Settings.signalPath));
 
     statusChanged(true);
 

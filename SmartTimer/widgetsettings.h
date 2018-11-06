@@ -4,6 +4,9 @@
 #include <QString>
 #include <QTime>
 
+#include <QComboBox>
+
+void addSounds(QComboBox* soundsCombo);
 
 
 struct WidgetSettings
@@ -26,12 +29,19 @@ public:
 struct GlobalSettings
 {
 public:
-    GlobalSettings(double opacity=1.0 ,QString alarmFormat="HH:mm" ,QString timerFormat="HH:mm:ss"):
-        windowOpacity(opacity), alarmTimeFormat(alarmFormat), timerTimeFormat(timerFormat) {}
+    GlobalSettings(double opacity=1.0 ,QString alarmFormat="HH:mm" ,QString timerFormat="HH:mm:ss", bool DDenable=false, int _DDstart=0, int _DDend=0):
+        windowOpacity(opacity), alarmTimeFormat(alarmFormat), timerTimeFormat(timerFormat), DDenabled(DDenable), DDstart(_DDstart), DDend(_DDend) {}
 
     double windowOpacity=1.0;
     QString alarmTimeFormat = "HH:mm";
     QString timerTimeFormat = "HH:mm:ss";
+    bool DDenabled = false;
+    int DDstart = 0;
+    int DDend = 0;
+
 };
+
+bool DDCheck(GlobalSettings globalSettings);
+int elpasedTime(QTime time);
 
 #endif // WIDGETSETTINGS_H

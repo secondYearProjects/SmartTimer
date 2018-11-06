@@ -32,6 +32,8 @@ public:
 
     QString getTimerName();
     int getTimerDuration();
+    bool isRunning() {return this->timer->isActive(); }
+    inline WidgetSettings getSettings() const {return this->Settings; }
 
     void setTimerName(const QString &_name);
     void setTimerDuration(int _duration);
@@ -47,8 +49,9 @@ public slots:
     void changeTimer();
 
     void blink();
-
     void closeTimer();
+
+    void setTimer(WidgetSettings _settings);
 signals:
     void del(const TimerWidget* twidget);
 

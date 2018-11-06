@@ -37,7 +37,8 @@ SOURCES += \
     alertwidget.cpp \
     addalarmdialog.cpp \
     changealarmdialog.cpp \
-    globalsettingsdialog.cpp
+    globalsettingsdialog.cpp \
+    widgetsettings.cpp
 
 HEADERS += \
         mainwindow.h \

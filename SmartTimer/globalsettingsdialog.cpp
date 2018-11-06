@@ -1,8 +1,13 @@
 #include "globalsettingsdialog.h"
 #include "ui_globalsettingsdialog.h"
 
+#include "widgetsettings.h"
+
 #include <QFile>
 #include <QSlider>
+#include <QHBoxLayout>
+
+
 
 GlobalSettingsDialog::GlobalSettingsDialog(GlobalSettings old, QWidget *parent) :
     QDialog(parent),
@@ -24,9 +29,30 @@ GlobalSettingsDialog::GlobalSettingsDialog(GlobalSettings old, QWidget *parent) 
     ui->alarmFormat->setText(old.alarmTimeFormat);
     ui->TimerFormat->setText(old.timerTimeFormat);
 
+    if (oldSettings.DDenabled)
+        ui->DDenable->setChecked(true);
+
+    if (!oldSettings.DDenabled)
+    {
+        ui->DDmin->setEnabled(false);
+        ui->DDmax->setEnabled(false);
+    }
+
+    ui->DDmin->setTime(QTime::fromMSecsSinceStartOfDay(oldSettings.DDstart));
+    ui->DDmax->setTime(QTime::fromMSecsSinceStartOfDay(oldSettings.DDend));
+
+    connect(ui->DDenable,SIGNAL(clicked(bool)),this, SLOT(DDenableState(bool)));
+
+    //RangeWidget *DDrange = new RangeWidget(Qt::Horizontal);
+    //ui->RangeLayout->addWidget(DDrange);
+
+    //connect(DDrange,SIGNAL(rangeChanged(int , int )),this,SLOT(rangeChanged(int,int)));
+
+
     connect(ui->cancelButton,SIGNAL(clicked()),this,SLOT(canceled()));
     connect(ui->confirmButton,SIGNAL(clicked()),this, SLOT(confirmed()));
     connect( ui->opacitySlider,SIGNAL(valueChanged(int)),this,SLOT(opacityChanged()));
+    connect(ui->defaultButton,SIGNAL(clicked()),this, SLOT(restoreDefault()));
 
 }
 
@@ -37,7 +63,14 @@ GlobalSettingsDialog::~GlobalSettingsDialog()
 
 void GlobalSettingsDialog::confirmed()
 {
-    GlobalSettings newSettings(ui->opacitySlider->value()/100.0,ui->alarmFormat->text(), ui->TimerFormat->text());
+    int elpasedTimeMin = elpasedTime(ui->DDmin->time());
+    int elpasedTimeMax = elpasedTime(ui->DDmax->time());
+    GlobalSettings newSettings(ui->opacitySlider->value()/100.0,
+                               ui->alarmFormat->text(),
+                               ui->TimerFormat->text(),
+                               static_cast<bool>(ui->DDenable->isChecked()),
+                               elpasedTimeMin,
+                               elpasedTimeMax);
     emit changeSettings(newSettings);
     this->close();
 }
@@ -50,9 +83,47 @@ void GlobalSettingsDialog::canceled()
 
 void GlobalSettingsDialog::opacityChanged()
 {
-    GlobalSettings newSettings(ui->opacitySlider->value()/100.0,ui->alarmFormat->text(), ui->TimerFormat->text());
+    int elpasedTimeMin = elpasedTime(ui->DDmin->time());
+    int elpasedTimeMax = elpasedTime(ui->DDmax->time());
+    GlobalSettings newSettings(ui->opacitySlider->value()/100.0,ui->alarmFormat->text(), ui->TimerFormat->text(),static_cast<bool>(ui->DDenable->isChecked()),elpasedTimeMin, elpasedTimeMax);
 
     ui->SliderValue->setText(QString::number(static_cast<int>(newSettings.windowOpacity*100))+"%");
 
     emit changeSettings(newSettings);
 }
+
+
+
+void GlobalSettingsDialog::DDenableState(bool state)
+{
+        ui->DDmin->setEnabled(state);
+        ui->DDmax->setEnabled(state);
+
+}
+
+void GlobalSettingsDialog::restoreDefault()
+{
+    ui->DDenable->setChecked(false);
+
+    ui->DDmin->setEnabled(false);
+    ui->DDmax->setEnabled(false);
+
+    ui->DDmin->setTime(QTime::fromMSecsSinceStartOfDay(0));
+    ui->DDmax->setTime(QTime::fromMSecsSinceStartOfDay(0));
+
+    ui->TimerFormat->setText("HH:mm:ss");
+    ui->alarmFormat->setText("HH:mm");
+
+    ui->opacitySlider->setValue(100);
+    ui->SliderValue->setText("100%");
+
+    int elpasedTimeMin = elpasedTime(ui->DDmin->time());
+    int elpasedTimeMax = elpasedTime(ui->DDmax->time());
+    GlobalSettings newSettings(ui->opacitySlider->value()/100.0,ui->alarmFormat->text(), ui->TimerFormat->text(),static_cast<bool>(ui->DDenable->isChecked()),elpasedTimeMin, elpasedTimeMax);
+
+    ui->SliderValue->setText(QString::number(static_cast<int>(newSettings.windowOpacity*100))+"%");
+
+    emit changeSettings(newSettings);
+}
+
+

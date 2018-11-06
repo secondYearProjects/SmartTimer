@@ -3,12 +3,17 @@
 
 #include <QTime>
 #include <QFile>
+#include <QLineEdit>
 
 ChangeTimerDialog::ChangeTimerDialog(TimerWidget *parent) :
     QDialog(parent),
     ui(new Ui::ChangeTimerDialog)
 {
     ui->setupUi(this);
+
+    WidgetSettings timerSettings = parent->getSettings();
+
+    addSounds(ui->SoundBox);
 
     QFile file(":/stylesheet.qss");
     if(file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -20,8 +25,9 @@ ChangeTimerDialog::ChangeTimerDialog(TimerWidget *parent) :
 
     par = parent;
 
-    ui->timerName->setText(parent->getTimerName());
+    ui->timerName->setText(timerSettings.name);
     ui->interval->setTime(QTime::fromMSecsSinceStartOfDay(parent->getTimerDuration()));
+    ui->SoundBox->setCurrentIndex(ui->SoundBox->findData(QVariant(timerSettings.signalPath)));
 
     connect(ui->changeButton, SIGNAL(clicked()), this, SLOT(changeTimerAndQuit()));
     connect(ui->cancelButton, SIGNAL(clicked()), this, SLOT(close()));
@@ -31,6 +37,8 @@ ChangeTimerDialog::ChangeTimerDialog(TimerWidget *parent) :
     QValidator *validator = new QRegExpValidator(rx, this);
 
     ui->timerName->setValidator(validator);
+
+
 }
 
 ChangeTimerDialog::~ChangeTimerDialog()
@@ -51,8 +59,10 @@ void ChangeTimerDialog::changeTimerAndQuit()
             ui->interval->time().minute()*60*1000+
             ui->interval->time().second()*1000;
 
-    par->setTimerDuration(elpasedTime);
-    par->setTimerName(ui->timerName->text());
+    //par->setTimerDuration(elpasedTime);
+    //par->setTimerName(ui->timerName->text());
+
+    emit changeTimerSignal(WidgetSettings(elpasedTime,ui->timerName->text(),true,ui->SoundBox->itemData(ui->SoundBox->currentIndex()).toString()));
 
     this->close();
 }

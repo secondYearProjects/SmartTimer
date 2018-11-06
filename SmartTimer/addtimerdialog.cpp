@@ -1,5 +1,6 @@
 #include "addtimerdialog.h"
 #include "ui_addtimerdialog.h"
+#include "widgetsettings.h"
 
 #include <QFile>
 
@@ -16,6 +17,8 @@ addTimerDialog::addTimerDialog(QWidget *parent) :
         file.close();
     }
 
+
+    addSounds(ui->SoundBox);
 
 
     connect(ui->cancelButton, SIGNAL(clicked()), this, SLOT(close()));
@@ -51,7 +54,7 @@ void addTimerDialog::returnAndClose()
 
     QString timerName = ui->timerName->text();
 
-    emit this->sendTimerData(WidgetSettings(elpasedTime, timerName));
+    emit this->sendTimerData(WidgetSettings(elpasedTime, timerName,true, ui->SoundBox->itemData(ui->SoundBox->currentIndex()).toString()));
 
     this->close();
 }

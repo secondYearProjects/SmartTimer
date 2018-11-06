@@ -105,7 +105,7 @@ void MainWindow::changeSettings()
 
 void MainWindow::onTimeRecieved(WidgetSettings settings)
 {
-    auto *newTimer = new TimerWidget(WidgetSettings(settings.msecs, settings.name), this);
+    auto *newTimer = new TimerWidget(settings, this);
 
     timerScrollWidget->layout()->addWidget(newTimer);
 
