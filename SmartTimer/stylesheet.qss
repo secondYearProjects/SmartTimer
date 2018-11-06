@@ -297,3 +297,7 @@ QRadioButton::indicator {
     width: 15px;
     height: 15px;
 }
+
+QPushButton#menuButton {
+    border: 0px;
+}

@@ -21,5 +21,6 @@
         <file>icons/drop-down.png</file>
         <file>sounds/Bird.mp3</file>
         <file>sounds/Light.mp3</file>
+        <file>icons/menu.png</file>
     </qresource>
 </RCC>
