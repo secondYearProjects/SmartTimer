@@ -154,9 +154,17 @@ QLineEdit {
 
 QTimeEdit {
         border-radius: 10px;
+        height: 55px;
         color: rgb(238, 238, 236);
         font: 19pt bold;
         background-color: rgb(255, 204, 157,10);
+}
+QTimeEdit:!enabled {
+        border-radius: 10px;
+        height: 55px;
+        color: rgb(198, 198, 198);
+        font: 19pt bold;
+        background-color: rgb(205, 154, 107,10);
 }
 
 QTimeEdit::up-button  {
@@ -247,6 +255,7 @@ QSlider::handle:horizontal {
 }
 
 QComboBox {
+    padding: 0 0 0 50;
     text-align: center;
     color: white;
     font: 15pt;
@@ -279,3 +288,12 @@ QComboBox QAbstractItemView {
     selection-background-color: rgb(255, 204, 157,10);
 }
 
+
+QRadioButton {
+    font: 15pt white;
+}
+
+QRadioButton::indicator {
+    width: 15px;
+    height: 15px;
+}

@@ -3,6 +3,7 @@
 
 #include <QTime>
 #include <QFile>
+#include <QLineEdit>
 
 ChangeTimerDialog::ChangeTimerDialog(TimerWidget *parent) :
     QDialog(parent),
@@ -36,6 +37,8 @@ ChangeTimerDialog::ChangeTimerDialog(TimerWidget *parent) :
     QValidator *validator = new QRegExpValidator(rx, this);
 
     ui->timerName->setValidator(validator);
+
+
 }
 
 ChangeTimerDialog::~ChangeTimerDialog()

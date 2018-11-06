@@ -120,7 +120,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Timer name:</string>
+           <string>Name:</string>
           </property>
          </widget>
         </item>

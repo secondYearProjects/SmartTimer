@@ -58,7 +58,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Alarm Time:</string>
+           <string>Time:</string>
           </property>
          </widget>
         </item>
@@ -117,7 +117,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Alarm name:</string>
+           <string>Name:</string>
           </property>
          </widget>
         </item>

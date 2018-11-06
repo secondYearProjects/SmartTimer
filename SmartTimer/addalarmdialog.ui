@@ -201,23 +201,8 @@
            <cursorShape>ArrowCursor</cursorShape>
           </property>
           <property name="currentText">
-           <string>Standard alarm</string>
+           <string/>
           </property>
-          <item>
-           <property name="text">
-            <string>Standard alarm</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Sound2</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Sound3</string>
-           </property>
-          </item>
          </widget>
         </item>
        </layout>

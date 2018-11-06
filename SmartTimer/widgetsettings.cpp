@@ -1,4 +1,5 @@
 #include "widgetsettings.h"
+#include <QLineEdit>
 
 void addSounds(QComboBox *soundsCombo)
 {
