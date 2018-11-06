@@ -105,13 +105,13 @@ void MainWindow::changeSettings()
 
 void MainWindow::onTimeRecieved(WidgetSettings settings)
 {
-    auto *newTimer = new TimerWidget(settings, this);
+    auto *newTimer = new TimerWidget(std::move(settings), this);
 
     timerScrollWidget->layout()->addWidget(newTimer);
 
     connect(newTimer, SIGNAL(del(const TimerWidget*)), this, SLOT(remove(const TimerWidget*)));
     connect(newTimer, SIGNAL(timerFinished()), this, SLOT(onTimerFinished()));
-    connect(newTimer, SIGNAL(blinkInfo(QString, bool)), this, SLOT(tabBlinking(QString,bool)));
+    connect(newTimer, SIGNAL(blinkInfo(QString,bool)), this, SLOT(tabBlinking(QString,bool)));
 
     timersList.append(newTimer);
     newTimer->updateWidget(Settings);
@@ -144,12 +144,12 @@ void MainWindow::onTimerFinished()
 
 void MainWindow::onAlarmTimeRecieved(WidgetSettings settings)
 {
-    auto *newAlarm = new alertwidget(settings, this);
+    auto *newAlarm = new alertwidget(std::move(settings), this);
 
     alarmScrollWidget->layout()->addWidget(newAlarm);
 
     connect(newAlarm, SIGNAL(del(const alertwidget*)), this, SLOT(remove(const alertwidget*)));
-    connect(newAlarm, SIGNAL(blinkInfo(QString, bool)), this, SLOT(tabBlinking(QString,bool)));
+    connect(newAlarm, SIGNAL(blinkInfo(QString,bool)), this, SLOT(tabBlinking(QString,bool)));
 
 
     alarmsList.append(newAlarm);
@@ -159,7 +159,7 @@ void MainWindow::onAlarmTimeRecieved(WidgetSettings settings)
 
 void MainWindow::onSettingsRecieved(GlobalSettings settings)
 {
-    Settings = settings;
+    Settings = std::move(settings);
 
     this->setWindowOpacity(Settings.windowOpacity);
 
@@ -169,7 +169,7 @@ void MainWindow::onSettingsRecieved(GlobalSettings settings)
 // TODO: here
 // update settings handler
 
-void MainWindow::tabBlinking(QString tabName, bool enable)
+void MainWindow::tabBlinking(const QString &tabName, bool enable)
 {
     if (enable)
     {

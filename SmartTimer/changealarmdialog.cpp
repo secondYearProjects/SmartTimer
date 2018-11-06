@@ -37,7 +37,7 @@ ChangeAlarmDialog::~ChangeAlarmDialog()
 
 void ChangeAlarmDialog::updateWidget(GlobalSettings _globalSettings)
 {
-    globalSettings = _globalSettings;
+    globalSettings = std::move(_globalSettings);
 
     ui->time->setDisplayFormat(globalSettings.alarmTimeFormat);
 }

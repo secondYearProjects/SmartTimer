@@ -17,7 +17,7 @@ TimerWidget::TimerWidget(WidgetSettings settings, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    Settings = settings;
+    Settings = std::move(settings);
 
     QFile file(":/stylesheet.qss");
     if(file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -105,7 +105,7 @@ void TimerWidget::setTimerDuration(int _duration)
 
 void TimerWidget::updateWidget(GlobalSettings _globalSettings)
 {
-    globalSettings = _globalSettings;
+    globalSettings = std::move(_globalSettings);
     ui->intervalTime->setText((QTime::fromMSecsSinceStartOfDay(Settings.msecs)).toString(globalSettings.timerTimeFormat));
     ui->timeLeft->setText((QTime::fromMSecsSinceStartOfDay(Settings.msecs)).toString(globalSettings.timerTimeFormat));
 
@@ -200,7 +200,7 @@ void TimerWidget::closeTimer()
 
 void TimerWidget::setTimer(WidgetSettings _settings)
 {
-    Settings = _settings;
+    Settings = std::move(_settings);
     ui->intervalTime->setText(QTime::fromMSecsSinceStartOfDay(Settings.msecs).toString(globalSettings.timerTimeFormat));
     ui->TimerName->setText(Settings.name);
 
