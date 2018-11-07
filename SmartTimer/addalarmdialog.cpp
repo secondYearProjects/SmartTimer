@@ -5,10 +5,8 @@
 #include <QFile>
 
 
-static int getMsecs(const QTime& t)
-{
-    return (t.hour()*3600+t.minute()*60+t.second())*1000;
-}
+
+
 
 addAlarmDialog::addAlarmDialog(QWidget *parent) :
     QDialog(parent),
@@ -27,6 +25,8 @@ addAlarmDialog::addAlarmDialog(QWidget *parent) :
 
     connect(ui->createButton,SIGNAL(clicked()),this,SLOT(sendData()));
     connect(ui->cancelButton,SIGNAL(clicked()),this,SLOT(close()));
+    connect(ui->alarmTime,SIGNAL(timeChanged(QTime)),this,SLOT(updateTimeTo(QTime)));
+    updateTimeTo(ui->alarmTime->time());
 }
 
 addAlarmDialog::~addAlarmDialog()
@@ -44,4 +44,9 @@ void addAlarmDialog::sendData()
 {
     emit sendAlarmData(WidgetSettings(getMsecs(ui->alarmTime->time()),ui->alarmName->text(),true,ui->SoundBox->itemData(ui->SoundBox->currentIndex()).toString()));
     this->close();
+}
+
+void addAlarmDialog::updateTimeTo(QTime time)
+{
+    ui->toAlarmLabel->setText(QTime::fromMSecsSinceStartOfDay(calculateDuration(time)).toString(globalSettings.alarmTimeFormat));
 }

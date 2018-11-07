@@ -20,6 +20,7 @@ public:
     void updateWidget(GlobalSettings _globalSettings);
 public slots:
     void sendData();
+    void updateTimeTo(QTime time);
 signals:
     void sendAlarmData(WidgetSettings);
 private:

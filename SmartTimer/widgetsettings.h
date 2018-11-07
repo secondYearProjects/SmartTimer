@@ -8,6 +8,10 @@
 
 void addSounds(QComboBox* soundsCombo);
 
+int getMsecs(const QTime& t);
+
+int calculateDuration(const QTime &t);
+
 
 struct WidgetSettings
 {

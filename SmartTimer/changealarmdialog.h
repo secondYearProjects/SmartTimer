@@ -21,6 +21,7 @@ public:
     void updateWidget(GlobalSettings _globalSettings);
 public slots:
     void changeAlarm();
+    void updateTimeTo(QTime time);
 signals:
     void changeAlarmSignal(WidgetSettings settings);
 
