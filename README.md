@@ -11,3 +11,5 @@
 ![alt text](https://github.com/secondYearProjects/SmartTimer/blob/master/screenshots/settings.png)
 
 ![alt text](https://github.com/secondYearProjects/SmartTimer/blob/master/screenshots/global.png)
+
+## Feel free to post issues, fork, star etc.
