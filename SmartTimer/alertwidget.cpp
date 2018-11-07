@@ -1,30 +1,9 @@
 #include "alertwidget.h"
 #include "ui_alertwidget.h"
 #include "changealarmdialog.h"
-
+#include "widgetsettings.h"
 #include <iostream>
 
-int getMsecs(const QTime& t)
-{
-    return (t.hour()*3600+t.minute()*60+t.second())*1000+t.msec();
-}
-
-int calculateDuration(const QTime &t)
-{
-    int alertMsecs = getMsecs(t);
-    int currMsecs = getMsecs(QTime::currentTime());
-
-    if (currMsecs > alertMsecs)
-    {
-        int wholeDay = 3600*24*1000;
-        return (wholeDay+alertMsecs-currMsecs);
-    }
-    if (currMsecs < alertMsecs)
-    {
-        return (alertMsecs-currMsecs);
-    }
-    return 0;
-}
 
 
 alertwidget::alertwidget(WidgetSettings settings, QWidget *parent) :
@@ -70,8 +49,8 @@ alertwidget::alertwidget(WidgetSettings settings, QWidget *parent) :
 
     if (Settings.enabled)
     {
-        std::cout << calculateDuration(alertTime) << " "
-                  << QTime::currentTime().hour() <<":" << QTime::currentTime().minute() << std::endl;
+        //std::cout << calculateDuration(alertTime) << " "
+        //          << QTime::currentTime().hour() <<":" << QTime::currentTime().minute() << std::endl;
         alertTick.start(calculateDuration(alertTime));
     }
 
@@ -102,8 +81,8 @@ void alertwidget::statusChanged(bool stat)
     if (stat)
     {
 
-        std::cout << calculateDuration(alertTime) << " "
-                  << QTime::currentTime().hour() <<":" << QTime::currentTime().minute() << std::endl;
+        //std::cout << calculateDuration(alertTime) << " "
+        //          << QTime::currentTime().hour() <<":" << QTime::currentTime().minute() << std::endl;
         alertTick.start(calculateDuration(alertTime));
     }
     else
@@ -170,8 +149,8 @@ void alertwidget::stopBlinking()
     ui->stopButton->hide();
     if (Settings.enabled)
     {
-        std::cout << calculateDuration(alertTime) << " "
-                  << QTime::currentTime().hour() <<":" << QTime::currentTime().minute() << std::endl;
+        //std::cout << calculateDuration(alertTime) << " "
+        //          << QTime::currentTime().hour() <<":" << QTime::currentTime().minute() << std::endl;
         alertTick.start(calculateDuration(alertTime));
     }
 }

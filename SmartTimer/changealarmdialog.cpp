@@ -26,6 +26,8 @@ ChangeAlarmDialog::ChangeAlarmDialog(alertwidget *parent) :
 
     connect(ui->changeButton,SIGNAL(clicked()), this, SLOT(changeAlarm()));
     connect(ui->cancelButton,SIGNAL(clicked()), this, SLOT(close()));
+    connect(ui->time,SIGNAL(timeChanged(QTime)),this,SLOT(updateTimeTo(QTime)));
+    updateTimeTo(ui->time->time());
 }
 
 ChangeAlarmDialog::~ChangeAlarmDialog()
@@ -47,4 +49,11 @@ void ChangeAlarmDialog::changeAlarm()
     emit changeAlarmSignal(WidgetSettings(getMsecs(ui->time->time()), ui->alarmName->text(),true,ui->SoundBox->itemData(ui->SoundBox->currentIndex()).toString()));
 
     this->close();
+}
+
+
+
+void ChangeAlarmDialog::updateTimeTo(QTime time)
+{
+    ui->toAlarmLabel->setText(QTime::fromMSecsSinceStartOfDay(calculateDuration(time)).toString(globalSettings.alarmTimeFormat));
 }

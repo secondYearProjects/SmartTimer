@@ -42,3 +42,25 @@ bool DDCheck(GlobalSettings globalSettings)
         return true;
 
 }
+
+int calculateDuration(const QTime &t)
+{
+    int alertMsecs = getMsecs(t);
+    int currMsecs = getMsecs(QTime::currentTime());
+
+    if (currMsecs > alertMsecs)
+    {
+        int wholeDay = 3600*24*1000;
+        return (wholeDay+alertMsecs-currMsecs);
+    }
+    if (currMsecs < alertMsecs)
+    {
+        return (alertMsecs-currMsecs);
+    }
+    return 0;
+}
+
+int getMsecs(const QTime &t)
+{
+    return (t.hour()*3600+t.minute()*60+t.second())*1000+t.msec();
+}
